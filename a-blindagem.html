@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>A Blindagem – Shield Rio | Tecnologia NBR 15000</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@300,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#b1c5ff",
+              "background": "#131313",
+              "surface": "#0a0a0a",
+              "primary-container": "#002a6c",
+            },
+            fontFamily: {
+              "headline": ["Manrope", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+      }
+      .glass-nav {
+        background: rgba(19, 19, 19, 0.7);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .perspective-card {
+          perspective: 1000px;
+      }
+      .reveal-item {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .reveal-item.visible {
+          opacity: 1;
+          transform: translateY(0);
+      }
+      .step-line::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 0;
+          bottom: 0;
+          width: 1px;
+          background: linear-gradient(to bottom, transparent, rgba(177, 197, 255, 0.2), transparent);
+      }
+    </style>
+</head>
+<body class="bg-background text-slate-300 font-body antialiased selection:bg-primary selection:text-black">
+
+<!-- Header -->
+<header class="fixed top-0 w-full flex flex-col z-50">
+    <div class="bg-[#001946] px-8 py-2 flex justify-end items-center gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[14px]">phone</span>
+            <span>(21) 2222-4649</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[14px]">chat</span>
+            <span>(21) 99115-7592</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[14px]">schedule</span>
+            <span>Seg - Sex: 08:00 - 18:00</span>
+        </div>
+    </div>
+    <nav class="glass-nav px-8 md:px-16 py-5 flex justify-between items-center">
+        <a href="index.html">
+            <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="h-10 md:h-12 w-auto object-contain">
+        </a>
+        <div class="hidden md:flex items-center gap-10">
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
+            <a class="text-white font-bold border-b-2 border-primary pb-1 text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="#">Serviços</a>
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="#">Contato</a>
+        </div>
+        <button class="bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all">
+            Orçamento
+        </button>
+    </nav>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center bg-black overflow-hidden pt-36 pb-20">
+        <div class="absolute inset-0 z-0">
+            <img class="w-full h-full object-cover opacity-20 scale-105" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=3840"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-background via-black/40 to-transparent"></div>
+        </div>
+        
+        <div class="relative z-10 px-8 md:px-24 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <!-- Left: Text -->
+            <div class="lg:col-span-7">
+                <span class="text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-6 block reveal-item">Engenharia Balística</span>
+                <h1 class="font-headline text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8 reveal-item">
+                    A Blindagem <br/><span class="text-primary italic">Além dos Padrões</span>
+                </h1>
+                <p class="text-xl text-slate-400 max-w-xl font-light leading-relaxed reveal-item mb-10">
+                    Proteção máxima baseada na norma NBR 15000 e metodologia Lean 6 Sigma. Cada detalhe projetado para sua segurança absoluta.
+                </p>
+                <div class="reveal-item">
+                    <button class="bg-white text-black px-12 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-primary transition-colors">Solicitar Consultoria</button>
+                </div>
+            </div>
+
+            <!-- Right: Video (Resized) -->
+            <div class="lg:col-span-5 reveal-item">
+                <div class="relative aspect-[9/16] max-w-[320px] mx-auto lg:ml-auto rounded-sm overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(177,197,255,0.05)] bg-surface group">
+                    <video 
+                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+                        autoplay 
+                        muted 
+                        loop 
+                        playsinline
+                    >
+                        <source src="video-excelencia.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
+                    <div class="absolute bottom-6 left-6 pr-6">
+                        <span class="text-primary font-bold tracking-[0.3em] uppercase text-[8px] mb-1 block">Shield Experience</span>
+                        <p class="text-white text-[10px] font-bold leading-tight">Excelência em cada etapa do processo tático.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Níveis de Proteção Grid -->
+    <section class="py-32 px-8 md:px-24 bg-background">
+        <div class="mb-20 text-center">
+            <h2 class="font-headline text-4xl font-bold text-white mb-6">Níveis de Proteção (NBR 15000)</h2>
+            <p class="text-slate-400 max-w-3xl mx-auto font-light">Classificação oficial de resistência balística. Embora ofereçamos todos os níveis regulamentados, o **Nível III-A** é o padrão ouro de Shield Rio.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Nível I -->
+            <div class="bg-surface p-10 border border-white/5 rounded-sm hover:border-primary/20 transition-all group">
+                <span class="text-slate-500 font-black text-5xl mb-6 block group-hover:text-white transition-colors">I</span>
+                <h3 class="text-white font-bold mb-4">Resistência Civil</h3>
+                <p class="text-xs text-slate-500 leading-relaxed font-light mb-8 italic">Proteção leve contra calibres comuns.</p>
+                <ul class="text-[10px] space-y-3 text-slate-400 font-bold uppercase tracking-wider">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> .22 LR</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> .38 SPECIAL</li>
+                </ul>
+            </div>
+            <!-- Nível II-A -->
+            <div class="bg-surface p-10 border border-white/5 rounded-sm hover:border-primary/20 transition-all group">
+                <span class="text-slate-500 font-black text-5xl mb-6 block group-hover:text-white transition-colors">II-A</span>
+                <h3 class="text-white font-bold mb-4">Proteção Intermediária</h3>
+                <p class="text-xs text-slate-500 leading-relaxed font-light mb-8 italic">Ideal para centros urbanos.</p>
+                <ul class="text-[10px] space-y-3 text-slate-400 font-bold uppercase tracking-wider">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> 9MM FMJ</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> .357 MAGNUM</li>
+                </ul>
+            </div>
+            <!-- Nível III-A (Featured) -->
+            <div class="bg-primary/5 p-10 border border-primary/30 rounded-sm relative overflow-hidden group scale-105 z-10 shadow-2xl">
+                <div class="absolute top-0 right-0 bg-primary text-[#001946] px-4 py-1 text-[8px] font-black uppercase tracking-widest">Padrão Shield</div>
+                <span class="text-primary font-black text-5xl mb-6 block">III-A</span>
+                <h3 class="text-white font-bold mb-4">Máxima Proteção Civil</h3>
+                <p class="text-xs text-slate-400 leading-relaxed font-light mb-8 italic">Suporta os calibres de mão mais potentes.</p>
+                <ul class="text-[10px] space-y-3 text-white font-bold uppercase tracking-wider">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> 9MM & .44 MAGNUM</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> .357 MAGNUM (SUBM.)</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> 380 AUTO & 32 AUTO</li>
+                </ul>
+            </div>
+            <!-- Nível III -->
+            <div class="bg-surface p-10 border border-white/5 rounded-sm hover:border-primary/20 transition-all group">
+                <span class="text-slate-500 font-black text-5xl mb-6 block group-hover:text-white transition-colors">III</span>
+                <h3 class="text-white font-bold mb-4">Proteção Militar</h3>
+                <p class="text-xs text-slate-500 leading-relaxed font-light mb-8 italic">Uso restrito (Exército).</p>
+                <ul class="text-[10px] space-y-3 text-slate-400 font-bold uppercase tracking-wider">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> 7.62 NATO (FUSIL)</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> 5.56 NATO (AR-15)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materiais de Vanguarda -->
+    <section class="py-32 px-8 md:px-24 bg-surface">
+        <div class="relative overflow-hidden flex flex-col md:flex-row gap-20 items-center">
+            <div class="flex-1">
+                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">Composição Estatística</span>
+                <h2 class="font-headline text-5xl font-bold text-white mb-10 tracking-tight">Materiais que <br/>Redefinem a Segurança</h2>
+                
+                <div class="space-y-12">
+                    <div class="reveal-item">
+                        <h4 class="text-primary font-black uppercase text-xs tracking-widest mb-3">Manta de Fibra de Carbono</h4>
+                        <p class="text-slate-400 font-light leading-relaxed">Nossa manta é revestida com **neopreno** em todas as áreas úmidas para evitar absorção de umidade. A fixação é feita com **cola especial 1500N**, garantindo que não haja delaminação com o passar dos anos.</p>
+                    </div>
+                    <div class="reveal-item">
+                        <h4 class="text-primary font-black uppercase text-xs tracking-widest mb-3">Aço Inox 304L</h4>
+                        <p class="text-slate-400 font-light leading-relaxed">Empregamos aço inox 304L de alta resistência em pontos estratégicos (overlaps) para garantir a cobertura 100% balística sem comprometer o peso do veículo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 relative perspective-card">
+                <div class="bg-primary/10 rounded-sm overflow-hidden border border-white/5 rotate-3 hover:rotate-0 transition-transform duration-1000">
+                    <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/a-blindagem-home.png" alt="Tecnologia Shield" class="w-full h-auto">
+                    <div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+                </div>
+                <!-- Glass Specs overlay -->
+                <div class="absolute -bottom-10 -left-10 bg-white/5 backdrop-blur-xl p-8 border border-white/10 rounded-sm max-w-xs shadow-2xl reveal-item">
+                    <h5 class="text-white font-bold mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">layers</span>
+                        Vidros de 7 Camadas
+                    </h5>
+                    <p class="text-[10px] text-slate-400 leading-relaxed font-light mb-4">Com camada final em **policarbonato** anti-estilhaço, nossos vidros garantem visibilidade 4K e resistência total à penetração.</p>
+                    <span class="text-primary font-black text-[10px] uppercase tracking-widest">Tecnologia Hidrosolúvel</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O Processo de 10 Passos (Timeline) -->
+    <section class="py-40 bg-background relative overflow-hidden">
+        <div class="text-center mb-32">
+            <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">Lean 6 Sigma Excellence</span>
+            <h2 class="font-headline text-5xl font-black text-white tracking-tighter">O Processo de 10 Passos</h2>
+        </div>
+
+        <div class="relative max-w-6xl mx-auto px-8 step-line">
+            <!-- Steps Grid -->
+            <div class="space-y-32 relative">
+                <!-- Step 1 & 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                    <div class="reveal-item text-right md:pr-24">
+                        <span class="text-6xl font-black text-white/5 mb-4 block">01</span>
+                        <h4 class="text-white font-bold text-xl mb-3">Vistoria e Checklist</h4>
+                        <p class="text-sm text-slate-500 font-light italic">Registro milimétrico do estado inicial de entrada.</p>
+                    </div>
+                    <div class="reveal-item text-left md:pl-24">
+                        <span class="text-6xl font-black text-white/5 mb-4 block">02</span>
+                        <h4 class="text-white font-bold text-xl mb-3">Desmontagem Técnica</h4>
+                        <p class="text-sm text-slate-500 font-light italic">Retirada cuidadosa de assentos e componentes eletrônicos.</p>
+                    </div>
+                </div>
+                <!-- Step 3 & 4 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                    <div class="reveal-item text-right md:pr-24">
+                        <span class="text-6xl font-black text-white/5 mb-4 block">03</span>
+                        <h4 class="text-white font-bold text-xl mb-3">Isolamento Protetivo</h4>
+                        <p class="text-sm text-slate-500 font-light italic">Película protetora total em toda a lataria original.</p>
+                    </div>
+                    <div class="reveal-item text-left md:pl-24">
+                        <span class="text-6xl font-black text-white/5 mb-4 block">04</span>
+                        <h4 class="text-white font-bold text-xl mb-3">Inspeção de Lotes</h4>
+                        <p class="text-sm text-slate-500 font-light italic">Validação estatística de fibras, aços e vidros.</p>
+                    </div>
+                </div>
+                <!-- Step 5 & 6 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                    <div class="reveal-item text-right md:pr-24">
+                        <span class="text-6xl font-black text-white/5 mb-4 block">05</span>
+                        <h4 class="text-white font-bold text-xl mb-3">Blindagem Opaca</h4>
+                        <p class="text-sm text-slate-500 font-light italic">Aplicação de mantas de carbono e painéis 304L.</p>
+                    </div>
+                    <div class="reveal-item text-left md:pl-24">
+                        <span class="text-6xl font-black text-white/5 mb-4 block">06</span>
+                        <h4 class="text-white font-bold text-xl mb-3">Blindagem Transparente</h4>
+                        <p class="text-sm text-slate-500 font-light italic">Instalação dos conjuntos de vidros multi-camada.</p>
+                    </div>
+                </div>
+                <!-- Step 7 & 8 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                    <div class="reveal-item text-right md:pr-24">
+                        <span class="text-6xl font-black text-white/5 mb-4 block">07</span>
+                        <h4 class="text-white font-bold text-xl mb-3">Montagem de Elite</h4>
+                        <p class="text-sm text-slate-500 font-light italic">Encaixe preciso de acabamentos originais.</p>
+                    </div>
+                    <div class="reveal-item text-left md:pl-24">
+                        <span class="text-6xl font-black text-white/5 mb-4 block">08</span>
+                        <h4 class="text-white font-bold text-xl mb-3">Vistoria de Carga</h4>
+                        <p class="text-sm text-slate-500 font-light italic">Testes de infiltração e validação funcional.</p>
+                    </div>
+                </div>
+                <!-- Step 9 & 10 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                    <div class="reveal-item text-right md:pr-24">
+                        <span class="text-6xl font-black text-white/5 mb-4 block">09</span>
+                        <h4 class="text-white font-bold text-xl mb-3">Alinhamento Dinâmico</h4>
+                        <p class="text-sm text-slate-500 font-light italic">Ajuste de suspensão para performance original.</p>
+                    </div>
+                    <div class="reveal-item text-left md:pl-24">
+                        <span class="text-6xl font-black text-white/5 mb-4 block">10</span>
+                        <h4 class="text-white font-bold text-xl mb-3">Polimento e Entrega</h4>
+                        <p class="text-sm text-slate-500 font-light italic">Acabamento estético e entrega premium.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-32 bg-primary">
+        <div class="px-8 md:px-24 text-center">
+            <h2 class="text-[#001946] font-headline text-5xl font-black mb-10 tracking-tight leading-none uppercase">Escolha a liderança estatística.</h2>
+            <button class="bg-[#001946] text-white px-12 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-black transition-colors">Solicitar Orçamento</button>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-surface py-16 px-8 md:px-24 border-t border-white/5">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-10">
+        <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="h-8 opacity-50">
+        <div class="flex gap-10 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+            <a href="#" class="hover:text-primary transition-colors">Privacidade</a>
+            <a href="#" class="hover:text-primary transition-colors">Termos</a>
+            <a href="#" class="hover:text-primary transition-colors">Certificações</a>
+        </div>
+        <p class="text-slate-600 text-[10px] uppercase font-bold tracking-widest">© 2026 SHIELD RIO. Engenharia de Elite.</p>
+    </div>
+</footer>
+
+<script>
+    // Intersection Observer for reveal items
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal-item').forEach(item => {
+        observer.observe(item);
+    });
+</script>
+
+</body>
+</html>

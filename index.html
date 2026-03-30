@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Shield Rio – Segurança, qualidade e tecnologia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@300,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#b1c5ff",
+              "background": "#131313",
+              "surface": "#0a0a0a",
+              "primary-container": "#002a6c",
+            },
+            fontFamily: {
+              "headline": ["Manrope", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+      }
+      .glass-nav {
+        background: rgba(19, 19, 19, 0.7);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .tech-trigger.active {
+          border-color: #b1c5ff !important;
+      }
+      .tech-trigger.active h4 {
+          color: white !important;
+      }
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+          animation: fadeIn 0.5s ease-out forwards;
+      }
+    </style>
+</head>
+<body class="bg-background text-slate-300 font-body antialiased selection:bg-primary selection:text-black">
+
+<!-- Header -->
+<header class="fixed top-0 w-full flex flex-col z-50">
+    <div class="bg-[#001946] px-8 py-2 flex justify-end items-center gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[14px]">phone</span>
+            <span>(21) 2222-4649</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[14px]">chat</span>
+            <span>(21) 99115-7592</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[14px]">schedule</span>
+            <span>Seg - Sex: 08:00 - 18:00</span>
+        </div>
+    </div>
+    <nav class="glass-nav px-8 md:px-16 py-5 flex justify-between items-center">
+        <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="h-10 md:h-12 w-auto object-contain">
+        <div class="hidden md:flex items-center gap-10">
+            <a class="text-white font-bold border-b-2 border-primary pb-1 text-xs uppercase tracking-widest" href="index.html">Início</a>
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="#">Serviços</a>
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="#">Contato</a>
+        </div>
+        <button class="bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all">
+            Orçamento
+        </button>
+    </nav>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center bg-black overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img class="w-full h-full object-cover opacity-30 scale-105" src="https://lh3.googleusercontent.com/p/AF1QipNr6y1z2ENKJ7SGPAsSanqpiJA0G1sEoPW7SO5I=s1600"/>
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
+        </div>
+        <div class="relative z-10 px-8 md:px-24 max-w-5xl">
+            <div class="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-sm border border-white/10 mb-10">
+                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                <span class="text-[10px] font-bold tracking-[0.3em] text-primary uppercase">Certificação Lean 6 Sigma</span>
+            </div>
+            <h1 class="font-headline text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8">
+                A Única Blindadora com <br/><span class="text-primary tracking-normal">Lean 6 Sigma</span>
+            </h1>
+            <p class="text-xl text-slate-400 max-w-2xl mb-12 font-light leading-relaxed">
+                Segurança absoluta através da melhoria contínua e eficiência de processos. Engenharia de proteção sem variações.
+            </p>
+            <button class="bg-white text-black px-12 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-primary transition-colors flex items-center gap-4 group">
+                Descobrir <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">east</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Technical Specs: Interactive Viewer -->
+    <section class="py-40 px-8 md:px-24 bg-surface relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        
+        <div class="relative z-10 mb-24">
+            <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px]">A Blindagem Shield Rio</span>
+            <h2 class="font-headline text-5xl font-bold mt-4 tracking-tight text-white">Tecnologia & Qualidade</h2>
+        </div>
+
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center min-h-[500px]">
+            <!-- Left: Selection Titles -->
+            <div class="lg:col-span-4 space-y-6">
+                <div class="tech-trigger active group cursor-pointer py-6 border-l-2 border-white/5 pl-8 hover:border-primary/50 transition-all duration-500" data-target="level3a">
+                    <h4 class="text-3xl font-bold text-slate-600 transition-colors">Blindagem Nível III-A</h4>
+                </div>
+                <div class="tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-8 hover:border-primary/50 transition-all duration-500" data-target="carbon">
+                    <h4 class="text-3xl font-bold text-slate-600 transition-colors">Fibra de Carbono</h4>
+                </div>
+                <div class="tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-8 hover:border-primary/50 transition-all duration-500" data-target="acoustic">
+                    <h4 class="text-3xl font-bold text-slate-600 transition-colors">Proteção Acústica</h4>
+                </div>
+                <div class="tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-8 hover:border-primary/50 transition-all duration-500" data-target="rings">
+                    <h4 class="text-3xl font-bold text-slate-600 transition-colors">Cintas de Segurança</h4>
+                </div>
+            </div>
+
+            <!-- Center: Visual Representation -->
+            <div class="lg:col-span-4 flex justify-center">
+                <div class="w-full aspect-square max-w-[450px] relative">
+                    <div class="absolute inset-0 rounded-full border border-white/5 animate-spin-slow"></div>
+                    <div class="absolute inset-4 rounded-full overflow-hidden shadow-[0_0_100px_rgba(177,197,255,0.05)]">
+                        <img id="tech-image" src="https://shieldrio.com.br/wp-content/uploads/2017/08/a-blindagem-1.jpg" 
+                             class="w-full h-full object-cover opacity-50 transition-all duration-700 brightness-75">
+                        <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Dynamic Content -->
+            <div class="lg:col-span-4 lg:pl-10">
+                <div id="tech-content" class="animate-fade-in">
+                    <h3 id="tech-title" class="text-4xl font-bold text-white tracking-tight mb-6">Máxima Resistência</h3>
+                    <p id="tech-desc" class="text-slate-400 leading-relaxed font-light text-xl mb-10">
+                        Blindagem transparente e opaca com certificação total contra disparos de projéteis de alta velocidade. Segurança impenetrável.
+                    </p>
+                    <div id="tech-tag" class="inline-block px-5 py-2 rounded-sm border border-primary/20 bg-primary/5 text-primary text-[10px] uppercase font-bold tracking-[0.2em]">
+                        Certificações Exército e Detran
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services: Horizontal Expanding Accordion -->
+    <section class="bg-black">
+        <div class="px-8 md:px-24 py-20">
+            <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px]">Ecossistema de Soluções</span>
+            <h2 class="font-headline text-5xl font-bold mt-4 tracking-tight text-white">Serviços</h2>
+        </div>
+        <div class="flex flex-col lg:flex-row h-[700px] w-full border-t border-white/5">
+            <!-- Panel 1 -->
+            <div class="service-panel group relative flex-1 hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e]">
+                <div class="absolute inset-0 z-0">
+                    <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/manutencao-reparo-e-troca-1.png" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                </div>
+                <div class="absolute inset-0 z-10 flex flex-col justify-end p-12 translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
+                    <h3 class="font-headline text-4xl font-black text-white mb-6">Manutenção</h3>
+                    <div class="max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
+                        <p class="text-slate-300 mb-8 font-light text-lg">Cuidado preventivo detalhado para componentes balísticos, mecânicos e elétricos, mantendo a garantia vitalícia da sua blindagem.</p>
+                        <button class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-4 hover:gap-6 transition-all">
+                            Saiba Mais <span class="material-symbols-outlined text-sm">east</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 group-hover:opacity-0 transition-all duration-500 whitespace-nowrap">
+                    <span class="text-white/10 text-4xl font-black uppercase tracking-[0.4em]">Manutenção</span>
+                </div>
+            </div>
+            <!-- Panel 2 -->
+            <div class="service-panel group relative flex-1 hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e]">
+                <div class="absolute inset-0 z-0">
+                    <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/shield-rio-1.jpg" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                </div>
+                <div class="absolute inset-0 z-10 flex flex-col justify-end p-12 translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
+                    <h3 class="font-headline text-4xl font-black text-white mb-6">Inspeção</h3>
+                    <div class="max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
+                        <p class="text-slate-300 mb-8 font-light text-lg">Diagnóstico técnico rigoroso de mais de 25 itens para detecção de delaminação e fadiga, garantindo proteção ininterrupta.</p>
+                        <button class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-4 hover:gap-6 transition-all">
+                            Saiba Mais <span class="material-symbols-outlined text-sm">east</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 group-hover:opacity-0 transition-all duration-500 whitespace-nowrap">
+                    <span class="text-white/10 text-4xl font-black uppercase tracking-[0.4em]">Inspeção</span>
+                </div>
+            </div>
+            <!-- Panel 3 -->
+            <div class="service-panel group relative flex-1 hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e]">
+                <div class="absolute inset-0 z-0">
+                    <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/shield-rio-2.jpg" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                </div>
+                <div class="absolute inset-0 z-10 flex flex-col justify-end p-12 translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
+                    <h3 class="font-headline text-4xl font-black text-white mb-6">Legalização</h3>
+                    <div class="max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
+                        <p class="text-slate-300 mb-8 font-light text-lg">Assessoria documental completa para certificação junto ao Exército e Detran. Tranquilidade legal do início ao fim.</p>
+                        <button class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-4 hover:gap-6 transition-all">
+                            Saiba Mais <span class="material-symbols-outlined text-sm">east</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 group-hover:opacity-0 transition-all duration-500 whitespace-nowrap">
+                    <span class="text-white/10 text-4xl font-black uppercase tracking-[0.4em]">Legalização</span>
+                </div>
+            </div>
+            <!-- Panel 4 -->
+            <div class="service-panel group relative flex-1 hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden cursor-pointer bg-[#0e0e0e]">
+                <div class="absolute inset-0 z-0">
+                    <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/shield-rio-6.jpg" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                </div>
+                <div class="absolute inset-0 z-10 flex flex-col justify-end p-12 translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
+                    <h3 class="font-headline text-4xl font-black text-white mb-6">Acessórios</h3>
+                    <div class="max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
+                        <p class="text-slate-300 mb-8 font-light text-lg">Sistemas táticos avançados como Unichip, intercomunicadores de vanguarda e pneus blindados para máxima performance.</p>
+                        <button class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-4 hover:gap-6 transition-all">
+                            Saiba Mais <span class="material-symbols-outlined text-sm">east</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 group-hover:opacity-0 transition-all duration-500 whitespace-nowrap">
+                    <span class="text-white/10 text-4xl font-black uppercase tracking-[0.4em]">Acessórios</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology -->
+    <section class="py-40 bg-surface text-center px-8">
+        <div class="max-w-4xl mx-auto border-y border-white/5 py-24 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(177,197,255,0.1)_0%,transparent_70%)]"></div>
+            <span class="text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-8 block">Engenharia Estatística</span>
+            <h2 class="font-headline text-6xl font-black text-white mb-12 tracking-tighter">Metodologia <span class="text-primary italic">Lean 6 Sigma</span></h2>
+            <p class="text-2xl text-slate-400 font-light leading-relaxed mb-16 px-10">
+                Onde outros veem limites, nós entregamos precisão. Eliminamos 100% da variação para garantir que sua proteção seja uma constante matemática.
+            </p>
+            <div class="flex justify-center gap-10 md:gap-20">
+                <div class="flex flex-col items-center">
+                    <span class="text-4xl font-black text-white">D</span>
+                    <span class="text-[9px] text-primary uppercase font-bold tracking-widest">Definir</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-4xl font-black text-white">M</span>
+                    <span class="text-[9px] text-primary uppercase font-bold tracking-widest">Medir</span>
+                </div>
+                <div class="flex flex-col items-center border-x border-white/10 px-10">
+                    <span class="text-4xl font-black text-white">A</span>
+                    <span class="text-[9px] text-primary uppercase font-bold tracking-widest">Analisar</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-4xl font-black text-white">I</span>
+                    <span class="text-[9px] text-primary uppercase font-bold tracking-widest">Melhorar</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-4xl font-black text-white">C</span>
+                    <span class="text-[9px] text-primary uppercase font-bold tracking-widest">Controlar</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form (Floating) -->
+    <section class="py-40 px-8 md:px-24 bg-black">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div>
+                <h2 class="font-headline text-6xl font-bold text-white mb-10 tracking-tight">Pronto para a sua consultoria?</h2>
+                <p class="text-xl text-slate-400 font-light mb-12 leading-relaxed">
+                    Nossa equipe de especialistas está a postos para projetar seu novo santuário de segurança. Transmissão sigilosa e consultiva.
+                </p>
+                <div class="space-y-6 text-slate-300">
+                    <div class="flex items-center gap-6">
+                        <span class="material-symbols-outlined text-primary">location_on</span>
+                        <span>Rua do Senado, 329, Centro, Rio de Janeiro - RJ, CEP 20231-001</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-surface p-12 border border-white/5 rounded-sm shadow-2xl">
+                <form class="space-y-6">
+                    <input class="w-full bg-white/5 border-none p-5 text-sm text-white focus:ring-1 focus:ring-primary" placeholder="Nome" type="text"/>
+                    <input class="w-full bg-white/5 border-none p-5 text-sm text-white focus:ring-1 focus:ring-primary" placeholder="E-mail" type="email"/>
+                    <textarea class="w-full bg-white/5 border-none p-5 text-sm text-white focus:ring-1 focus:ring-primary h-32" placeholder="Mensagem"></textarea>
+                    <button class="w-full bg-primary text-black py-5 font-bold uppercase tracking-widest hover:bg-white transition-colors">Enviar Solicitação</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-surface py-16 px-8 md:px-24 border-t border-white/5">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-10">
+        <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="h-8 opacity-50">
+        <div class="flex gap-10 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+            <a href="#" class="hover:text-primary transition-colors">Privacidade</a>
+            <a href="#" class="hover:text-primary transition-colors">Termos</a>
+            <a href="#" class="hover:text-primary transition-colors">Certificações</a>
+        </div>
+        <p class="text-slate-600 text-[10px] uppercase font-bold tracking-widest">© 2026 SHIELD RIO. Engenharia de Elite.</p>
+    </div>
+</footer>
+
+<script>
+    const techData = {
+        level3a: {
+            title: "Máxima Resistência III-A",
+            desc: "Blindagem completa (vidros e lataria) com certificação total contra disparos de projéteis de alta velocidade. Padrão de segurança absoluta.",
+            tag: "Certificações Exército e Detran",
+            img: "https://shieldrio.com.br/wp-content/uploads/2017/08/a-blindagem-1.jpg"
+        },
+        carbon: {
+            title: "Fibra de Carbono Premium",
+            desc: "Utilizamos manta de fibra de carbono revestida com neopreno em áreas úmidas, fixada com cola especial 1500N para máxima durabilidade.",
+            tag: "Aço Inox 304L e Carbono",
+            img: "https://shieldrio.com.br/wp-content/uploads/2017/11/a-blindagem-home.png"
+        },
+        acoustic: {
+            title: "Santuário Acústico",
+            desc: "Nossa metodologia Lean 6 Sigma garante uma montagem precisa que elimina ruídos externos e garante o conforto interno original.",
+            tag: "Proteção Antirruído",
+            img: "https://shieldrio.com.br/wp-content/uploads/2017/11/shield-rio-1.jpg"
+        },
+        rings: {
+            title: "Cintas de Segurança",
+            desc: "Instalação de cintas com alma de aço em todas as rodas, garantindo a dirigibilidade total do veículo mesmo com pneus vazios ou avariados.",
+            tag: "Mobilidade Tática",
+            img: "https://shieldrio.com.br/wp-content/uploads/2017/11/shield-rio-5.jpg"
+        }
+    };
+
+    document.querySelectorAll('.tech-trigger').forEach(trigger => {
+        trigger.addEventListener('mouseenter', () => {
+            const target = trigger.getAttribute('data-target');
+            const data = techData[target];
+            
+            // Remove active classes
+            document.querySelectorAll('.tech-trigger').forEach(t => t.classList.remove('active'));
+            trigger.classList.add('active');
+            
+            // Fade out and update
+            const content = document.getElementById('tech-content');
+            const img = document.getElementById('tech-image');
+            
+            content.style.opacity = '0';
+            img.style.opacity = '0';
+            
+            setTimeout(() => {
+                document.getElementById('tech-title').innerText = data.title;
+                document.getElementById('tech-desc').innerText = data.desc;
+                document.getElementById('tech-tag').innerText = data.tag;
+                img.src = data.img;
+                
+                content.style.opacity = '1';
+                img.style.opacity = '0.5';
+            }, 300);
+        });
+    });
+</script>
+
+</body>
+</html>
