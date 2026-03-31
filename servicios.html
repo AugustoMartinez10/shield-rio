@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Serviços | Shield Rio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@300,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#b1c5ff",
+              "background": "#131313",
+              "surface": "#0a0a0a",
+              "primary-container": "#002a6c",
+            },
+            fontFamily: {
+              "headline": ["Manrope", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+      }
+
+      .glass-nav {
+        background: rgba(19, 19, 19, 0.7);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .blueprint-bg {
+        background-image:
+          linear-gradient(rgba(177, 197, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(177, 197, 255, 0.03) 1px, transparent 1px);
+        background-size: 34px 34px;
+      }
+
+      .service-panel {
+        position: relative;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        transition: transform 0.35s ease, border-color 0.35s ease;
+      }
+
+      .service-panel::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: #b1c5ff;
+        transition: width 0.45s ease;
+      }
+
+      .service-panel:hover {
+        transform: translateY(-4px);
+        border-color: rgba(177, 197, 255, 0.25);
+      }
+
+      .service-panel:hover::before {
+        width: 100%;
+      }
+
+      .service-ref {
+        color: rgba(177, 197, 255, 0.42);
+        transition: color 0.35s ease;
+      }
+
+      .service-panel:hover .service-ref {
+        color: rgba(177, 197, 255, 0.82);
+      }
+
+      .service-link {
+        transition: transform 0.35s ease, color 0.35s ease;
+      }
+
+      .service-panel:hover .service-link {
+        transform: translateX(6px);
+        color: #ffffff;
+      }
+
+      .system-chip {
+        transition: transform 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+      }
+
+      .system-chip:hover {
+        transform: translateY(-3px);
+        border-color: rgba(177, 197, 255, 0.28);
+        color: rgb(226 232 240 / 0.92);
+      }
+
+      .feature-item {
+        transition: transform 0.35s ease, border-color 0.35s ease;
+      }
+
+      .feature-item:hover {
+        transform: translateY(-3px);
+        border-color: rgba(177, 197, 255, 0.3);
+      }
+
+      .feature-item:hover p {
+        color: rgb(226 232 240 / 0.9);
+      }
+
+      .diagnostic-panel {
+        background:
+          radial-gradient(circle at top left, rgba(177, 197, 255, 0.08), transparent 38%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01));
+      }
+
+      .diagnostic-item {
+        transition: transform 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+      }
+
+      .diagnostic-item:hover {
+        transform: translateX(4px);
+      }
+
+      .doc-track {
+        position: relative;
+      }
+
+      .doc-track::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 1rem;
+        width: 1px;
+        background: linear-gradient(to bottom, rgba(177, 197, 255, 0.08), rgba(177, 197, 255, 0.28), rgba(177, 197, 255, 0.08));
+      }
+
+      .doc-step {
+        position: relative;
+        padding-left: 4rem;
+        transition: transform 0.35s ease;
+      }
+
+      .doc-step:hover {
+        transform: translateY(-3px);
+      }
+
+      .doc-node {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 9999px;
+        border: 1px solid rgba(177, 197, 255, 0.28);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #b1c5ff;
+        background: rgba(10, 10, 10, 0.95);
+        box-shadow: 0 0 0 6px rgba(10, 10, 10, 0.9);
+        font-size: 0.65rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        transition: border-color 0.35s ease, box-shadow 0.35s ease;
+      }
+
+      .doc-step:hover .doc-node {
+        border-color: rgba(177, 197, 255, 0.48);
+        box-shadow: 0 0 0 6px rgba(10, 10, 10, 0.9), 0 0 24px rgba(177, 197, 255, 0.14);
+      }
+
+      .doc-card {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        transition: border-color 0.35s ease;
+      }
+
+      .doc-step:hover .doc-card {
+        border-color: rgba(177, 197, 255, 0.24);
+      }
+
+      .accessory-row {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        transition: transform 0.35s ease, border-color 0.35s ease;
+      }
+
+      .accessory-row:hover {
+        transform: translateX(4px);
+        border-color: rgba(177, 197, 255, 0.25);
+      }
+
+      .trust-badge {
+        transition: transform 0.35s ease, opacity 0.35s ease, color 0.35s ease;
+      }
+
+      .trust-badge:hover {
+        transform: translateY(-4px);
+        opacity: 1;
+      }
+
+      html {
+        background: #131313;
+      }
+
+      body {
+        transition: background-color 0.35s ease;
+      }
+
+      .page-transition-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 120;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(177, 197, 255, 0.08), transparent 32%),
+          linear-gradient(180deg, rgba(10, 10, 10, 0.96), rgba(19, 19, 19, 0.98));
+        opacity: 0;
+        transition: opacity 0.45s ease;
+      }
+
+      .page-transition-overlay::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        background: linear-gradient(to bottom, transparent, rgba(177, 197, 255, 0.34), transparent);
+        transform: translateX(-0.5px) scaleY(0.65);
+        transform-origin: center;
+        opacity: 0.55;
+        transition: transform 0.45s ease, opacity 0.45s ease;
+      }
+
+      .page-transition-overlay::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: min(28rem, 45vw);
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(177, 197, 255, 0.22), transparent);
+        transform: translate(-50%, -50%) scaleX(0.7);
+        opacity: 0.4;
+        transition: transform 0.45s ease, opacity 0.45s ease;
+      }
+
+      body.page-loading .page-transition-overlay,
+      body.page-leaving .page-transition-overlay {
+        opacity: 1;
+      }
+
+      body.page-loading .page-transition-overlay::before,
+      body.page-leaving .page-transition-overlay::before {
+        transform: translateX(-0.5px) scaleY(1);
+        opacity: 0.9;
+      }
+
+      body.page-loading .page-transition-overlay::after,
+      body.page-leaving .page-transition-overlay::after {
+        transform: translate(-50%, -50%) scaleX(1);
+        opacity: 0.7;
+      }
+
+      header,
+      main,
+      footer {
+        transition: opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease;
+      }
+
+      body.page-loading header,
+      body.page-loading main,
+      body.page-loading footer {
+        opacity: 0;
+        transform: translateY(14px);
+        filter: blur(6px);
+      }
+
+      body.page-ready header,
+      body.page-ready main,
+      body.page-ready footer {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+
+      body.page-leaving header,
+      body.page-leaving main,
+      body.page-leaving footer {
+        opacity: 0;
+        transform: translateY(18px);
+        filter: blur(6px);
+      }
+    </style>
+</head>
+<body class="page-loading bg-background text-slate-300 font-body antialiased selection:bg-primary selection:text-black">
+<div class="page-transition-overlay" aria-hidden="true"></div>
+
+<header class="fixed top-0 w-full flex flex-col z-50">
+    <div class="bg-[#001946] px-8 py-2 flex justify-end items-center gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[14px]">phone</span>
+            <span>(21) 2222-4649</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[14px]">chat</span>
+            <span>(21) 99115-7592</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[14px]">schedule</span>
+            <span>Seg - Sex: 08:00 - 18:00</span>
+        </div>
+    </div>
+    <nav class="glass-nav px-8 md:px-16 py-5 flex justify-between items-center">
+        <a href="index.html">
+            <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="h-10 md:h-12 w-auto object-contain">
+        </a>
+        <div class="hidden md:flex items-center gap-10">
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
+            <a class="text-white font-bold border-b-2 border-primary pb-1 text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="#">Contato</a>
+        </div>
+        <button class="bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all">
+            Orçamento
+        </button>
+    </nav>
+</header>
+
+<main>
+    <section class="relative min-h-screen flex items-center overflow-hidden bg-black pt-32">
+        <div class="absolute inset-0 z-0">
+            <img class="w-full h-full object-cover opacity-30 scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPpGpJowGkcyqJ8P_RC3RXCm4qeUnR-FD9adYT7v6ifsBf8VICkYrA_a-STniVui3tIdODSZc7ZJYzcgpONDb2E5s_FteRvZgpNsdOx1vxeU7yB8MbrXFXcmJtqRiSS4sj3G8itt3kwXx2vftjX_N4-xIDs_s4-_MMkHCkepCgbWpfkWJfnmMjbyv3tjq7agy_TNGPaRCKiSlmSTseWDwCRTeW4iNQnOa8fpYoCcZbkYpOg7MhREZMHshFcIPbzWCI4179PZYqV94" alt="Detalhe técnico de veículo blindado"/>
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-transparent"></div>
+            <div class="absolute inset-0 blueprint-bg opacity-30"></div>
+        </div>
+
+        <div class="relative z-10 px-8 md:px-24 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-end">
+            <div class="lg:col-span-7 max-w-4xl">
+                <span class="text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-6 block">Suporte Especializado</span>
+                <h1 class="font-headline text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8">Serviços <br/><span class="text-primary italic">Para o Pós-Blindagem</span></h1>
+                <p class="text-xl text-slate-400 max-w-2xl font-light leading-relaxed mb-10">A Shield Rio acompanha cada blindado além da entrega, com manutenção, inspeção, regularização e acessórios pensados para preservar performance, segurança e conformidade.</p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="bg-primary text-[#001946] px-12 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-white transition-colors">Agendar Manutenção</button>
+                    <button class="border border-white/20 text-white px-8 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-white/10 transition-colors">Consultar Serviços</button>
+                </div>
+            </div>
+            <div class="lg:col-span-5 w-full">
+                <div class="border border-white/10 bg-white/[0.02] backdrop-blur-md p-6 md:p-8">
+                    <div class="flex items-center justify-between mb-8 text-[10px] uppercase tracking-[0.35em] text-primary font-bold">
+                        <span>Lifecycle Support</span>
+                        <span>SR-SVC-01</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6 text-sm text-slate-300">
+                        <div class="system-chip border-t border-white/10 pt-4">
+                            <span class="text-primary font-black text-3xl block mb-3">01</span>
+                            <p class="uppercase tracking-[0.18em] text-white text-xs font-bold mb-2">Manutenção</p>
+                            <p class="text-slate-500 font-light leading-relaxed">Preservação da blindagem ao longo do uso real.</p>
+                        </div>
+                        <div class="system-chip border-t border-white/10 pt-4">
+                            <span class="text-primary font-black text-3xl block mb-3">02</span>
+                            <p class="uppercase tracking-[0.18em] text-white text-xs font-bold mb-2">Inspeção</p>
+                            <p class="text-slate-500 font-light leading-relaxed">Verificação técnica de mais de 25 pontos críticos.</p>
+                        </div>
+                        <div class="system-chip border-t border-white/10 pt-4">
+                            <span class="text-primary font-black text-3xl block mb-3">03</span>
+                            <p class="uppercase tracking-[0.18em] text-white text-xs font-bold mb-2">Regularização</p>
+                            <p class="text-slate-500 font-light leading-relaxed">Conformidade documental junto ao Exército e trânsito.</p>
+                        </div>
+                        <div class="system-chip border-t border-white/10 pt-4">
+                            <span class="text-primary font-black text-3xl block mb-3">04</span>
+                            <p class="uppercase tracking-[0.18em] text-white text-xs font-bold mb-2">Acessórios</p>
+                            <p class="text-slate-500 font-light leading-relaxed">Soluções de performance e suporte para blindados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-8 md:px-24 bg-surface relative overflow-hidden">
+        <div class="absolute inset-0 blueprint-bg opacity-20"></div>
+        <div class="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14 items-start">
+            <div class="lg:col-span-4">
+                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">Ecossistema Técnico</span>
+                <h2 class="font-headline text-4xl md:text-5xl font-black text-white tracking-tight mb-8">Acompanhamento <br/>Especializado</h2>
+                <p class="text-slate-400 font-light leading-relaxed max-w-md">Nossa engenharia continua ativa após a entrega do veículo. Cada serviço foi organizado como um módulo operacional do pós-blindagem, com foco em longevidade, revisão e conformidade.</p>
+            </div>
+            <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                <div class="feature-item border-l border-primary/20 pl-6">
+                    <span class="text-primary font-black text-4xl opacity-20 font-headline block mb-3">01</span>
+                    <h3 class="text-white uppercase tracking-[0.18em] text-sm font-bold mb-3">Blindagem & Reforço</h3>
+                    <p class="text-slate-400 font-light leading-relaxed">Serviços de preservação estrutural e substituição de componentes críticos para manter o nível de proteção do conjunto blindado.</p>
+                </div>
+                <div class="feature-item border-l border-primary/20 pl-6">
+                    <span class="text-primary font-black text-4xl opacity-20 font-headline block mb-3">02</span>
+                    <h3 class="text-white uppercase tracking-[0.18em] text-sm font-bold mb-3">Manutenção & Ajustes</h3>
+                    <p class="text-slate-400 font-light leading-relaxed">Revisões em máquinas de vidro, fechaduras, vedação, suspensão e demais interfaces impactadas pela blindagem.</p>
+                </div>
+                <div class="feature-item border-l border-primary/20 pl-6">
+                    <span class="text-primary font-black text-4xl opacity-20 font-headline block mb-3">03</span>
+                    <h3 class="text-white uppercase tracking-[0.18em] text-sm font-bold mb-3">Inspeção & Diagnóstico</h3>
+                    <p class="text-slate-400 font-light leading-relaxed">Checklists operacionais e leitura técnica para identificar desgaste, delaminação, folgas e falhas invisíveis ao uso comum.</p>
+                </div>
+                <div class="feature-item border-l border-primary/20 pl-6">
+                    <span class="text-primary font-black text-4xl opacity-20 font-headline block mb-3">04</span>
+                    <h3 class="text-white uppercase tracking-[0.18em] text-sm font-bold mb-3">Legalização & Laudo</h3>
+                    <p class="text-slate-400 font-light leading-relaxed">Gestão documental e adequações técnicas para manter o veículo regularizado e apto às exigências dos órgãos competentes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-8 md:px-24 bg-background">
+        <div class="max-w-6xl mx-auto mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+            <div class="max-w-3xl">
+                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Dossiê de Serviços</span>
+                <h2 class="font-headline text-5xl md:text-7xl font-black text-white tracking-tighter leading-none">Módulos de <br/><span class="text-primary italic">Atendimento</span></h2>
+            </div>
+            <p class="max-w-md text-slate-400 font-light leading-relaxed">A seção principal foi organizada como um quadro de operações, evitando cards genéricas e distribuindo hierarquia entre manutenção, inspeção, conformidade e acessórios.</p>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <article class="service-panel lg:col-span-7 pt-8">
+                <div class="flex justify-between items-start gap-6 mb-10">
+                    <div>
+                        <span class="service-ref text-[10px] font-black uppercase tracking-[0.35em] block mb-4">SR-MNT-01</span>
+                        <h3 class="text-white font-headline text-4xl md:text-5xl font-black tracking-tight uppercase mb-4">Manutenção, Reparo e Troca</h3>
+                        <p class="text-slate-400 font-light leading-relaxed max-w-2xl">Atendimento especializado para vidros delaminados, máquinas de vidro reforçadas, amortecedores, mecanismos de vedação e ajustes de componentes sensíveis ao uso do blindado.</p>
+                    </div>
+                    <span class="material-symbols-outlined text-primary text-4xl">reset_wrench</span>
+                </div>
+                <div class="flex flex-wrap gap-6 text-[10px] uppercase tracking-[0.3em] text-slate-500 mb-10">
+                    <span>Vidros</span>
+                    <span>Fechaduras</span>
+                    <span>Vedação</span>
+                    <span>Acabamentos</span>
+                </div>
+                <button class="service-link flex items-center gap-3 text-primary text-xs font-black uppercase tracking-[0.28em]">
+                    <span>Saiba Mais</span>
+                    <span class="material-symbols-outlined text-base">east</span>
+                </button>
+            </article>
+
+            <div class="lg:col-span-5 space-y-12">
+                <article class="service-panel pt-8">
+                    <div class="flex items-start justify-between gap-4 mb-5">
+                        <div>
+                            <span class="service-ref text-[10px] font-black uppercase tracking-[0.35em] block mb-3">SR-INS-02</span>
+                            <h3 class="text-white font-headline text-2xl font-black uppercase tracking-tight">Inspeção</h3>
+                        </div>
+                        <span class="material-symbols-outlined text-primary text-3xl">biotech</span>
+                    </div>
+                    <p class="text-slate-400 font-light leading-relaxed mb-6">Mais de 25 itens de verificação para leitura do estado geral da blindagem, das interfaces e dos componentes periféricos.</p>
+                    <button class="service-link flex items-center gap-3 text-primary text-[11px] font-black uppercase tracking-[0.24em]"><span>Saiba Mais</span><span class="material-symbols-outlined text-base">east</span></button>
+                </article>
+
+                <article class="service-panel pt-8">
+                    <div class="flex items-start justify-between gap-4 mb-5">
+                        <div>
+                            <span class="service-ref text-[10px] font-black uppercase tracking-[0.35em] block mb-3">SR-LEG-03</span>
+                            <h3 class="text-white font-headline text-2xl font-black uppercase tracking-tight">Legalização</h3>
+                        </div>
+                        <span class="material-symbols-outlined text-primary text-3xl">gavel</span>
+                    </div>
+                    <p class="text-slate-400 font-light leading-relaxed mb-6">Regularização documental do blindado com suporte aos processos exigidos pelos órgãos competentes.</p>
+                    <button class="service-link flex items-center gap-3 text-primary text-[11px] font-black uppercase tracking-[0.24em]"><span>Saiba Mais</span><span class="material-symbols-outlined text-base">east</span></button>
+                </article>
+
+                <article class="service-panel pt-8">
+                    <div class="flex items-start justify-between gap-4 mb-5">
+                        <div>
+                            <span class="service-ref text-[10px] font-black uppercase tracking-[0.35em] block mb-3">SR-LAU-04</span>
+                            <h3 class="text-white font-headline text-2xl font-black uppercase tracking-tight">Laudo</h3>
+                        </div>
+                        <span class="material-symbols-outlined text-primary text-3xl">description</span>
+                    </div>
+                    <p class="text-slate-400 font-light leading-relaxed mb-6">Vistoria técnica e adequação do conjunto para emissão de documentação quando a blindagem não consta no CRLV.</p>
+                    <button class="service-link flex items-center gap-3 text-primary text-[11px] font-black uppercase tracking-[0.24em]"><span>Saiba Mais</span><span class="material-symbols-outlined text-base">east</span></button>
+                </article>
+            </div>
+
+            <article class="service-panel lg:col-span-12 pt-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-5 overflow-hidden border border-white/10">
+                        <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdMXo_DRJkGQbO_dUqCdQ90ZzJKb2QaWLd6IRu_fYTWB65myGSQrgnKs-HCiT6KJk7WMYC0Ad2ah0JzO5r-ZS-wAb9uPPTq7uWKr3Q30QL21044XaoQ77-wmhhP747RYfe9eHVUxwzK6GILlvEuUVu6_nJP9nHUgFnk9B_wuk5_1Cc_ZAK-120sQPBYFDJ3JmC-q5HS3WkO6S4wCNaJXRIRbU-45RYREPXC1xKaanM3Ti39r585U5qRO32PN4ulN8B5POizbQtcZU" alt="Detalhe interno de veículo premium"/>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <span class="service-ref text-[10px] font-black uppercase tracking-[0.35em] block mb-4">SR-ACC-05</span>
+                        <h3 class="text-white font-headline text-4xl font-black tracking-tight uppercase mb-5">Acessórios</h3>
+                        <p class="text-slate-400 font-light leading-relaxed max-w-3xl mb-8">Linha complementar de acessórios para blindados, incluindo soluções de performance, intercomunicação, mobilidade e conforto operacional, com instalação especializada.</p>
+                        <button class="service-link flex items-center gap-3 text-primary text-xs font-black uppercase tracking-[0.28em]"><span>Saiba Mais</span><span class="material-symbols-outlined text-base">east</span></button>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="py-32 px-8 md:px-24 bg-surface border-y border-white/5">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
+            <div class="lg:col-span-5">
+                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Checklist Operacional</span>
+                <h2 class="font-headline text-4xl md:text-5xl font-black text-white tracking-tight uppercase mb-6">Inspeção Técnica de Rigor</h2>
+                <p class="text-slate-400 font-light leading-relaxed mb-10">Nossa inspeção vai além do visual. O protocolo envolve leitura de módulos, pontos cegos da blindagem, vedação, ruídos e comportamento de componentes críticos afetados pela massa adicional.</p>
+                <ul class="space-y-4 text-sm uppercase tracking-[0.16em] text-white/85">
+                    <li class="flex items-start gap-3"><span class="text-primary font-bold">/</span><span>Varredura de pontos cegos de blindagem</span></li>
+                    <li class="flex items-start gap-3"><span class="text-primary font-bold">/</span><span>Teste de estanqueidade e pressão</span></li>
+                    <li class="flex items-start gap-3"><span class="text-primary font-bold">/</span><span>Calibragem de sistemas eletrônicos de suporte</span></li>
+                </ul>
+            </div>
+            <div class="lg:col-span-7">
+                <div class="diagnostic-panel border border-white/10 p-8 md:p-10">
+                    <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+                        <span class="text-xs font-black text-primary uppercase tracking-[0.3em]">Diagnóstico Técnico V.4.0</span>
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                            <span class="w-2 h-2 rounded-full bg-primary/40"></span>
+                            <span class="w-2 h-2 rounded-full bg-primary/20"></span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-[10px] uppercase tracking-[0.18em]">
+                        <div class="diagnostic-item flex items-center gap-2 text-white"><span class="material-symbols-outlined text-primary text-sm">check_circle</span><span>Aramida Teto</span></div>
+                        <div class="diagnostic-item flex items-center gap-2 text-white"><span class="material-symbols-outlined text-primary text-sm">check_circle</span><span>Vidros Frontais</span></div>
+                        <div class="diagnostic-item flex items-center gap-2 text-white"><span class="material-symbols-outlined text-primary text-sm">check_circle</span><span>Bateria Backup</span></div>
+                        <div class="diagnostic-item flex items-center gap-2 text-white"><span class="material-symbols-outlined text-primary text-sm">check_circle</span><span>Pneus Runflat</span></div>
+                        <div class="diagnostic-item flex items-center gap-2 text-white"><span class="material-symbols-outlined text-primary text-sm">check_circle</span><span>Sirene Externa</span></div>
+                        <div class="diagnostic-item flex items-center gap-2 text-white"><span class="material-symbols-outlined text-primary text-sm">check_circle</span><span>Maçanetas</span></div>
+                        <div class="diagnostic-item flex items-center gap-2 text-white"><span class="material-symbols-outlined text-primary text-sm">check_circle</span><span>Suspensão</span></div>
+                        <div class="diagnostic-item flex items-center gap-2 text-white"><span class="material-symbols-outlined text-primary text-sm">check_circle</span><span>Cofre Motor</span></div>
+                        <div class="diagnostic-item flex items-center gap-2 text-slate-500"><span class="material-symbols-outlined text-slate-600 text-sm">radio_button_unchecked</span><span>Ajuste Eletrônico</span></div>
+                    </div>
+                    <div class="mt-8 pt-5 border-t border-white/10">
+                        <p class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-light italic">Processamento de 28 módulos de verificação. Status: concluído.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-8 md:px-24 bg-background">
+        <div class="max-w-5xl mx-auto mb-16 text-center">
+            <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Exército Brasileiro & Detran</span>
+            <h2 class="font-headline text-4xl md:text-6xl font-black text-white tracking-tighter uppercase">Fluxo de Conformidade</h2>
+        </div>
+        <div class="max-w-4xl mx-auto doc-track space-y-12">
+            <article class="doc-step">
+                <span class="doc-node">01</span>
+                <div class="doc-card pt-3">
+                    <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Documentação Inicial</span>
+                    <h3 class="text-white font-headline text-2xl font-black tracking-tight uppercase mb-3">Autorização Prévia</h3>
+                    <p class="text-slate-400 font-light leading-relaxed">Solicitação de autorização junto ao Exército Brasileiro para execução ou regularização do serviço de blindagem.</p>
+                </div>
+            </article>
+            <article class="doc-step">
+                <span class="doc-node">02</span>
+                <div class="doc-card pt-3">
+                    <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Conformidade Técnica</span>
+                    <h3 class="text-white font-headline text-2xl font-black tracking-tight uppercase mb-3">Laudo Técnico de Inspeção</h3>
+                    <p class="text-slate-400 font-light leading-relaxed">Emissão do certificado técnico após vistoria e adequação do blindado conforme os requisitos aplicáveis.</p>
+                </div>
+            </article>
+            <article class="doc-step">
+                <span class="doc-node">03</span>
+                <div class="doc-card pt-3">
+                    <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Atualização Veicular</span>
+                    <h3 class="text-white font-headline text-2xl font-black tracking-tight uppercase mb-3">Atualização do CRLV</h3>
+                    <p class="text-slate-400 font-light leading-relaxed">Regularização final no órgão de trânsito com inclusão da observação de blindagem no documento do veículo.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="py-32 px-8 md:px-24 bg-surface relative overflow-hidden">
+        <div class="absolute inset-0 blueprint-bg opacity-20"></div>
+        <div class="relative max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
+            <div class="lg:col-span-5 overflow-hidden border border-white/10">
+                <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhA4IcG44IXUctTTX7khqMPepvlXyeZuTVwpamZMkyEg8zwGFCEIFZ55sxdiJVklDAcO6WWG8T-jEPIhoqGkLSZm0N6aGJprjGTIyDmDsT3G2-83ffkzK9OTV0uufRq48sDBAtzB62ZBw0TnpgfzTWkHQ8dQByZUAX0Mg9K4cV-_-1BhizjIWYdm4RjD-nyfWew1S8TLN7768JrKoPWrYE-_F_orzQJFnYHbdYBBEq75md9wua8DWekzJFpOmQAFgtSTAuORfE9S4" alt="Componente de performance"/>
+            </div>
+            <div class="lg:col-span-7">
+                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Linha Complementar</span>
+                <h2 class="font-headline text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-6">Acessórios de <br/><span class="text-primary italic">Performance e Apoio</span></h2>
+                <p class="text-slate-400 font-light leading-relaxed max-w-2xl mb-10">A blindagem altera massa e comportamento do veículo. Esta camada de serviço é voltada para upgrades e acessórios que devolvem resposta, mobilidade, comunicação e operação refinada ao blindado.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6 max-w-3xl">
+                    <div class="accessory-row pt-4">
+                        <h3 class="text-white font-bold uppercase tracking-[0.18em] text-sm mb-2">Unichip</h3>
+                        <p class="text-slate-400 font-light leading-relaxed text-sm">Instalação e mapeamento especializado para melhor curva de torque e dirigibilidade.</p>
+                    </div>
+                    <div class="accessory-row pt-4">
+                        <h3 class="text-white font-bold uppercase tracking-[0.18em] text-sm mb-2">Intercomunicadores</h3>
+                        <p class="text-slate-400 font-light leading-relaxed text-sm">Sistemas de áudio externo bidirecional para comunicação controlada.</p>
+                    </div>
+                    <div class="accessory-row pt-4">
+                        <h3 class="text-white font-bold uppercase tracking-[0.18em] text-sm mb-2">Runflats</h3>
+                        <p class="text-slate-400 font-light leading-relaxed text-sm">Cintas metálicas de segurança para rodagem emergencial com preservação de controle.</p>
+                    </div>
+                    <div class="accessory-row pt-4">
+                        <h3 class="text-white font-bold uppercase tracking-[0.18em] text-sm mb-2">Iluminação Técnica</h3>
+                        <p class="text-slate-400 font-light leading-relaxed text-sm">Soluções discretas de apoio operacional com integração especializada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 px-8 md:px-24 bg-background border-y border-white/5">
+        <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8">
+            <div class="trust-badge opacity-70 text-center">
+                <span class="material-symbols-outlined text-primary text-3xl mb-3">engineering</span>
+                <p class="text-[10px] uppercase tracking-[0.24em] font-black text-white">Equipe Especializada</p>
+            </div>
+            <div class="trust-badge opacity-70 text-center">
+                <span class="material-symbols-outlined text-primary text-3xl mb-3">fact_check</span>
+                <p class="text-[10px] uppercase tracking-[0.24em] font-black text-white">Inspeção Técnica</p>
+            </div>
+            <div class="trust-badge opacity-70 text-center">
+                <span class="material-symbols-outlined text-primary text-3xl mb-3">verified_user</span>
+                <p class="text-[10px] uppercase tracking-[0.24em] font-black text-white">Manutenção Blindada</p>
+            </div>
+            <div class="trust-badge opacity-70 text-center">
+                <span class="material-symbols-outlined text-primary text-3xl mb-3">gavel</span>
+                <p class="text-[10px] uppercase tracking-[0.24em] font-black text-white">Conformidade Legal</p>
+            </div>
+            <div class="trust-badge opacity-70 text-center">
+                <span class="material-symbols-outlined text-primary text-3xl mb-3">tune</span>
+                <p class="text-[10px] uppercase tracking-[0.24em] font-black text-white">Peças Premium</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-40 bg-background relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 blur-[150px] rounded-full"></div>
+        </div>
+        <div class="relative z-10 px-8 md:px-24 text-center max-w-5xl mx-auto">
+            <h2 class="font-headline text-5xl md:text-7xl font-black text-white tracking-tighter mb-8">Pronto para manter <br/><span class="text-primary italic">seu blindado em nível máximo?</span></h2>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto mb-12 font-light leading-relaxed">Fale com nossa equipe para manutenção, inspeção, regularização ou atualização técnica do seu veículo blindado.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <button class="bg-primary text-[#001946] px-12 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-white transition-colors">Solicitar Orçamento</button>
+                <button class="border border-white/20 text-white px-12 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-white/10 transition-colors">Falar com Consultor</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-surface py-16 px-8 md:px-24 border-t border-white/5">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-10">
+        <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="h-8 opacity-50">
+        <div class="flex gap-10 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+            <a href="#" class="hover:text-primary transition-colors">Privacidade</a>
+            <a href="#" class="hover:text-primary transition-colors">Termos</a>
+            <a href="#" class="hover:text-primary transition-colors">Certificações</a>
+        </div>
+        <p class="text-slate-600 text-[10px] uppercase font-bold tracking-widest">© 2026 Shield Rio. Serviços Especializados.</p>
+    </div>
+</footer>
+
+<script>
+    const transitionLinks = document.querySelectorAll('a[href$=".html"]');
+
+    const enterPage = () => {
+        document.body.classList.remove('page-loading', 'page-leaving');
+        document.body.classList.add('page-ready');
+    };
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(enterPage);
+    });
+
+    window.addEventListener('pageshow', enterPage);
+
+    transitionLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const href = link.getAttribute('href');
+            const isModifiedClick = event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+
+            if (!href || isModifiedClick || href.startsWith('#') || link.target === '_blank') {
+                return;
+            }
+
+            const destination = new URL(href, window.location.href);
+
+            if (destination.origin !== window.location.origin || destination.pathname === window.location.pathname) {
+                return;
+            }
+
+            event.preventDefault();
+            document.body.classList.remove('page-ready');
+            document.body.classList.add('page-leaving');
+
+            window.setTimeout(() => {
+                window.location.href = destination.href;
+            }, 320);
+        });
+    });
+</script>
+</body>
+</html>

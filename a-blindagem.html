@@ -57,9 +57,566 @@
           width: 1px;
           background: linear-gradient(to bottom, transparent, rgba(177, 197, 255, 0.2), transparent);
       }
+      
+      /* New Technical Styles */
+      .blueprint-bg {
+        background-image: radial-gradient(rgba(177, 197, 255, 0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      
+      .matrix-scroll::-webkit-scrollbar {
+        height: 6px;
+      }
+      .matrix-scroll::-webkit-scrollbar-thumb {
+        background: rgba(177, 197, 255, 0.2);
+        border-radius: 3px;
+      }
+
+      /* Image Guide Styles */
+      .matrix-table {
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+      .matrix-header-blue {
+        background: linear-gradient(to right, #001946, #002a6c);
+      }
+      .matrix-row-label {
+        background: linear-gradient(to right, #1a1a1a, #0d0d0d);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .matrix-glow {
+        position: relative;
+        z-index: 10;
+        box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
+      }
+      .matrix-glow::before {
+         content: '';
+         position: absolute;
+         inset: -2px;
+         border: 2px solid #f59e0b;
+         border-radius: 4px;
+         pointer-events: none;
+         box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+       }
+
+      .armament-label {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 5.75rem;
+        min-height: 2.5rem;
+        padding: 0.55rem 0.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 0.75rem;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        font-size: 0.56rem;
+        letter-spacing: 0.18em;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.6);
+        transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+      }
+
+      .matrix-glow .armament-label {
+        border-color: rgba(245, 158, 11, 0.35);
+        background: linear-gradient(180deg, rgba(245, 158, 11, 0.14), rgba(255, 255, 255, 0.04));
+        color: rgba(255, 214, 102, 0.96);
+      }
+
+      .matrix-table tbody tr {
+        transition: background-color 0.3s ease;
+      }
+
+      .matrix-table tbody tr:hover {
+        background-color: rgba(255, 255, 255, 0.035);
+      }
+
+      .matrix-table tbody tr:hover .armament-label {
+        transform: translateY(-1px);
+        border-color: rgba(177, 197, 255, 0.22);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .feature-item {
+        transition: transform 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+      }
+
+      .feature-item:hover {
+        transform: translateY(-3px);
+        border-color: rgba(177, 197, 255, 0.35);
+      }
+
+      .feature-item:hover p {
+        color: rgb(226 232 240 / 0.92);
+      }
+
+      .hotspot-line {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: dash 2s ease-out forwards;
+      }
+      
+      @keyframes dash {
+        to { stroke-dashoffset: 0; }
+      }
+
+      .step-number-bg {
+         -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+         color: transparent;
+         font-size: 12rem;
+        line-height: 1;
+        font-weight: 900;
+        position: absolute;
+        z-index: -1;
+        transition: all 0.5s ease;
+      }
+      
+      .staggered-item:hover .step-number-bg {
+         -webkit-text-stroke: 1px rgba(177, 197, 255, 0.15);
+         transform: translateY(-10px);
+       }
+
+      .process-timeline {
+        position: relative;
+      }
+
+      .process-timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 1rem;
+        width: 1px;
+        background: linear-gradient(to bottom, rgba(177, 197, 255, 0.06), rgba(177, 197, 255, 0.28), rgba(177, 197, 255, 0.06));
+      }
+
+      .process-step {
+        position: relative;
+        padding-left: 4.5rem;
+        transition: transform 0.35s ease;
+      }
+
+      .process-step::before {
+        content: '';
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        width: 2rem;
+        height: 1px;
+        background: linear-gradient(to right, rgba(177, 197, 255, 0.35), transparent);
+      }
+
+      .process-index {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        border: 1px solid rgba(177, 197, 255, 0.28);
+        background: rgba(10, 10, 10, 0.95);
+        color: #b1c5ff;
+        font-size: 0.65rem;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        box-shadow: 0 0 0 6px rgba(10, 10, 10, 0.9);
+      }
+
+      .process-phase {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        font-size: 0.55rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: rgba(177, 197, 255, 0.75);
+      }
+
+      .process-phase::before {
+        content: '';
+        width: 1.5rem;
+        height: 1px;
+        background: rgba(177, 197, 255, 0.38);
+      }
+
+      .process-copy {
+        max-width: 26rem;
+        transition: opacity 0.35s ease;
+      }
+
+      .process-copy p {
+        color: rgb(148 163 184 / 0.78);
+      }
+
+      .process-step:hover {
+        transform: translateY(-3px);
+      }
+
+      .process-step:hover .process-phase,
+      .process-step:hover h4 {
+        color: #ffffff;
+      }
+
+      .process-step:hover .process-copy p {
+        color: rgb(226 232 240 / 0.88);
+      }
+
+      .process-step:hover .process-index {
+        border-color: rgba(177, 197, 255, 0.5);
+        box-shadow: 0 0 0 6px rgba(10, 10, 10, 0.9), 0 0 24px rgba(177, 197, 255, 0.12);
+      }
+
+      .glass-system-panel {
+        position: relative;
+        min-height: 28rem;
+        border: 1px solid rgba(177, 197, 255, 0.12);
+        background: radial-gradient(circle at top, rgba(177, 197, 255, 0.08), transparent 50%), linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+        overflow: hidden;
+        transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+      }
+
+      .glass-system-stack {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .glass-stack-core {
+        position: relative;
+        width: min(72%, 24rem);
+        height: 22rem;
+      }
+
+      .glass-sheet {
+        position: absolute;
+        left: 50%;
+        width: 100%;
+        height: 2.55rem;
+        transform: translateX(-50%) skewX(-18deg);
+        border: 1px solid rgba(177, 197, 255, 0.24);
+        background: linear-gradient(180deg, rgba(177, 197, 255, 0.2), rgba(177, 197, 255, 0.05));
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        transition: transform 0.4s ease, border-color 0.35s ease, background 0.35s ease;
+      }
+
+      .glass-sheet::after {
+        content: '';
+        position: absolute;
+        inset: 0.3rem 0.8rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        opacity: 0.7;
+      }
+
+      .glass-sheet span {
+        position: absolute;
+        right: 0.95rem;
+        top: 50%;
+        transform: translateY(-50%) skewX(18deg);
+        font-size: 0.58rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        color: rgba(255, 255, 255, 0.85);
+        text-transform: uppercase;
+      }
+
+      .glass-sheet-1 { top: 0.9rem; }
+      .glass-sheet-2 { top: 3.55rem; width: 96%; }
+      .glass-sheet-3 { top: 6.2rem; width: 92%; }
+      .glass-sheet-4 { top: 8.85rem; width: 88%; }
+      .glass-sheet-5 { top: 11.5rem; width: 84%; }
+      .glass-sheet-6 { top: 14.15rem; width: 80%; }
+      .glass-sheet-7 {
+        top: 16.8rem;
+        width: 76%;
+        border-color: rgba(245, 158, 11, 0.35);
+        background: linear-gradient(180deg, rgba(245, 158, 11, 0.24), rgba(255, 255, 255, 0.05));
+      }
+
+      .glass-system-caption {
+        margin-top: 1rem;
+        max-width: 30rem;
+        border-top: 1px solid rgba(177, 197, 255, 0.25);
+        padding-top: 0.9rem;
+      }
+
+      .glass-system-caption strong {
+        display: block;
+        color: #fff;
+        font-size: 0.7rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        margin-bottom: 0.4rem;
+      }
+
+      .glass-system-caption span {
+        color: rgba(148, 163, 184, 0.85);
+        font-size: 0.84rem;
+        line-height: 1.5;
+      }
+
+      .glass-material-ledger {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem 2.5rem;
+      }
+
+      .glass-material-row {
+        display: grid;
+        grid-template-columns: 3.25rem minmax(0, 1fr);
+        gap: 1rem;
+        align-items: start;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        transition: transform 0.35s ease, border-color 0.35s ease;
+      }
+
+      .glass-material-row--accent {
+        grid-column: 1 / -1;
+        border-top-color: rgba(245, 158, 11, 0.24);
+      }
+
+      .glass-material-no {
+        font-size: 2rem;
+        line-height: 1;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        color: rgba(177, 197, 255, 0.22);
+      }
+
+      .glass-material-row--accent .glass-material-no {
+        color: rgba(245, 158, 11, 0.35);
+      }
+
+      .glass-material-copy h3 {
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 0.45rem;
+      }
+
+      .glass-material-copy p {
+        color: rgba(148, 163, 184, 0.85);
+        font-size: 0.88rem;
+        line-height: 1.55;
+        transition: color 0.35s ease;
+      }
+
+      .glass-material-row:hover {
+        transform: translateX(4px);
+        border-top-color: rgba(177, 197, 255, 0.25);
+      }
+
+      .glass-material-row:hover .glass-material-no {
+        color: rgba(177, 197, 255, 0.42);
+      }
+
+      .glass-material-row:hover .glass-material-copy p {
+        color: rgba(226, 232, 240, 0.9);
+      }
+
+      .glass-system-panel:hover {
+        transform: translateY(-2px);
+        border-color: rgba(177, 197, 255, 0.28);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.22);
+      }
+
+      .glass-system-panel:hover .glass-sheet-1 { transform: translateX(-50%) skewX(-18deg) translateY(-8px); }
+      .glass-system-panel:hover .glass-sheet-2 { transform: translateX(-50%) skewX(-18deg) translateY(-5px); }
+      .glass-system-panel:hover .glass-sheet-3 { transform: translateX(-50%) skewX(-18deg) translateY(-2px); }
+      .glass-system-panel:hover .glass-sheet-5 { transform: translateX(-50%) skewX(-18deg) translateY(2px); }
+      .glass-system-panel:hover .glass-sheet-6 { transform: translateX(-50%) skewX(-18deg) translateY(5px); }
+      .glass-system-panel:hover .glass-sheet-7 { transform: translateX(-50%) skewX(-18deg) translateY(8px); }
+
+      .glass-system-panel:hover .glass-sheet-7 {
+        border-color: rgba(245, 158, 11, 0.5);
+        background: linear-gradient(180deg, rgba(245, 158, 11, 0.32), rgba(255, 255, 255, 0.06));
+      }
+
+      .material-spec {
+        transition: transform 0.35s ease, border-color 0.35s ease;
+      }
+
+      .material-spec:hover {
+        transform: translateY(-3px);
+      }
+
+      .material-spec:hover p {
+        color: rgb(226 232 240 / 0.92);
+      }
+
+      .material-spec:hover p,
+      .material-spec:hover {
+        border-color: rgba(177, 197, 255, 0.28);
+      }
+
+      @media (max-width: 1023px) {
+        .glass-material-ledger {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .process-timeline::before {
+          left: 50%;
+          transform: translateX(-0.5px);
+        }
+
+        .process-step {
+          width: 50%;
+          padding-left: 0;
+          padding-right: 4.5rem;
+        }
+
+        .process-step::before {
+          top: 1.1rem;
+          left: auto;
+          right: 2rem;
+          width: 4.5rem;
+          background: linear-gradient(to left, rgba(177, 197, 255, 0.35), transparent);
+        }
+
+        .process-step:nth-child(even) {
+          margin-left: auto;
+          padding-left: 4.5rem;
+          padding-right: 0;
+        }
+
+        .process-step:nth-child(even)::before {
+          left: 2rem;
+          right: auto;
+          background: linear-gradient(to right, rgba(177, 197, 255, 0.35), transparent);
+        }
+
+        .process-index {
+          left: auto;
+          right: -1rem;
+        }
+
+        .process-step:nth-child(even) .process-index {
+          left: -1rem;
+          right: auto;
+        }
+
+        .process-step:nth-child(odd) .process-copy {
+          margin-left: auto;
+          text-align: right;
+        }
+
+        .process-step:nth-child(odd) .process-phase {
+          justify-content: flex-end;
+        }
+
+        .process-step:nth-child(odd) .process-phase::before {
+          order: 2;
+        }
+      }
+
+      html {
+        background: #131313;
+      }
+
+      body {
+        transition: background-color 0.35s ease;
+      }
+
+      .page-transition-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 120;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(177, 197, 255, 0.08), transparent 32%),
+          linear-gradient(180deg, rgba(10, 10, 10, 0.96), rgba(19, 19, 19, 0.98));
+        opacity: 0;
+        transition: opacity 0.45s ease;
+      }
+
+      .page-transition-overlay::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        background: linear-gradient(to bottom, transparent, rgba(177, 197, 255, 0.34), transparent);
+        transform: translateX(-0.5px) scaleY(0.65);
+        transform-origin: center;
+        opacity: 0.55;
+        transition: transform 0.45s ease, opacity 0.45s ease;
+      }
+
+      .page-transition-overlay::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: min(28rem, 45vw);
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(177, 197, 255, 0.22), transparent);
+        transform: translate(-50%, -50%) scaleX(0.7);
+        opacity: 0.4;
+        transition: transform 0.45s ease, opacity 0.45s ease;
+      }
+
+      body.page-loading .page-transition-overlay,
+      body.page-leaving .page-transition-overlay {
+        opacity: 1;
+      }
+
+      body.page-loading .page-transition-overlay::before,
+      body.page-leaving .page-transition-overlay::before {
+        transform: translateX(-0.5px) scaleY(1);
+        opacity: 0.9;
+      }
+
+      body.page-loading .page-transition-overlay::after,
+      body.page-leaving .page-transition-overlay::after {
+        transform: translate(-50%, -50%) scaleX(1);
+        opacity: 0.7;
+      }
+
+      header,
+      main,
+      footer {
+        transition: opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease;
+      }
+
+      body.page-loading header,
+      body.page-loading main,
+      body.page-loading footer {
+        opacity: 0;
+        transform: translateY(14px);
+        filter: blur(6px);
+      }
+
+      body.page-ready header,
+      body.page-ready main,
+      body.page-ready footer {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+
+      body.page-leaving header,
+      body.page-leaving main,
+      body.page-leaving footer {
+        opacity: 0;
+        transform: translateY(18px);
+        filter: blur(6px);
+      }
     </style>
 </head>
-<body class="bg-background text-slate-300 font-body antialiased selection:bg-primary selection:text-black">
+<body class="page-loading bg-background text-slate-300 font-body antialiased selection:bg-primary selection:text-black">
+
+<div class="page-transition-overlay" aria-hidden="true"></div>
 
 <!-- Header -->
 <header class="fixed top-0 w-full flex flex-col z-50">
@@ -84,7 +641,7 @@
         <div class="hidden md:flex items-center gap-10">
             <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
             <a class="text-white font-bold border-b-2 border-primary pb-1 text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
-            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="#">Serviços</a>
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
             <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="#">Contato</a>
         </div>
         <button class="bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all">
@@ -97,211 +654,511 @@
     <!-- Hero Section -->
     <section class="relative min-h-[85vh] flex items-center bg-black overflow-hidden pt-36 pb-20">
         <div class="absolute inset-0 z-0">
-            <img class="w-full h-full object-cover opacity-20 scale-105" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=3840"/>
+            <img class="w-full h-full object-cover object-center opacity-20 scale-105" src="https://lh3.googleusercontent.com/p/AF1QipOAf5H4x-_DnuWa_GZJzAJ0TLEFnsvUSLRpWld-=w1600-h720-k-no"/>
             <div class="absolute inset-0 bg-gradient-to-t from-background via-black/40 to-transparent"></div>
         </div>
         
-        <div class="relative z-10 px-8 md:px-24 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div class="relative z-10 px-8 md:px-24 w-full">
             <!-- Left: Text -->
-            <div class="lg:col-span-7">
+            <div class="max-w-4xl">
                 <span class="text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-6 block reveal-item">Engenharia Balística</span>
                 <h1 class="font-headline text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8 reveal-item">
                     A Blindagem <br/><span class="text-primary italic">Além dos Padrões</span>
                 </h1>
                 <p class="text-xl text-slate-400 max-w-xl font-light leading-relaxed reveal-item mb-10">
-                    Proteção máxima baseada na norma NBR 15000 e metodologia Lean 6 Sigma. Cada detalhe projetado para sua segurança absoluta.
+                    Proteção máxima baseada na norma NBR 15000 e metodologia Lean 6 Sigma. Cada detalhe projetado para sua seguranca absoluta.
                 </p>
-                <div class="reveal-item">
-                    <button class="bg-white text-black px-12 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-primary transition-colors">Solicitar Consultoria</button>
+                <div class="reveal-item flex gap-4">
+                    <button class="bg-primary text-[#001946] px-12 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-white transition-colors">Solicitar Consultoria</button>
+                    <button class="border border-white/20 text-white px-8 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-white/10 transition-colors">Solicitar Orçamento</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Características -->
+    <section class="py-24 px-8 md:px-24 bg-background border-t border-white/5">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+            <div class="lg:col-span-4 reveal-item">
+                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Características</span>
+                <h2 class="font-headline text-4xl md:text-5xl font-black text-white tracking-tight uppercase">Blindagem Nível III-A</h2>
+            </div>
+            <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8 reveal-item">
+                <div class="feature-item border-l border-primary/20 pl-6">
+                    <p class="text-slate-300 font-light leading-relaxed">A blindagem Shield Rio é composta por duas partes: opaca na lataria e transparente nos vidros, em conformidade com a norma NBR 15000.</p>
+                </div>
+                <div class="feature-item border-l border-primary/20 pl-6">
+                    <p class="text-slate-300 font-light leading-relaxed">Utilizamos proteção antirruído e, predominantemente, manta de fibra de carbono revestida com neoprene nas partes úmidas, fixada com cola 1500N.</p>
+                </div>
+                <div class="feature-item border-l border-primary/20 pl-6">
+                    <p class="text-slate-300 font-light leading-relaxed">O baixo volume de aço inox 304L reduz o acréscimo de peso, enquanto a cola especial à base d'água ajuda a aumentar a vida útil dos vidros.</p>
+                </div>
+                <div class="feature-item border-l border-primary/20 pl-6">
+                    <p class="text-slate-300 font-light leading-relaxed">As rodas recebem cintas metálicas de segurança e cada detalhe é pensado para preservar acabamento, conforto acústico e excelência operacional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Níveis de Proteção Matrix (Refined & Compact) -->
+    <section class="py-24 px-8 md:px-24 bg-background relative overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-16 text-center">
+                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Norma Regulamentada NBR 15000</span>
+                <h2 class="font-headline text-4xl font-black text-white tracking-tight uppercase">Resistência Balística</h2>
+                <p class="text-slate-400 font-light leading-relaxed max-w-4xl mx-auto mt-6">Nossa blindagem está em conformidade com a norma NBR 15000/2005, Nível III-A, sendo resistente aos calibres 22 Curto, 22 Longo, 6.35 mm, 32 Auto, 7.65 mm, 380 Auto, 357 Magnum, 9 mm e 44 Magnum.</p>
+            </div>
+
+            <div class="matrix-scroll overflow-x-auto pb-4">
+                <table class="w-full border-collapse matrix-table">
+                    <thead>
+                        <tr class="matrix-header-blue">
+                            <th class="py-4 px-4 text-left text-[9px] font-black text-white/50 uppercase tracking-[0.2em] w-[140px]">Especificação</th>
+                            <th class="py-4 px-4 text-white text-xs font-black uppercase tracking-widest border-l border-white/5 font-headline">Nível I</th>
+                            <th class="py-4 px-4 text-white text-xs font-black uppercase tracking-widest border-l border-white/5 font-headline">Nível II-A</th>
+                            <th class="py-4 px-4 text-white text-xs font-black uppercase tracking-widest border-l border-white/5 font-headline">Nível II</th>
+                            <th class="py-4 px-4 text-white text-xs font-black uppercase tracking-widest bg-orange-500/10 border-l border-orange-500/30 font-headline">Nível III-A</th>
+                            <th class="py-4 px-4 text-white text-xs font-black uppercase tracking-widest border-l border-white/5 font-headline">Nível III</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-400 font-body uppercase tracking-wider text-[10px]">
+                        <!-- Armamento -->
+                        <tr class="bg-[#1a1a1a] border-b border-white/5">
+                            <td class="py-4 px-6 matrix-row-label text-white/80 font-black">Armamento</td>
+                            <td class="px-3 text-center border-l border-white/5">
+                                <div class="flex justify-center">
+                                    <span class="armament-label">PISTOLA</span>
+                                </div>
+                            </td>
+                            <td class="px-3 text-center border-l border-white/5">
+                                <div class="flex justify-center">
+                                    <span class="armament-label">REVOLVER</span>
+                                </div>
+                            </td>
+                            <td class="px-3 text-center border-l border-white/5">
+                                <div class="flex justify-center">
+                                    <span class="armament-label">SMG</span>
+                                </div>
+                            </td>
+                            <td class="px-3 text-center matrix-glow bg-white/5">
+                                <div class="flex justify-center">
+                                    <span class="armament-label">MAGNUM</span>
+                                </div>
+                            </td>
+                            <td class="px-3 text-center border-l border-white/5">
+                                <div class="flex justify-center">
+                                    <span class="armament-label">FUZIL</span>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Munição -->
+                        <tr class="bg-[#0f0f0f] border-b border-white/5">
+                            <td class="py-4 px-6 matrix-row-label text-white/80 font-black">Munição</td>
+                            <td class="px-3 text-center border-l border-white/5">.22 LRHV / .38 Special</td>
+                            <td class="px-3 text-center border-l border-white/5">9mm FMJ / .357 Mag</td>
+                            <td class="px-3 text-center border-l border-white/5">9mm FMJ / .357 Mag</td>
+                            <td class="px-3 text-center matrix-glow bg-white/5 text-white font-bold">9mm FMJ / .44 Magnum</td>
+                            <td class="px-3 text-center border-l border-white/5">7,62 OTAN / 5.56</td>
+                        </tr>
+
+                        <!-- Massa -->
+                        <tr class="bg-[#1a1a1a] border-b border-white/5">
+                            <td class="py-4 px-6 matrix-row-label text-white/80 font-black">Massa (g)</td>
+                            <td class="px-3 text-center border-l border-white/5">2.6 / 10.2</td>
+                            <td class="px-3 text-center border-l border-white/5">8.0 / 10.2</td>
+                            <td class="px-3 text-center border-l border-white/5">8.0 / 10.2</td>
+                            <td class="px-3 text-center matrix-glow bg-white/5 text-white font-bold">8.0 / 15.6</td>
+                            <td class="px-3 text-center border-l border-white/5">9.6 / 4.0</td>
+                        </tr>
+
+                        <!-- Velocidade -->
+                        <tr class="bg-[#0f0f0f] border-b border-white/5">
+                            <td class="py-4 px-6 matrix-row-label text-white/80 font-black">Velocidade</td>
+                            <td class="px-3 text-center border-l border-white/5 opacity-50">320 / 254 m/s</td>
+                            <td class="px-3 text-center border-l border-white/5 opacity-50">332 / 381 m/s</td>
+                            <td class="px-3 text-center border-l border-white/5 opacity-50">358 / 425 m/s</td>
+                            <td class="px-3 text-center matrix-glow bg-white/5 text-orange-400 font-bold">426 / 426 m/s</td>
+                            <td class="px-3 text-center border-l border-white/5 opacity-50">838 / 950 m/s</td>
+                        </tr>
+
+                        <!-- Impactos -->
+                        <tr class="bg-[#1a1a1a]">
+                            <td class="py-4 px-6 matrix-row-label text-white/80 font-black">Impactos</td>
+                            <td class="px-3 text-center border-l border-white/5">5</td>
+                            <td class="px-3 text-center border-l border-white/5">5</td>
+                            <td class="px-3 text-center border-l border-white/5">5</td>
+                            <td class="px-3 text-center matrix-glow bg-white/5 text-lg font-black text-orange-400">5</td>
+                            <td class="px-3 text-center border-l border-white/5">5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materiais de Vanguarda (Blueprint Hotspots) -->
+    <section class="py-40 px-8 md:px-24 bg-surface relative overflow-hidden">
+        <!-- Floating HUD Element -->
+        <div class="absolute top-10 right-10 border border-primary/20 p-4 backdrop-blur-md hidden lg:block">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-2 h-2 bg-primary animate-pulse"></div>
+                <span class="text-[8px] font-black uppercase tracking-[0.4em] text-primary">System Analytics: Active</span>
+            </div>
+            <div class="space-y-1">
+                <div class="h-0.5 w-32 bg-primary/10 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-primary/40 w-2/3"></div>
+                </div>
+                <div class="h-0.5 w-32 bg-primary/10 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-primary/40 w-1/2"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-32">
+            <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">Composição Balística</span>
+            <h2 class="font-headline text-5xl md:text-7xl font-black text-white tracking-tighter">Engenharia de Materiais</h2>
+        </div>
+
+        <div class="relative grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <!-- Left Column: Specs -->
+            <div class="lg:col-span-4 space-y-20 relative z-10">
+                <div class="reveal-item staggered-item material-spec">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="text-primary text-xs font-black px-2 py-1 border border-primary/30">01</span>
+                        <h4 class="text-white font-bold text-xl uppercase tracking-widest">Aço Inox 304L</h4>
+                    </div>
+                    <p class="text-slate-400 font-light leading-relaxed pl-12 pr-6 border-l border-primary/20 max-w-md">
+                        Baixo volume de aço inox 304L nas zonas críticas de proteção para reforço estrutural com menor acréscimo de peso.
+                    </p>
+                </div>
+                <div class="reveal-item staggered-item material-spec">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="text-primary text-xs font-black px-2 py-1 border border-primary/30">02</span>
+                        <h4 class="text-white font-bold text-xl uppercase tracking-widest">Fibra de Carbono / Neoprene</h4>
+                    </div>
+                    <p class="text-slate-400 font-light leading-relaxed pl-12 pr-6 border-l border-primary/20 max-w-md">
+                        Manta balística de fibra de carbono revestida com neoprene nas partes úmidas, reduzindo absorção de umidade e preservando desempenho.
+                    </p>
                 </div>
             </div>
 
-            <!-- Right: Video (Resized) -->
-            <div class="lg:col-span-5 reveal-item">
-                <div class="relative aspect-[9/16] max-w-[320px] mx-auto lg:ml-auto rounded-sm overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(177,197,255,0.05)] bg-surface group">
-                    <video 
+            <!-- Center: Blueprint Image -->
+            <div class="lg:col-span-4 relative group z-0 px-4 lg:px-8">
+                <div class="relative z-0 max-w-md mx-auto scale-105 lg:scale-110">
+                    <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/a-blindagem-home.png" alt="Vehicle Blueprint" class="w-full opacity-35 mix-blend-screen brightness-150 grayscale">
+                    <!-- SVG Connector Lines (Decorative) -->
+                    <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 400">
+                        <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(177,197,255,0.05)" stroke-width="1"/>
+                        <circle cx="200" cy="200" r="100" fill="none" stroke="rgba(177,197,255,0.03)" stroke-width="0.5"/>
+                    </svg>
+                </div>
+                
+                <!-- Center Info -->
+                <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div class="text-center group-hover:scale-110 transition-transform duration-700">
+                        <span class="text-primary font-black text-6xl opacity-10">SHIELD</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Specs -->
+            <div class="lg:col-span-4 space-y-20 relative z-10">
+                <div class="reveal-item staggered-item lg:text-right material-spec">
+                    <div class="flex items-center lg:justify-end gap-4 mb-4">
+                        <h4 class="text-white font-bold text-xl uppercase tracking-widest">Vidros 21mm</h4>
+                        <span class="text-primary text-xs font-black px-2 py-1 border border-primary/30">03</span>
+                    </div>
+                    <p class="text-slate-400 font-light leading-relaxed lg:pr-12 lg:pl-6 lg:ml-auto lg:border-r lg:border-l-0 border-l border-primary/20 max-w-md">
+                        Blindagem transparente de 21 mm com múltiplas camadas e proteção anti-estilhaço para maior vida útil e segurança balística.
+                    </p>
+                </div>
+                <div class="reveal-item staggered-item lg:text-right material-spec">
+                    <div class="flex items-center lg:justify-end gap-4 mb-4">
+                        <h4 class="text-white font-bold text-xl uppercase tracking-widest">Cola 1500N</h4>
+                        <span class="text-primary text-xs font-black px-2 py-1 border border-primary/30">04</span>
+                    </div>
+                    <p class="text-slate-400 font-light leading-relaxed lg:pr-12 lg:pl-6 lg:ml-auto lg:border-r lg:border-l-0 border-l border-primary/20 max-w-md">
+                        Fixação estrutural com cola 1500N e adesivo especial à base d'água para reduzir ruídos e preservar a integridade do conjunto.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blindagem Transparente -->
+    <section class="py-24 px-8 md:px-24 bg-background border-t border-white/5">
+        <div class="max-w-6xl mx-auto space-y-14">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+                <div class="lg:col-span-5 reveal-item">
+                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Blindagem Transparente</span>
+                <h2 class="font-headline text-4xl md:text-5xl font-black text-white tracking-tight uppercase">Camadas do Vidro Balístico</h2>
+                <p class="text-slate-400 font-light leading-relaxed mt-6 max-w-xl">A estrutura transparente combina vidro, interlayers e policarbonato em sete camadas para absorver energia cinética, desacelerar o projétil e impedir a penetração.</p>
+                </div>
+                <div class="lg:col-span-7 reveal-item">
+                    <div class="glass-system-panel rounded-sm">
+                        <div class="glass-system-stack" aria-hidden="true">
+                            <div class="glass-stack-core">
+                                <div class="glass-sheet glass-sheet-1"><span>01</span></div>
+                                <div class="glass-sheet glass-sheet-2"><span>02</span></div>
+                                <div class="glass-sheet glass-sheet-3"><span>03</span></div>
+                                <div class="glass-sheet glass-sheet-4"><span>04</span></div>
+                                <div class="glass-sheet glass-sheet-5"><span>05</span></div>
+                                <div class="glass-sheet glass-sheet-6"><span>06</span></div>
+                                <div class="glass-sheet glass-sheet-7"><span>07</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass-system-caption">
+                        <strong>Leitura Explodida</strong>
+                        <span>As camadas são representadas em sequência, do vidro externo até a barreira final de policarbonato anti-estilhaço.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-material-ledger reveal-item">
+                <article class="glass-material-row">
+                    <span class="glass-material-no">01</span>
+                    <div class="glass-material-copy">
+                        <h3>Vidro Externo</h3>
+                        <p>Camada com tinta cerâmica para acabamento, resistência superficial e proteção da face externa.</p>
+                    </div>
+                </article>
+                <article class="glass-material-row">
+                    <span class="glass-material-no">02</span>
+                    <div class="glass-material-copy">
+                        <h3>Interlayer de Polivinil</h3>
+                        <p>Primeira interface de absorção e união entre superfícies vítreas.</p>
+                    </div>
+                </article>
+                <article class="glass-material-row">
+                    <span class="glass-material-no">03</span>
+                    <div class="glass-material-copy">
+                        <h3>Vidro Estrutural</h3>
+                        <p>Camada rígida responsável por distribuir a energia inicial do impacto.</p>
+                    </div>
+                </article>
+                <article class="glass-material-row">
+                    <span class="glass-material-no">04</span>
+                    <div class="glass-material-copy">
+                        <h3>Segundo Interlayer</h3>
+                        <p>Nova interface de polivinil para desaceleração progressiva e coesão do conjunto.</p>
+                    </div>
+                </article>
+                <article class="glass-material-row">
+                    <span class="glass-material-no">05</span>
+                    <div class="glass-material-copy">
+                        <h3>Vidro Interno</h3>
+                        <p>Elemento de suporte da arquitetura multicamada antes da interface elástica final.</p>
+                    </div>
+                </article>
+                <article class="glass-material-row">
+                    <span class="glass-material-no">06</span>
+                    <div class="glass-material-copy">
+                        <h3>Interlayer de Poliuretano</h3>
+                        <p>Camada de transição com comportamento mais flexível para dissipação complementar.</p>
+                    </div>
+                </article>
+                <article class="glass-material-row glass-material-row--accent">
+                    <span class="glass-material-no">07</span>
+                    <div class="glass-material-copy">
+                        <h3>Policarbonato Anti-estilhaço</h3>
+                        <p>Última barreira elástica, responsável por conter fragmentos e impedir a penetração.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processo em Movimento -->
+    <section class="py-24 px-8 md:px-24 bg-background relative overflow-hidden">
+        <div class="max-w-6xl mx-auto reveal-item">
+            <div class="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                <div class="max-w-2xl">
+                    <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Processo Visual</span>
+                    <h2 class="font-headline text-4xl md:text-5xl font-black text-white tracking-tight uppercase">A Execução em Movimento</h2>
+                </div>
+                <p class="text-slate-400 font-light max-w-xl leading-relaxed">
+                    Um recorte do padrão de montagem Shield Rio, posicionando o processo como ponte visual entre materiais, precisão técnica e entrega final.
+                </p>
+            </div>
+
+            <div class="relative rounded-sm overflow-hidden p-[1px] bg-gradient-to-br from-primary/40 via-white/10 to-transparent shadow-[0_0_80px_rgba(0,0,0,0.45)] group">
+                <div class="relative bg-surface rounded-sm overflow-hidden aspect-[16/9] md:aspect-[21/9]">
+                    <video
                         class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
-                        autoplay 
-                        muted 
-                        loop 
+                        autoplay
+                        muted
+                        loop
                         playsinline
                     >
                         <source src="video-excelencia.mp4" type="video/mp4">
                     </video>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-                    <div class="absolute bottom-6 left-6 pr-6">
-                        <span class="text-primary font-bold tracking-[0.3em] uppercase text-[8px] mb-1 block">Shield Experience</span>
-                        <p class="text-white text-[10px] font-bold leading-tight">Excelência em cada etapa do processo tático.</p>
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/25 to-black/60 pointer-events-none"></div>
+                    <div class="absolute inset-y-0 left-0 flex items-end md:items-center">
+                        <div class="p-6 md:p-10 max-w-md">
+                            <span class="text-primary font-bold tracking-[0.3em] uppercase text-[9px] mb-3 block">Shield Dynamics</span>
+                            <p class="text-white text-xl md:text-3xl font-black leading-tight uppercase tracking-wide">Metodologia Lean 6 Sigma aplicada a cada etapa da blindagem</p>
+                        </div>
                     </div>
+                    <div class="absolute top-5 left-5 w-5 h-5 border-t border-l border-primary/40"></div>
+                    <div class="absolute top-5 right-5 w-5 h-5 border-t border-r border-primary/40"></div>
+                    <div class="absolute bottom-5 left-5 w-5 h-5 border-b border-l border-primary/20"></div>
+                    <div class="absolute bottom-5 right-5 w-5 h-5 border-b border-r border-primary/20"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Níveis de Proteção Grid -->
-    <section class="py-32 px-8 md:px-24 bg-background">
-        <div class="mb-20 text-center">
-            <h2 class="font-headline text-4xl font-bold text-white mb-6">Níveis de Proteção (NBR 15000)</h2>
-            <p class="text-slate-400 max-w-3xl mx-auto font-light">Classificação oficial de resistência balística. Embora ofereçamos todos os níveis regulamentados, o **Nível III-A** é o padrão ouro de Shield Rio.</p>
+    <!-- O Processo de 10 Passos (Engineering Workflow) -->
+    <section class="py-56 bg-background relative overflow-hidden">
+        <!-- Background Grid -->
+        <div class="absolute inset-0 blueprint-bg opacity-30"></div>
+        
+        <div class="px-8 md:px-24 mb-24 lg:mb-32 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
+            <div class="max-w-3xl">
+                <span class="text-primary font-bold tracking-[0.6em] uppercase text-[10px] mb-8 block">Lean 6 Sigma Lifecycle</span>
+                <h2 class="font-headline text-5xl md:text-7xl font-black text-white tracking-tighter leading-none">O Fluxo <br/><span class="text-primary italic">de Excelência</span></h2>
+            </div>
+            <div class="max-w-md">
+                <p class="text-slate-400 font-light leading-relaxed">Um roteiro operacional em dez etapas, apresentado como sequência de manufatura e controle de qualidade, sem o visual genérico de cards soltos.</p>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Nível I -->
-            <div class="bg-surface p-10 border border-white/5 rounded-sm hover:border-primary/20 transition-all group">
-                <span class="text-slate-500 font-black text-5xl mb-6 block group-hover:text-white transition-colors">I</span>
-                <h3 class="text-white font-bold mb-4">Resistência Civil</h3>
-                <p class="text-xs text-slate-500 leading-relaxed font-light mb-8 italic">Proteção leve contra calibres comuns.</p>
-                <ul class="text-[10px] space-y-3 text-slate-400 font-bold uppercase tracking-wider">
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> .22 LR</li>
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> .38 SPECIAL</li>
-                </ul>
+        <div class="px-8 md:px-24">
+            <div class="max-w-6xl mx-auto process-timeline space-y-16 lg:space-y-10">
+                <article class="process-step reveal-item">
+                    <span class="process-index">01</span>
+                    <div class="process-copy">
+                        <span class="process-phase">Recepção Técnica</span>
+                        <h4 class="text-white font-headline font-black text-2xl tracking-tight mt-3 mb-4">Vistoria Inicial</h4>
+                        <p class="font-light leading-relaxed text-sm md:text-base">Checklist técnico inicial com leitura completa de sensores, acabamentos e condições originais do veículo.</p>
+                    </div>
+                </article>
+
+                <article class="process-step reveal-item">
+                    <span class="process-index">02</span>
+                    <div class="process-copy">
+                        <span class="process-phase">Desmontagem Controlada</span>
+                        <h4 class="text-white font-headline font-black text-2xl tracking-tight mt-3 mb-4">Desmontagem</h4>
+                        <p class="font-light leading-relaxed text-sm md:text-base">Desmontagem controlada com acondicionamento individual de componentes e preservação total dos conjuntos originais.</p>
+                    </div>
+                </article>
+
+                <article class="process-step reveal-item">
+                    <span class="process-index">03</span>
+                    <div class="process-copy">
+                        <span class="process-phase">Proteção de Superfície</span>
+                        <h4 class="text-white font-headline font-black text-2xl tracking-tight mt-3 mb-4">Isolamento Protetivo</h4>
+                        <p class="font-light leading-relaxed text-sm md:text-base">Aplicação de filme de proteção e isolamento integral da carroceria para preservar pintura e superfícies sensíveis.</p>
+                    </div>
+                </article>
+
+                <article class="process-step reveal-item">
+                    <span class="process-index">04</span>
+                    <div class="process-copy">
+                        <span class="process-phase">Controle de Insumos</span>
+                        <h4 class="text-white font-headline font-black text-2xl tracking-tight mt-3 mb-4">Inspeção de Materiais</h4>
+                        <p class="font-light leading-relaxed text-sm md:text-base">Validação dimensional e qualitativa dos materiais balísticos antes da integração em linha de produção.</p>
+                    </div>
+                </article>
+
+                <article class="process-step reveal-item">
+                    <span class="process-index">05</span>
+                    <div class="process-copy">
+                        <span class="process-phase">Integração Estrutural</span>
+                        <h4 class="text-white font-headline font-black text-2xl tracking-tight mt-3 mb-4">Blindagem Opaca</h4>
+                        <p class="font-light leading-relaxed text-sm md:text-base">Instalação da manta balística e dos reforços metálicos com precisão de encaixe e baixo acréscimo de massa.</p>
+                    </div>
+                </article>
+
+                <article class="process-step reveal-item">
+                    <span class="process-index">06</span>
+                    <div class="process-copy">
+                        <span class="process-phase">Interface Transparente</span>
+                        <h4 class="text-white font-headline font-black text-2xl tracking-tight mt-3 mb-4">Blindagem Transparente</h4>
+                        <p class="font-light leading-relaxed text-sm md:text-base">Instalação dos vidros multicamadas com tecnologia anti-estilhaço e selagem técnica de alta durabilidade.</p>
+                    </div>
+                </article>
+
+                <article class="process-step reveal-item">
+                    <span class="process-index">07</span>
+                    <div class="process-copy">
+                        <span class="process-phase">Recomposição Interna</span>
+                        <h4 class="text-white font-headline font-black text-2xl tracking-tight mt-3 mb-4">Montagem de Acabamentos</h4>
+                        <p class="font-light leading-relaxed text-sm md:text-base">Reinstalação minuciosa de painéis, forros e interfaces com padrão de encaixe original.</p>
+                    </div>
+                </article>
+
+                <article class="process-step reveal-item">
+                    <span class="process-index">08</span>
+                    <div class="process-copy">
+                        <span class="process-phase">Validação Final</span>
+                        <h4 class="text-white font-headline font-black text-2xl tracking-tight mt-3 mb-4">Vistoria de Entrega</h4>
+                        <p class="font-light leading-relaxed text-sm md:text-base">Checklist final com testes funcionais, validação de ruídos e conferência integral do conjunto blindado.</p>
+                    </div>
+                </article>
+
+                <article class="process-step reveal-item">
+                    <span class="process-index">09</span>
+                    <div class="process-copy">
+                        <span class="process-phase">Ajuste Dinâmico</span>
+                        <h4 class="text-white font-headline font-black text-2xl tracking-tight mt-3 mb-4">Alinhamento e Balanceamento</h4>
+                        <p class="font-light leading-relaxed text-sm md:text-base">Ajuste dinâmico do rodar para compensar massa adicional e preservar estabilidade operacional.</p>
+                    </div>
+                </article>
+
+                <article class="process-step reveal-item">
+                    <span class="process-index">10</span>
+                    <div class="process-copy">
+                        <span class="process-phase">Acabamento de Entrega</span>
+                        <h4 class="text-white font-headline font-black text-2xl tracking-tight mt-3 mb-4">Lavagem e Polimento</h4>
+                        <p class="font-light leading-relaxed text-sm md:text-base">Acabamento estético final com limpeza técnica e polimento para entrega em padrão showroom.</p>
+                    </div>
+                </article>
             </div>
-            <!-- Nível II-A -->
-            <div class="bg-surface p-10 border border-white/5 rounded-sm hover:border-primary/20 transition-all group">
-                <span class="text-slate-500 font-black text-5xl mb-6 block group-hover:text-white transition-colors">II-A</span>
-                <h3 class="text-white font-bold mb-4">Proteção Intermediária</h3>
-                <p class="text-xs text-slate-500 leading-relaxed font-light mb-8 italic">Ideal para centros urbanos.</p>
-                <ul class="text-[10px] space-y-3 text-slate-400 font-bold uppercase tracking-wider">
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> 9MM FMJ</li>
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> .357 MAGNUM</li>
-                </ul>
-            </div>
-            <!-- Nível III-A (Featured) -->
-            <div class="bg-primary/5 p-10 border border-primary/30 rounded-sm relative overflow-hidden group scale-105 z-10 shadow-2xl">
-                <div class="absolute top-0 right-0 bg-primary text-[#001946] px-4 py-1 text-[8px] font-black uppercase tracking-widest">Padrão Shield</div>
-                <span class="text-primary font-black text-5xl mb-6 block">III-A</span>
-                <h3 class="text-white font-bold mb-4">Máxima Proteção Civil</h3>
-                <p class="text-xs text-slate-400 leading-relaxed font-light mb-8 italic">Suporta os calibres de mão mais potentes.</p>
-                <ul class="text-[10px] space-y-3 text-white font-bold uppercase tracking-wider">
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> 9MM & .44 MAGNUM</li>
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> .357 MAGNUM (SUBM.)</li>
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> 380 AUTO & 32 AUTO</li>
-                </ul>
-            </div>
-            <!-- Nível III -->
-            <div class="bg-surface p-10 border border-white/5 rounded-sm hover:border-primary/20 transition-all group">
-                <span class="text-slate-500 font-black text-5xl mb-6 block group-hover:text-white transition-colors">III</span>
-                <h3 class="text-white font-bold mb-4">Proteção Militar</h3>
-                <p class="text-xs text-slate-500 leading-relaxed font-light mb-8 italic">Uso restrito (Exército).</p>
-                <ul class="text-[10px] space-y-3 text-slate-400 font-bold uppercase tracking-wider">
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> 7.62 NATO (FUSIL)</li>
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span> 5.56 NATO (AR-15)</li>
-                </ul>
+        </div>
+
+        <!-- Footer of Workflow -->
+        <div class="mt-40 px-8 md:px-24 flex flex-col md:flex-row justify-between items-end gap-10">
+            <p class="text-slate-400 max-w-md font-light italic">
+                *Cada etapa é validada por um checklist estatístico antes da progressão para o próximo nível operacional.
+            </p>
+            <div class="flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.4em] text-primary">
+                <span>Certificação NBR 15000</span>
+                <span>ISO 9001 Alignment</span>
             </div>
         </div>
     </section>
 
-    <!-- Materiais de Vanguarda -->
-    <section class="py-32 px-8 md:px-24 bg-surface">
-        <div class="relative overflow-hidden flex flex-col md:flex-row gap-20 items-center">
-            <div class="flex-1">
-                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">Composição Estatística</span>
-                <h2 class="font-headline text-5xl font-bold text-white mb-10 tracking-tight">Materiais que <br/>Redefinem a Segurança</h2>
-                
-                <div class="space-y-12">
-                    <div class="reveal-item">
-                        <h4 class="text-primary font-black uppercase text-xs tracking-widest mb-3">Manta de Fibra de Carbono</h4>
-                        <p class="text-slate-400 font-light leading-relaxed">Nossa manta é revestida com **neopreno** em todas as áreas úmidas para evitar absorção de umidade. A fixação é feita com **cola especial 1500N**, garantindo que não haja delaminação com o passar dos anos.</p>
-                    </div>
-                    <div class="reveal-item">
-                        <h4 class="text-primary font-black uppercase text-xs tracking-widest mb-3">Aço Inox 304L</h4>
-                        <p class="text-slate-400 font-light leading-relaxed">Empregamos aço inox 304L de alta resistência em pontos estratégicos (overlaps) para garantir a cobertura 100% balística sem comprometer o peso do veículo.</p>
-                    </div>
-                </div>
+    <!-- Garantia -->
+    <section class="py-24 px-8 md:px-24 bg-surface border-t border-white/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-14 text-center reveal-item">
+                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">Garantia</span>
+                <h2 class="font-headline text-4xl md:text-5xl font-black text-white tracking-tight uppercase">Cobertura por Configuração</h2>
             </div>
-            <div class="flex-1 relative perspective-card">
-                <div class="bg-primary/10 rounded-sm overflow-hidden border border-white/5 rotate-3 hover:rotate-0 transition-transform duration-1000">
-                    <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/a-blindagem-home.png" alt="Tecnologia Shield" class="w-full h-auto">
-                    <div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
-                </div>
-                <!-- Glass Specs overlay -->
-                <div class="absolute -bottom-10 -left-10 bg-white/5 backdrop-blur-xl p-8 border border-white/10 rounded-sm max-w-xs shadow-2xl reveal-item">
-                    <h5 class="text-white font-bold mb-4 flex items-center gap-2">
-                        <span class="material-symbols-outlined text-primary">layers</span>
-                        Vidros de 7 Camadas
-                    </h5>
-                    <p class="text-[10px] text-slate-400 leading-relaxed font-light mb-4">Com camada final em **policarbonato** anti-estilhaço, nossos vidros garantem visibilidade 4K e resistência total à penetração.</p>
-                    <span class="text-primary font-black text-[10px] uppercase tracking-widest">Tecnologia Hidrosolúvel</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- O Processo de 10 Passos (Timeline) -->
-    <section class="py-40 bg-background relative overflow-hidden">
-        <div class="text-center mb-32">
-            <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">Lean 6 Sigma Excellence</span>
-            <h2 class="font-headline text-5xl font-black text-white tracking-tighter">O Processo de 10 Passos</h2>
-        </div>
-
-        <div class="relative max-w-6xl mx-auto px-8 step-line">
-            <!-- Steps Grid -->
-            <div class="space-y-32 relative">
-                <!-- Step 1 & 2 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
-                    <div class="reveal-item text-right md:pr-24">
-                        <span class="text-6xl font-black text-white/5 mb-4 block">01</span>
-                        <h4 class="text-white font-bold text-xl mb-3">Vistoria e Checklist</h4>
-                        <p class="text-sm text-slate-500 font-light italic">Registro milimétrico do estado inicial de entrada.</p>
-                    </div>
-                    <div class="reveal-item text-left md:pl-24">
-                        <span class="text-6xl font-black text-white/5 mb-4 block">02</span>
-                        <h4 class="text-white font-bold text-xl mb-3">Desmontagem Técnica</h4>
-                        <p class="text-sm text-slate-500 font-light italic">Retirada cuidadosa de assentos e componentes eletrônicos.</p>
-                    </div>
-                </div>
-                <!-- Step 3 & 4 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
-                    <div class="reveal-item text-right md:pr-24">
-                        <span class="text-6xl font-black text-white/5 mb-4 block">03</span>
-                        <h4 class="text-white font-bold text-xl mb-3">Isolamento Protetivo</h4>
-                        <p class="text-sm text-slate-500 font-light italic">Película protetora total em toda a lataria original.</p>
-                    </div>
-                    <div class="reveal-item text-left md:pl-24">
-                        <span class="text-6xl font-black text-white/5 mb-4 block">04</span>
-                        <h4 class="text-white font-bold text-xl mb-3">Inspeção de Lotes</h4>
-                        <p class="text-sm text-slate-500 font-light italic">Validação estatística de fibras, aços e vidros.</p>
-                    </div>
-                </div>
-                <!-- Step 5 & 6 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
-                    <div class="reveal-item text-right md:pr-24">
-                        <span class="text-6xl font-black text-white/5 mb-4 block">05</span>
-                        <h4 class="text-white font-bold text-xl mb-3">Blindagem Opaca</h4>
-                        <p class="text-sm text-slate-500 font-light italic">Aplicação de mantas de carbono e painéis 304L.</p>
-                    </div>
-                    <div class="reveal-item text-left md:pl-24">
-                        <span class="text-6xl font-black text-white/5 mb-4 block">06</span>
-                        <h4 class="text-white font-bold text-xl mb-3">Blindagem Transparente</h4>
-                        <p class="text-sm text-slate-500 font-light italic">Instalação dos conjuntos de vidros multi-camada.</p>
-                    </div>
-                </div>
-                <!-- Step 7 & 8 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
-                    <div class="reveal-item text-right md:pr-24">
-                        <span class="text-6xl font-black text-white/5 mb-4 block">07</span>
-                        <h4 class="text-white font-bold text-xl mb-3">Montagem de Elite</h4>
-                        <p class="text-sm text-slate-500 font-light italic">Encaixe preciso de acabamentos originais.</p>
-                    </div>
-                    <div class="reveal-item text-left md:pl-24">
-                        <span class="text-6xl font-black text-white/5 mb-4 block">08</span>
-                        <h4 class="text-white font-bold text-xl mb-3">Vistoria de Carga</h4>
-                        <p class="text-sm text-slate-500 font-light italic">Testes de infiltração e validação funcional.</p>
-                    </div>
-                </div>
-                <!-- Step 9 & 10 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
-                    <div class="reveal-item text-right md:pr-24">
-                        <span class="text-6xl font-black text-white/5 mb-4 block">09</span>
-                        <h4 class="text-white font-bold text-xl mb-3">Alinhamento Dinâmico</h4>
-                        <p class="text-sm text-slate-500 font-light italic">Ajuste de suspensão para performance original.</p>
-                    </div>
-                    <div class="reveal-item text-left md:pl-24">
-                        <span class="text-6xl font-black text-white/5 mb-4 block">10</span>
-                        <h4 class="text-white font-bold text-xl mb-3">Polimento e Entrega</h4>
-                        <p class="text-sm text-slate-500 font-light italic">Acabamento estético e entrega premium.</p>
-                    </div>
-                </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <article class="border border-primary/15 bg-background/70 p-8 rounded-sm reveal-item">
+                    <span class="text-primary font-black text-sm tracking-[0.35em] uppercase block mb-4">5 Anos</span>
+                    <h3 class="text-white font-headline text-3xl font-black mb-6 uppercase">Vidro Extrafino</h3>
+                    <ul class="space-y-4 text-slate-300 font-light leading-relaxed">
+                        <li>Vidro extrafino de alta performance, 25% mais leve.</li>
+                        <li>1 revisao aos 6 meses, gratuita.</li>
+                        <li>Demais revisoes a cada 10.000 km ou 1 ano, o que ocorrer primeiro.</li>
+                        <li>Os servicos referentes a blindagem devem ser realizados apenas pela Shield Rio para validade da cobertura.</li>
+                    </ul>
+                </article>
+                <article class="border border-white/10 bg-background/70 p-8 rounded-sm reveal-item">
+                    <span class="text-primary font-black text-sm tracking-[0.35em] uppercase block mb-4">3 Anos</span>
+                    <h3 class="text-white font-headline text-3xl font-black mb-6 uppercase">Vidro Padrão 21 mm</h3>
+                    <ul class="space-y-4 text-slate-300 font-light leading-relaxed">
+                        <li>Configuração com vidro padrão de 21 mm.</li>
+                        <li>1 revisao aos 6 meses, gratuita.</li>
+                        <li>Demais revisoes a cada 10.000 km ou 1 ano, o que ocorrer primeiro.</li>
+                        <li>Desgaste comum, mau uso ou ausencia das revisoes previstas no manual invalidam a garantia.</li>
+                    </ul>
+                </article>
             </div>
         </div>
     </section>
@@ -328,6 +1185,44 @@
 </footer>
 
 <script>
+    const transitionLinks = document.querySelectorAll('a[href$=".html"]');
+
+    const enterPage = () => {
+        document.body.classList.remove('page-loading', 'page-leaving');
+        document.body.classList.add('page-ready');
+    };
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(enterPage);
+    });
+
+    window.addEventListener('pageshow', enterPage);
+
+    transitionLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const href = link.getAttribute('href');
+            const isModifiedClick = event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+
+            if (!href || isModifiedClick || href.startsWith('#') || link.target === '_blank') {
+                return;
+            }
+
+            const destination = new URL(href, window.location.href);
+
+            if (destination.origin !== window.location.origin || destination.pathname === window.location.pathname) {
+                return;
+            }
+
+            event.preventDefault();
+            document.body.classList.remove('page-ready');
+            document.body.classList.add('page-leaving');
+
+            window.setTimeout(() => {
+                window.location.href = destination.href;
+            }, 320);
+        });
+    });
+
     // Intersection Observer for reveal items
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
