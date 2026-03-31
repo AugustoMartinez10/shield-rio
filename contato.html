@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Contato | Shield Rio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@300,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#b1c5ff",
+              "background": "#131313",
+              "surface": "#0a0a0a",
+              "primary-container": "#002a6c",
+            },
+            fontFamily: {
+              "headline": ["Manrope", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+      }
+
+      .glass-nav {
+        background: rgba(19, 19, 19, 0.7);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .blueprint-bg {
+        background-image:
+          linear-gradient(rgba(177, 197, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(177, 197, 255, 0.04) 1px, transparent 1px);
+        background-size: 34px 34px;
+      }
+
+      .contact-card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background:
+          radial-gradient(circle at top left, rgba(177, 197, 255, 0.08), transparent 35%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      }
+
+      .contact-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(to right, rgba(177, 197, 255, 0.55), rgba(177, 197, 255, 0));
+      }
+
+      .contact-field {
+        background: rgba(10, 10, 10, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .contact-field:focus {
+        border-color: rgba(177, 197, 255, 0.36);
+        box-shadow: 0 0 0 1px rgba(177, 197, 255, 0.16);
+      }
+
+      html {
+        background: #131313;
+      }
+
+      body {
+        transition: background-color 0.35s ease;
+      }
+
+      .page-transition-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 120;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(177, 197, 255, 0.08), transparent 32%),
+          linear-gradient(180deg, rgba(10, 10, 10, 0.96), rgba(19, 19, 19, 0.98));
+        opacity: 0;
+        transition: opacity 0.45s ease;
+      }
+
+      .page-transition-overlay::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        background: linear-gradient(to bottom, transparent, rgba(177, 197, 255, 0.34), transparent);
+        transform: translateX(-0.5px) scaleY(0.65);
+        transform-origin: center;
+        opacity: 0.55;
+        transition: transform 0.45s ease, opacity 0.45s ease;
+      }
+
+      .page-transition-overlay::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: min(28rem, 45vw);
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(177, 197, 255, 0.22), transparent);
+        transform: translate(-50%, -50%) scaleX(0.7);
+        opacity: 0.4;
+        transition: transform 0.45s ease, opacity 0.45s ease;
+      }
+
+      body.page-loading .page-transition-overlay,
+      body.page-leaving .page-transition-overlay {
+        opacity: 1;
+      }
+
+      body.page-loading .page-transition-overlay::before,
+      body.page-leaving .page-transition-overlay::before {
+        transform: translateX(-0.5px) scaleY(1);
+        opacity: 0.9;
+      }
+
+      body.page-loading .page-transition-overlay::after,
+      body.page-leaving .page-transition-overlay::after {
+        transform: translate(-50%, -50%) scaleX(1);
+        opacity: 0.7;
+      }
+
+      header,
+      main,
+      footer {
+        transition: opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease;
+      }
+
+      body.page-loading header,
+      body.page-loading main,
+      body.page-loading footer {
+        opacity: 0;
+        transform: translateY(14px);
+        filter: blur(6px);
+      }
+
+      body.page-ready header,
+      body.page-ready main,
+      body.page-ready footer {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+
+      body.page-leaving header,
+      body.page-leaving main,
+      body.page-leaving footer {
+        opacity: 0;
+        transform: translateY(18px);
+        filter: blur(6px);
+      }
+    </style>
+</head>
+<body class="page-loading bg-background text-slate-300 font-body antialiased selection:bg-primary selection:text-black">
+
+<div class="page-transition-overlay" aria-hidden="true"></div>
+
+<header class="fixed top-0 w-full flex flex-col z-50">
+    <div class="bg-[#001946] px-8 py-2 flex justify-end items-center gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[14px]">phone</span>
+            <span>(21) 2222-4649</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[14px]">chat</span>
+            <span>(21) 99416-8981</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[14px]">schedule</span>
+            <span>Seg - Sex: 08:00 - 18:00</span>
+        </div>
+    </div>
+    <nav class="glass-nav px-8 md:px-16 py-5 flex justify-between items-center">
+        <a href="index.html">
+            <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="h-10 md:h-12 w-auto object-contain">
+        </a>
+        <div class="hidden md:flex items-center gap-10">
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
+            <a class="text-white font-bold border-b-2 border-primary pb-1 text-xs uppercase tracking-widest" href="contato.html">Contato</a>
+        </div>
+        <a href="#formulario-contato" class="bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all inline-flex items-center">
+            Orçamento
+        </a>
+    </nav>
+</header>
+
+<main>
+    <section class="relative min-h-[68vh] flex items-end bg-black overflow-hidden pt-36 pb-16 md:pb-20">
+        <div class="absolute inset-0 z-0">
+            <img class="w-full h-full object-cover object-center opacity-20 scale-105" src="https://lh3.googleusercontent.com/p/AF1QipNr6y1z2ENKJ7SGPAsSanqpiJA0G1sEoPW7SO5I=s1600" alt="Shield Rio unidade"/>
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/40"></div>
+            <div class="absolute inset-0 blueprint-bg opacity-40"></div>
+        </div>
+
+        <div class="relative z-10 px-8 md:px-24 w-full">
+            <div class="max-w-5xl">
+                <span class="text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-6 block">Shield Rio</span>
+                <h1 class="font-headline text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8 uppercase">
+                    Contato e <span class="text-primary">Endereço</span>
+                </h1>
+                <p class="text-xl text-slate-400 max-w-3xl font-light leading-relaxed">
+                    Obtenha agora a melhor proteção veicular para você e sua família.<br class="hidden md:block"/>
+                    Envie o formulário abaixo ou ligue para a Shield Rio. Teremos enorme prazer em atendê-lo.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="formulario-contato" class="py-24 px-8 md:px-24 bg-background border-t border-white/5">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+            <div class="lg:col-span-7 contact-card p-6 md:p-10">
+                <form class="grid grid-cols-1 gap-5">
+                    <label class="block">
+                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Nome completo</span>
+                        <input class="contact-field w-full text-white placeholder:text-slate-600 px-4 py-3 outline-none" type="text" placeholder="Seu nome"/>
+                    </label>
+                    <label class="block">
+                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">E-mail</span>
+                        <input class="contact-field w-full text-white placeholder:text-slate-600 px-4 py-3 outline-none" type="email" placeholder="voce@exemplo.com"/>
+                    </label>
+                    <label class="block">
+                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Mensagem</span>
+                        <textarea class="contact-field w-full min-h-[180px] text-white placeholder:text-slate-600 px-4 py-3 outline-none resize-y" placeholder="Escreva sua mensagem"></textarea>
+                    </label>
+                    <div class="pt-4 border-t border-white/10">
+                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Deseja receber e-mails informativos e promocionais da Shield Rio?</span>
+                        <div class="flex flex-wrap gap-6 text-slate-300">
+                            <label class="inline-flex items-center gap-2"><input type="radio" name="receber-informativos" checked="checked" class="border-white/20 bg-background text-primary focus:ring-primary/30"/> <span>Sim</span></label>
+                            <label class="inline-flex items-center gap-2"><input type="radio" name="receber-informativos" class="border-white/20 bg-background text-primary focus:ring-primary/30"/> <span>Não</span></label>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <button class="bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-[0.28em] hover:brightness-110 transition-all inline-flex items-center justify-center" type="submit">Enviar</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="lg:col-span-5 space-y-6">
+                <div class="contact-card p-8 text-center">
+                    <p class="text-white font-headline text-3xl md:text-4xl font-black tracking-tight leading-snug">
+                        <a href="tel:+55-21-2222-4649" class="hover:text-primary transition-colors">21 2222-4649</a><br/>
+                        <a href="tel:+55-21-99416-8981" class="hover:text-primary transition-colors">21 99416-8981</a>
+                    </p>
+                    <p class="text-slate-300 text-xl leading-relaxed mt-8">Estrada da Barra da Tijuca, 75 - Barra da Tijuca, Rio de Janeiro - RJ, 22611-201, Brasil</p>
+                </div>
+
+                <div class="overflow-hidden border border-white/10 bg-background min-h-[222px]">
+                    <iframe
+                        title="Mapa da Shield Rio Blindados"
+                        src="https://maps.google.com/maps?q=-23.0105106,-43.2984108&z=17&output=embed"
+                        class="w-full h-[222px] border-0"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer id="footer-contato" class="bg-surface py-20 px-8 md:px-24 border-t border-white/5">
+    <div class="max-w-6xl mx-auto space-y-14">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div class="lg:col-span-4">
+                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Contato e Endereço</span>
+                <h2 class="font-headline text-4xl md:text-5xl font-black text-white tracking-tight mb-6">Obtenha agora a melhor proteção veicular para você e sua família.</h2>
+                <p class="text-slate-400 font-light leading-relaxed">Envie o formulário abaixo ou ligue para a Shield Rio. Teremos enorme prazer em atendê-lo.</p>
+            </div>
+            <div class="lg:col-span-4 space-y-8">
+                <form class="grid grid-cols-1 gap-4">
+                    <label class="block">
+                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Nome completo</span>
+                        <input class="w-full bg-background border border-white/10 text-white placeholder:text-slate-600 px-4 py-3 outline-none focus:border-primary/40 transition-colors" type="text" placeholder="Seu nome"/>
+                    </label>
+                    <label class="block">
+                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">E-mail</span>
+                        <input class="w-full bg-background border border-white/10 text-white placeholder:text-slate-600 px-4 py-3 outline-none focus:border-primary/40 transition-colors" type="email" placeholder="voce@exemplo.com"/>
+                    </label>
+                    <label class="block">
+                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Mensagem</span>
+                        <textarea class="w-full min-h-[140px] bg-background border border-white/10 text-white placeholder:text-slate-600 px-4 py-3 outline-none focus:border-primary/40 transition-colors resize-y" placeholder="Escreva sua mensagem"></textarea>
+                    </label>
+                    <div class="pt-4 border-t border-white/10">
+                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Deseja receber e-mails informativos e promocionais da Shield Rio?</span>
+                        <div class="flex flex-wrap gap-6 text-slate-300">
+                            <label class="inline-flex items-center gap-2"><input type="radio" name="emails-contato" class="border-white/20 bg-background text-primary focus:ring-primary/30"/> <span>Sim</span></label>
+                            <label class="inline-flex items-center gap-2"><input type="radio" name="emails-contato" class="border-white/20 bg-background text-primary focus:ring-primary/30"/> <span>Não</span></label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="lg:col-span-4 flex lg:justify-end lg:items-start">
+                <div class="pt-2 lg:pt-0">
+                    <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Telefones</span>
+                    <div class="space-y-3 text-slate-300 mb-8">
+                        <p><a class="hover:text-white transition-colors" href="tel:+55-21-2222-4649">21 2222-4649</a></p>
+                        <p><a class="hover:text-white transition-colors" href="tel:+55-21-99416-8981">21 99416-8981</a></p>
+                    </div>
+                    <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Horário</span>
+                    <p class="text-slate-300 leading-relaxed">Segunda a sexta, das 08:00 às 18:00.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-10 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <a href="index.html" class="inline-flex">
+                <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo-rodape.png" alt="Shield Rio" class="h-8 w-auto object-contain">
+            </a>
+            <p class="text-slate-500 text-[11px] uppercase tracking-[0.22em]">Shield Rio © | Todos os direitos reservados</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const transitionLinks = document.querySelectorAll('a[href$=".html"]');
+
+    const enterPage = () => {
+        document.body.classList.remove('page-loading', 'page-leaving');
+        document.body.classList.add('page-ready');
+    };
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(enterPage);
+    });
+
+    window.addEventListener('pageshow', enterPage);
+
+    transitionLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const href = link.getAttribute('href');
+            const isModifiedClick = event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+
+            if (!href || isModifiedClick || href.startsWith('#') || link.target === '_blank') {
+                return;
+            }
+
+            const destination = new URL(href, window.location.href);
+
+            if (destination.origin !== window.location.origin || destination.pathname === window.location.pathname) {
+                return;
+            }
+
+            event.preventDefault();
+            document.body.classList.remove('page-ready');
+            document.body.classList.add('page-leaving');
+
+            window.setTimeout(() => {
+                window.location.href = destination.href;
+            }, 320);
+        });
+    });
+</script>
+</body>
+</html>
