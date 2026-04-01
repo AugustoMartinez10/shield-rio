@@ -31,9 +31,7 @@
         font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
       }
       .glass-nav {
-        background: rgba(19, 19, 19, 0.7);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
+        background: #11151d;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       }
       .tech-trigger.active {
@@ -41,6 +39,91 @@
       }
       .tech-trigger.active h4 {
           color: white !important;
+      }
+      .tech-visual-shell {
+          position: relative;
+          width: 100%;
+          max-width: 460px;
+          aspect-ratio: 4 / 5;
+      }
+      .tech-visual-shell::before {
+          content: '';
+          position: absolute;
+          inset: 10% -8% -6% 18%;
+          border: 1px solid rgba(177, 197, 255, 0.12);
+          background: linear-gradient(180deg, rgba(177, 197, 255, 0.04), rgba(177, 197, 255, 0.01));
+          transform: rotate(8deg);
+      }
+      .tech-visual-shell::after {
+          content: '';
+          position: absolute;
+          inset: -2% 14% 16% -6%;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+          transform: rotate(-7deg);
+      }
+      .tech-visual-panel {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: #0c1018;
+          box-shadow: 0 30px 80px rgba(0, 0, 0, 0.32);
+      }
+      .tech-visual-panel::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: linear-gradient(to right, rgba(177, 197, 255, 0.45), rgba(177, 197, 255, 0));
+          z-index: 2;
+      }
+      .tech-visual-panel::after {
+          content: '';
+          position: absolute;
+          inset: 1.1rem;
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          pointer-events: none;
+          z-index: 2;
+      }
+      .tech-image-wrap {
+          position: absolute;
+          inset: 1.1rem;
+          overflow: hidden;
+      }
+      .tech-image-wrap::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(5, 7, 12, 0.1), rgba(5, 7, 12, 0.62));
+          pointer-events: none;
+      }
+      .tech-visual-index {
+          position: absolute;
+          left: 2rem;
+          bottom: 1.75rem;
+          z-index: 3;
+          color: rgba(177, 197, 255, 0.35);
+          font-family: Manrope, sans-serif;
+          font-size: clamp(3rem, 7vw, 5rem);
+          font-weight: 800;
+          line-height: 1;
+      }
+      .tech-visual-label {
+          position: absolute;
+          right: 2rem;
+          top: 2rem;
+          z-index: 3;
+          padding: 0.55rem 0.8rem;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(8, 12, 22, 0.72);
+          color: #b1c5ff;
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 0.28em;
+          text-transform: uppercase;
       }
       @keyframes fadeIn {
           from { opacity: 0; transform: translateY(10px); }
@@ -63,76 +146,79 @@
           inset: 0;
           z-index: 120;
           pointer-events: none;
-          background:
-              radial-gradient(circle at 20% 20%, rgba(177, 197, 255, 0.08), transparent 32%),
-              linear-gradient(180deg, rgba(10, 10, 10, 0.96), rgba(19, 19, 19, 0.98));
           opacity: 0;
-          transition: opacity 0.45s ease;
+          transform: scale(1.03);
+          background:
+              linear-gradient(180deg, rgba(6, 8, 13, 0.84), rgba(10, 12, 18, 0.94)),
+              radial-gradient(circle at 18% 24%, rgba(177, 197, 255, 0.1), transparent 28%),
+              radial-gradient(circle at 78% 20%, rgba(0, 42, 108, 0.18), transparent 32%);
+          transition: opacity 0.34s cubic-bezier(0.22, 1, 0.36, 1), transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), backdrop-filter 0.34s ease;
+          backdrop-filter: blur(0px);
       }
 
       .page-transition-overlay::before {
           content: '';
           position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 50%;
-          width: 1px;
-          background: linear-gradient(to bottom, transparent, rgba(177, 197, 255, 0.34), transparent);
-          transform: translateX(-0.5px) scaleY(0.65);
-          transform-origin: center;
-          opacity: 0.55;
-          transition: transform 0.45s ease, opacity 0.45s ease;
+          inset: -12% auto auto -10%;
+          width: min(42rem, 62vw);
+          height: min(42rem, 62vw);
+          border-radius: 999px;
+          background: radial-gradient(circle, rgba(177, 197, 255, 0.18), rgba(177, 197, 255, 0.03) 44%, transparent 72%);
+          filter: blur(14px);
+          opacity: 0;
+          transform: translate3d(0, 0, 0) scale(0.94);
+          transition: opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
       }
 
       .page-transition-overlay::after {
           content: '';
           position: absolute;
-          left: 50%;
-          top: 50%;
-          width: min(28rem, 45vw);
-          height: 1px;
-          background: linear-gradient(to right, transparent, rgba(177, 197, 255, 0.22), transparent);
-          transform: translate(-50%, -50%) scaleX(0.7);
-          opacity: 0.4;
-          transition: transform 0.45s ease, opacity 0.45s ease;
+          inset: 0;
+          background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.04) 34%, rgba(177, 197, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 66%, transparent 100%);
+          opacity: 0;
+          transform: translate3d(-6%, 0, 0) scaleX(1.08);
+          transition: opacity 0.36s ease, transform 0.46s cubic-bezier(0.22, 1, 0.36, 1);
       }
 
       body.page-loading .page-transition-overlay,
       body.page-leaving .page-transition-overlay {
           opacity: 1;
+          transform: scale(1);
+          backdrop-filter: blur(8px);
       }
 
       body.page-loading .page-transition-overlay::before,
       body.page-leaving .page-transition-overlay::before {
-          transform: translateX(-0.5px) scaleY(1);
-          opacity: 0.9;
+          opacity: 0.95;
+          transform: translate3d(8%, -4%, 0) scale(1);
       }
 
       body.page-loading .page-transition-overlay::after,
       body.page-leaving .page-transition-overlay::after {
-          transform: translate(-50%, -50%) scaleX(1);
-          opacity: 0.7;
+          opacity: 0.82;
+          transform: translate3d(0, 0, 0) scaleX(1);
       }
 
       header,
       main,
       footer {
-          transition: opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease;
+          transition: opacity 0.34s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.34s ease;
+          transform-origin: center top;
       }
 
       body.page-loading header,
       body.page-loading main,
       body.page-loading footer {
           opacity: 0;
-          transform: translateY(14px);
-          filter: blur(6px);
+          transform: translateY(22px) scale(0.985);
+          filter: blur(10px);
       }
 
       body.page-ready header,
       body.page-ready main,
       body.page-ready footer {
           opacity: 1;
-          transform: translateY(0);
+          transform: translateY(0) scale(1);
           filter: blur(0);
       }
 
@@ -140,8 +226,19 @@
       body.page-leaving main,
       body.page-leaving footer {
           opacity: 0;
-          transform: translateY(18px);
-          filter: blur(6px);
+          transform: translateY(-10px) scale(1.01);
+          filter: blur(8px);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+          .page-transition-overlay,
+          .page-transition-overlay::before,
+          .page-transition-overlay::after,
+          header,
+          main,
+          footer {
+              transition-duration: 0.01ms !important;
+          }
       }
     </style>
 </head>
@@ -151,37 +248,53 @@
 
 <!-- Header -->
 <header class="fixed top-0 w-full flex flex-col z-50">
-    <div class="bg-[#001946] px-8 py-2 flex justify-end items-center gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
-        <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-[14px]">phone</span>
-            <span>(21) 2222-4649</span>
-        </div>
-        <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-[14px]">chat</span>
-            <span>(21) 99416-8981</span>
-        </div>
+    <div class="bg-[#001946] px-4 md:px-8 py-2 flex flex-wrap justify-center md:justify-end items-center gap-x-4 gap-y-2 text-[9px] md:text-[10px] text-center md:text-left font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
+        <a href="tel:+55-21-99766-6960" class="flex items-center gap-2 hover:text-white transition-colors">
+            <span class="material-symbols-outlined text-[14px]">build</span>
+            <span>Assistência Técnica 21 99766-6960</span>
+        </a>
+        <a href="tel:+55-21-99115-7592" class="flex items-center gap-2 hover:text-white transition-colors">
+            <span class="material-symbols-outlined text-[14px]">support_agent</span>
+            <span>Comercial 21 99115-7592</span>
+        </a>
         <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-[14px]">schedule</span>
-            <span>Seg - Sex: 08:00 - 18:00</span>
+            <span>Segunda à Sexta: 08h00 às 18h00</span>
         </div>
     </div>
-    <nav class="glass-nav px-8 md:px-16 py-5 flex justify-between items-center">
-        <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="h-10 md:h-12 w-auto object-contain">
+    <nav class="glass-nav px-4 md:px-16 py-4 md:py-5 flex justify-between items-center gap-4">
+        <a href="index.html">
+            <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="h-10 md:h-12 w-auto object-contain">
+        </a>
         <div class="hidden md:flex items-center gap-10">
             <a class="text-white font-bold border-b-2 border-primary pb-1 text-xs uppercase tracking-widest" href="index.html">Início</a>
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
             <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
             <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
             <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="contato.html">Contato</a>
         </div>
-        <a href="#footer-contato" class="bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all inline-flex items-center">
-            Orçamento
+        <a href="contato.html#formulario-contato" class="hidden md:inline-flex bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all items-center">
+            Solicitar Orçamento
         </a>
+        <details class="md:hidden relative">
+            <summary class="list-none [&::-webkit-details-marker]:hidden inline-flex items-center justify-center w-11 h-11 border border-white/10 text-white cursor-pointer">
+                <span class="material-symbols-outlined">menu</span>
+            </summary>
+            <div class="absolute right-0 top-full mt-3 w-[min(18rem,calc(100vw-2rem))] border border-white/10 bg-[#11151d] shadow-2xl p-4 flex flex-col gap-3">
+                <a class="text-white font-bold text-xs uppercase tracking-widest" href="index.html">Início</a>
+                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
+                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
+                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
+                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="contato.html">Contato</a>
+                <a href="contato.html#formulario-contato" class="mt-2 bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-5 py-3 text-center font-bold text-xs uppercase tracking-widest">Solicitar Orçamento</a>
+            </div>
+        </details>
     </nav>
 </header>
 
 <main>
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center bg-black overflow-hidden">
+    <section class="relative min-h-[100svh] md:h-screen flex items-center bg-black overflow-hidden pt-40 pb-16 md:py-0">
         <div class="absolute inset-0 z-0">
             <img class="w-full h-full object-cover opacity-30 scale-105" src="https://lh3.googleusercontent.com/p/AF1QipNr6y1z2ENKJ7SGPAsSanqpiJA0G1sEoPW7SO5I=s1600"/>
             <div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
@@ -191,14 +304,14 @@
                 <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
                 <span class="text-[10px] font-bold tracking-[0.3em] text-primary uppercase">Certificação Lean 6 Sigma</span>
             </div>
-            <h1 class="font-headline text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8">
+            <h1 class="font-headline text-4xl sm:text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8">
                 A Única Blindadora com <br/><span class="text-primary tracking-normal">Lean 6 Sigma</span>
             </h1>
-            <p class="text-xl text-slate-400 max-w-2xl mb-12 font-light leading-relaxed">
+            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mb-12 font-light leading-relaxed">
                 Segurança absoluta através da melhoria contínua e eficiência de processos. Engenharia de proteção sem variações.
             </p>
-            <a href="servicios.html" class="bg-white text-black px-12 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-primary transition-colors inline-flex items-center gap-4 group">
-                Descobrir <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">east</span>
+            <a href="servicios.html" class="bg-white text-black px-8 md:px-12 py-4 md:py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-primary transition-colors inline-flex items-center gap-4 group">
+                Conhecer Serviços <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">east</span>
             </a>
         </div>
     </section>
@@ -209,83 +322,83 @@
             <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px]">Ecossistema de Soluções</span>
             <h2 class="font-headline text-5xl font-bold mt-4 tracking-tight text-white">Serviços</h2>
         </div>
-        <div class="flex flex-col lg:flex-row h-[700px] w-full border-t border-white/5">
+        <div class="flex flex-col lg:flex-row h-auto lg:h-[700px] w-full border-t border-white/5">
             <!-- Panel 1 -->
-            <div class="service-panel group relative flex-1 hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e]">
+            <a href="servicios.html#manutencao" class="service-panel group relative flex-1 min-h-[280px] lg:min-h-0 lg:hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e] block">
                 <div class="absolute inset-0 z-0">
                     <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/manutencao-reparo-e-troca-1.png" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                 </div>
-                <div class="absolute inset-0 z-10 flex flex-col justify-end p-12 translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
-                    <h3 class="font-headline text-4xl font-black text-white mb-6">Manutenção</h3>
-                    <div class="max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
+                <div class="relative lg:absolute lg:inset-0 z-10 flex flex-col justify-end p-8 md:p-10 lg:p-12 pt-24 lg:pt-12 translate-y-0 lg:translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
+                    <h3 class="font-headline text-3xl md:text-4xl font-black text-white mb-6">Manutenção</h3>
+                    <div class="max-w-md opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
                         <p class="text-slate-300 mb-8 font-light text-lg">Cuidado preventivo detalhado para componentes balísticos, mecânicos e elétricos, mantendo a garantia vitalícia da sua blindagem.</p>
-                        <a href="servicios.html#manutencao" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-4 hover:gap-6 transition-all">
+                        <span class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-4 group-hover:gap-6 transition-all">
                             Saiba Mais <span class="material-symbols-outlined text-sm">east</span>
-                        </a>
+                        </span>
                     </div>
                 </div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 group-hover:opacity-0 transition-all duration-500 whitespace-nowrap">
+                <div class="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 group-hover:opacity-0 transition-all duration-500 whitespace-nowrap">
                     <span class="text-white/10 text-4xl font-black uppercase tracking-[0.4em]">Manutenção</span>
                 </div>
-            </div>
+            </a>
             <!-- Panel 2 -->
-            <div class="service-panel group relative flex-1 hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e]">
+            <a href="servicios.html#inspecao" class="service-panel group relative flex-1 min-h-[280px] lg:min-h-0 lg:hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e] block">
                 <div class="absolute inset-0 z-0">
                     <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/shield-rio-1.jpg" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                 </div>
-                <div class="absolute inset-0 z-10 flex flex-col justify-end p-12 translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
-                    <h3 class="font-headline text-4xl font-black text-white mb-6">Inspeção</h3>
-                    <div class="max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
+                <div class="relative lg:absolute lg:inset-0 z-10 flex flex-col justify-end p-8 md:p-10 lg:p-12 pt-24 lg:pt-12 translate-y-0 lg:translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
+                    <h3 class="font-headline text-3xl md:text-4xl font-black text-white mb-6">Inspeção</h3>
+                    <div class="max-w-md opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
                         <p class="text-slate-300 mb-8 font-light text-lg">Diagnóstico técnico rigoroso de mais de 25 itens para detecção de delaminação e fadiga, garantindo proteção ininterrupta.</p>
-                        <a href="servicios.html#inspecao" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-4 hover:gap-6 transition-all">
+                        <span class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-4 group-hover:gap-6 transition-all">
                             Saiba Mais <span class="material-symbols-outlined text-sm">east</span>
-                        </a>
+                        </span>
                     </div>
                 </div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 group-hover:opacity-0 transition-all duration-500 whitespace-nowrap">
+                <div class="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 group-hover:opacity-0 transition-all duration-500 whitespace-nowrap">
                     <span class="text-white/10 text-4xl font-black uppercase tracking-[0.4em]">Inspeção</span>
                 </div>
-            </div>
+            </a>
             <!-- Panel 3 -->
-            <div class="service-panel group relative flex-1 hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e]">
+            <a href="servicios.html#legalizacao" class="service-panel group relative flex-1 min-h-[280px] lg:min-h-0 lg:hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e] block">
                 <div class="absolute inset-0 z-0">
                     <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/shield-rio-2.jpg" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                 </div>
-                <div class="absolute inset-0 z-10 flex flex-col justify-end p-12 translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
-                    <h3 class="font-headline text-4xl font-black text-white mb-6">Legalização</h3>
-                    <div class="max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
+                <div class="relative lg:absolute lg:inset-0 z-10 flex flex-col justify-end p-8 md:p-10 lg:p-12 pt-24 lg:pt-12 translate-y-0 lg:translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
+                    <h3 class="font-headline text-3xl md:text-4xl font-black text-white mb-6">Legalização</h3>
+                    <div class="max-w-md opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
                         <p class="text-slate-300 mb-8 font-light text-lg">Assessoria documental completa para certificação junto ao Exército e Detran. Tranquilidade legal do início ao fim.</p>
-                        <a href="servicios.html#legalizacao" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-4 hover:gap-6 transition-all">
+                        <span class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-4 group-hover:gap-6 transition-all">
                             Saiba Mais <span class="material-symbols-outlined text-sm">east</span>
-                        </a>
+                        </span>
                     </div>
                 </div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 group-hover:opacity-0 transition-all duration-500 whitespace-nowrap">
+                <div class="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 group-hover:opacity-0 transition-all duration-500 whitespace-nowrap">
                     <span class="text-white/10 text-4xl font-black uppercase tracking-[0.4em]">Legalização</span>
                 </div>
-            </div>
+            </a>
             <!-- Panel 4 -->
-            <div class="service-panel group relative flex-1 hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden cursor-pointer bg-[#0e0e0e]">
+            <a href="servicios.html#acessorios" class="service-panel group relative flex-1 min-h-[280px] lg:min-h-0 lg:hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden cursor-pointer bg-[#0e0e0e] block">
                 <div class="absolute inset-0 z-0">
                     <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/shield-rio-6.jpg" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                 </div>
-                <div class="absolute inset-0 z-10 flex flex-col justify-end p-12 translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
-                    <h3 class="font-headline text-4xl font-black text-white mb-6">Acessórios</h3>
-                    <div class="max-w-md opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
+                <div class="relative lg:absolute lg:inset-0 z-10 flex flex-col justify-end p-8 md:p-10 lg:p-12 pt-24 lg:pt-12 translate-y-0 lg:translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
+                    <h3 class="font-headline text-3xl md:text-4xl font-black text-white mb-6">Acessórios</h3>
+                    <div class="max-w-md opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
                         <p class="text-slate-300 mb-8 font-light text-lg">Sistemas táticos avançados como Unichip, intercomunicadores de vanguarda e pneus blindados para máxima performance.</p>
-                        <a href="servicios.html#acessorios" class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-4 hover:gap-6 transition-all">
+                        <span class="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-4 group-hover:gap-6 transition-all">
                             Saiba Mais <span class="material-symbols-outlined text-sm">east</span>
-                        </a>
+                        </span>
                     </div>
                 </div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 group-hover:opacity-0 transition-all duration-500 whitespace-nowrap">
+                <div class="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-90 group-hover:opacity-0 transition-all duration-500 whitespace-nowrap">
                     <span class="text-white/10 text-4xl font-black uppercase tracking-[0.4em]">Acessórios</span>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -294,11 +407,11 @@
         <div class="max-w-4xl mx-auto border-y border-white/5 py-24 relative overflow-hidden">
             <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(177,197,255,0.1)_0%,transparent_70%)]"></div>
             <span class="text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-8 block">Engenharia Estatística</span>
-            <h2 class="font-headline text-6xl font-black text-white mb-12 tracking-tighter">Metodologia <span class="text-primary italic">Lean 6 Sigma</span></h2>
-            <p class="text-2xl text-slate-400 font-light leading-relaxed mb-16 px-10">
+            <h2 class="font-headline text-4xl md:text-6xl font-black text-white mb-12 tracking-tighter">Metodologia <span class="text-primary italic">Lean 6 Sigma</span></h2>
+            <p class="text-lg md:text-2xl text-slate-400 font-light leading-relaxed mb-16 px-0 md:px-10">
                 Onde outros veem limites, nós entregamos precisão. Eliminamos 100% da variação para garantir que sua proteção seja uma constante matemática.
             </p>
-            <div class="flex justify-center gap-10 md:gap-20">
+            <div class="flex flex-wrap justify-center gap-6 md:gap-20">
                 <div class="flex flex-col items-center">
                     <span class="text-4xl font-black text-white">D</span>
                     <span class="text-[9px] text-primary uppercase font-bold tracking-widest">Definir</span>
@@ -307,7 +420,7 @@
                     <span class="text-4xl font-black text-white">M</span>
                     <span class="text-[9px] text-primary uppercase font-bold tracking-widest">Medir</span>
                 </div>
-                <div class="flex flex-col items-center border-x border-white/10 px-10">
+                <div class="flex flex-col items-center border-x border-white/10 px-6 md:px-10">
                     <span class="text-4xl font-black text-white">A</span>
                     <span class="text-[9px] text-primary uppercase font-bold tracking-widest">Analisar</span>
                 </div>
@@ -333,14 +446,14 @@
             <div class="lg:col-span-5 border border-white/10 bg-surface/80 backdrop-blur-sm p-8 md:p-10">
                 <div class="space-y-8">
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="servicios.html" class="bg-primary text-black px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white transition-colors">Conhecer Serviços</a>
-                        <a href="#footer-contato" class="border border-white/15 text-white px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white/5 transition-colors">Ir para Contato</a>
+                        <a href="contato.html#formulario-contato" class="bg-primary text-black px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white transition-colors">Solicitar Orçamento</a>
+                        <a href="servicios.html" class="border border-white/15 text-white px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white/5 transition-colors">Conhecer Serviços</a>
                     </div>
                     <div>
                         <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Atendimento</span>
-                        <div class="space-y-3 text-slate-300">
-                            <p><a class="hover:text-white transition-colors" href="tel:+55-21-2222-4649">21 2222-4649</a></p>
-                            <p><a class="hover:text-white transition-colors" href="tel:+55-21-99416-8981">21 99416-8981</a></p>
+                        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 text-slate-300">
+                            <a class="inline-flex items-center justify-center border border-primary/20 bg-primary/10 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-primary/20 transition-colors" href="tel:+55-21-2222-4649">21 2222-4649</a>
+                            <a class="inline-flex items-center justify-center border border-white/15 bg-white/5 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-colors" href="tel:+55-21-99416-8981">21 99416-8981</a>
                             <p class="text-slate-500 uppercase tracking-[0.2em] text-[11px]">Segunda à Sexta: 08h00 às 18h00</p>
                         </div>
                     </div>
@@ -366,28 +479,30 @@
         <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center min-h-[500px]">
             <!-- Left: Selection Titles -->
             <div class="lg:col-span-4 space-y-6">
-                <div class="tech-trigger active group cursor-pointer py-6 border-l-2 border-white/5 pl-8 hover:border-primary/50 transition-all duration-500" data-target="level3a">
-                    <h4 class="text-3xl font-bold text-slate-600 transition-colors">Blindagem Nível III-A</h4>
-                </div>
-                <div class="tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-8 hover:border-primary/50 transition-all duration-500" data-target="carbon">
-                    <h4 class="text-3xl font-bold text-slate-600 transition-colors">Fibra de Carbono</h4>
-                </div>
-                <div class="tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-8 hover:border-primary/50 transition-all duration-500" data-target="acoustic">
-                    <h4 class="text-3xl font-bold text-slate-600 transition-colors">Proteção Acústica</h4>
-                </div>
-                <div class="tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-8 hover:border-primary/50 transition-all duration-500" data-target="rings">
-                    <h4 class="text-3xl font-bold text-slate-600 transition-colors">Cintas de Segurança</h4>
-                </div>
+                <button type="button" class="tech-trigger active group cursor-pointer py-6 border-l-2 border-white/5 pl-6 md:pl-8 hover:border-primary/50 transition-all duration-500 text-left w-full bg-transparent" data-target="level3a">
+                    <h4 class="text-2xl md:text-3xl font-bold text-slate-600 transition-colors">Blindagem Nível III-A</h4>
+                </button>
+                <button type="button" class="tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-6 md:pl-8 hover:border-primary/50 transition-all duration-500 text-left w-full bg-transparent" data-target="carbon">
+                    <h4 class="text-2xl md:text-3xl font-bold text-slate-600 transition-colors">Fibra de Carbono</h4>
+                </button>
+                <button type="button" class="tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-6 md:pl-8 hover:border-primary/50 transition-all duration-500 text-left w-full bg-transparent" data-target="acoustic">
+                    <h4 class="text-2xl md:text-3xl font-bold text-slate-600 transition-colors">Proteção Acústica</h4>
+                </button>
+                <button type="button" class="tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-6 md:pl-8 hover:border-primary/50 transition-all duration-500 text-left w-full bg-transparent" data-target="rings">
+                    <h4 class="text-2xl md:text-3xl font-bold text-slate-600 transition-colors">Cintas de Segurança</h4>
+                </button>
             </div>
 
             <!-- Center: Visual Representation -->
             <div class="lg:col-span-4 flex justify-center">
-                <div class="w-full aspect-square max-w-[450px] relative">
-                    <div class="absolute inset-0 rounded-full border border-white/5 animate-spin-slow"></div>
-                    <div class="absolute inset-4 rounded-full overflow-hidden shadow-[0_0_100px_rgba(177,197,255,0.05)]">
-                        <img id="tech-image" src="https://shieldrio.com.br/wp-content/uploads/2017/08/a-blindagem-1.jpg" 
-                             class="w-full h-full object-cover opacity-50 transition-all duration-700 brightness-75">
-                        <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+                <div class="tech-visual-shell">
+                    <div class="tech-visual-panel">
+                        <div class="tech-image-wrap">
+                            <img id="tech-image" src="https://shieldrio.com.br/wp-content/uploads/2017/08/a-blindagem-1.jpg"
+                                 class="w-full h-full object-cover opacity-70 transition-all duration-700 brightness-90">
+                        </div>
+                        <span class="tech-visual-label">Shield Rio Lab</span>
+                        <span class="tech-visual-index">01</span>
                     </div>
                 </div>
             </div>
@@ -414,30 +529,20 @@
             <div class="lg:col-span-4">
                 <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Contato e Endereço</span>
                 <h2 class="font-headline text-4xl md:text-5xl font-black text-white tracking-tight mb-6">Obtenha agora a melhor proteção veicular para você e sua família.</h2>
-                <p class="text-slate-400 font-light leading-relaxed">Envie o formulário abaixo ou ligue para a Shield Rio. Teremos enorme prazer em atendê-lo.</p>
+                <p class="text-slate-400 font-light leading-relaxed">Fale com a equipe da Shield Rio e centralize seu atendimento no formulário principal da página de contato.</p>
             </div>
             <div class="lg:col-span-4 space-y-8">
-                <form class="grid grid-cols-1 gap-4">
-                    <label class="block">
-                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Nome completo</span>
-                        <input class="w-full bg-background border border-white/10 text-white placeholder:text-slate-600 px-4 py-3 outline-none focus:border-primary/40 transition-colors" type="text" placeholder="Seu nome"/>
-                    </label>
-                    <label class="block">
-                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">E-mail</span>
-                        <input class="w-full bg-background border border-white/10 text-white placeholder:text-slate-600 px-4 py-3 outline-none focus:border-primary/40 transition-colors" type="email" placeholder="voce@exemplo.com"/>
-                    </label>
-                    <label class="block">
-                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Mensagem</span>
-                        <textarea class="w-full min-h-[140px] bg-background border border-white/10 text-white placeholder:text-slate-600 px-4 py-3 outline-none focus:border-primary/40 transition-colors resize-y" placeholder="Escreva sua mensagem"></textarea>
-                    </label>
-                    <div class="pt-4 border-t border-white/10">
-                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Deseja receber e-mails informativos e promocionais da Shield Rio?</span>
-                        <div class="flex flex-wrap gap-6 text-slate-300">
-                            <label class="inline-flex items-center gap-2"><input type="radio" name="emails-index" class="border-white/20 bg-background text-primary focus:ring-primary/30"/> <span>Sim</span></label>
-                            <label class="inline-flex items-center gap-2"><input type="radio" name="emails-index" class="border-white/20 bg-background text-primary focus:ring-primary/30"/> <span>Não</span></label>
-                        </div>
+                <div class="border border-white/10 bg-background/70 p-7 md:p-8 space-y-6">
+                    <div>
+                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Atendimento Comercial</span>
+                        <h3 class="font-headline text-3xl font-black text-white tracking-tight mb-4">Solicite um orçamento com o formulário completo.</h3>
+                        <p class="text-slate-400 font-light leading-relaxed">Direcionamos a captação para uma única entrada, com contexto mais claro sobre veículo, serviço desejado e retorno comercial.</p>
                     </div>
-                </form>
+                    <div class="pt-5 border-t border-white/10 flex flex-col gap-4">
+                        <a href="contato.html#formulario-contato" class="bg-primary text-black px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white transition-colors flex items-center justify-center min-h-[64px]">Solicitar Orçamento</a>
+                        <a href="tel:+55-21-99115-7592" class="border border-white/15 text-white px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white/5 transition-colors flex items-center justify-center min-h-[64px] whitespace-nowrap">21 99115-7592</a>
+                    </div>
+                </div>
             </div>
             <div class="lg:col-span-4 space-y-8">
                 <div class="overflow-hidden border border-white/10 bg-background">
@@ -451,9 +556,9 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 border-t border-white/10">
                     <div>
                         <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Telefones</span>
-                        <div class="space-y-3 text-slate-300">
-                            <p><a class="hover:text-white transition-colors" href="tel:+55-21-2222-4649">21 2222-4649</a></p>
-                            <p><a class="hover:text-white transition-colors" href="tel:+55-21-99416-8981">21 99416-8981</a></p>
+                        <div class="flex flex-col gap-3 text-slate-300">
+                            <a class="inline-flex items-center justify-center border border-primary/20 bg-primary/10 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-primary/20 transition-colors" href="tel:+55-21-2222-4649">21 2222-4649</a>
+                            <a class="inline-flex items-center justify-center border border-white/15 bg-white/5 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-colors" href="tel:+55-21-99416-8981">21 99416-8981</a>
                         </div>
                     </div>
                     <div>
@@ -467,6 +572,13 @@
         <div class="pt-10 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
             <a href="index.html" class="inline-flex">
                 <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo-rodape.png" alt="Shield Rio" class="h-8 w-auto object-contain">
+            </a>
+            <a href="https://www.instagram.com/shieldrioblindados?igsh=MWhxc3VycHhxdDAxcw==" target="_blank" rel="noopener noreferrer" aria-label="Acessar Instagram da Shield Rio" class="inline-flex items-center justify-center w-14 h-14 text-slate-400 hover:text-primary transition-colors duration-300">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="w-7 h-7 drop-shadow-[0_0_12px_rgba(177,197,255,0.12)]" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                    <circle cx="12" cy="12" r="4.25"></circle>
+                    <circle cx="17.5" cy="6.5" r="1"></circle>
+                </svg>
             </a>
             <p class="text-slate-500 text-[11px] uppercase tracking-[0.22em]">Shield Rio © | Todos os direitos reservados</p>
         </div>
@@ -508,7 +620,7 @@
 
             window.setTimeout(() => {
                 window.location.href = destination.href;
-            }, 320);
+            }, 240);
         });
     });
 
@@ -539,32 +651,34 @@
         }
     };
 
+    const updateTechPanel = (trigger) => {
+        const target = trigger.getAttribute('data-target');
+        const data = techData[target];
+
+        document.querySelectorAll('.tech-trigger').forEach(t => t.classList.remove('active'));
+        trigger.classList.add('active');
+
+        const content = document.getElementById('tech-content');
+        const img = document.getElementById('tech-image');
+
+        content.style.opacity = '0';
+        img.style.opacity = '0';
+
+        window.setTimeout(() => {
+            document.getElementById('tech-title').innerText = data.title;
+            document.getElementById('tech-desc').innerText = data.desc;
+            document.getElementById('tech-tag').innerText = data.tag;
+            img.src = data.img;
+
+            content.style.opacity = '1';
+            img.style.opacity = '0.7';
+        }, 300);
+    };
+
     document.querySelectorAll('.tech-trigger').forEach(trigger => {
-        trigger.addEventListener('mouseenter', () => {
-            const target = trigger.getAttribute('data-target');
-            const data = techData[target];
-            
-            // Remove active classes
-            document.querySelectorAll('.tech-trigger').forEach(t => t.classList.remove('active'));
-            trigger.classList.add('active');
-            
-            // Fade out and update
-            const content = document.getElementById('tech-content');
-            const img = document.getElementById('tech-image');
-            
-            content.style.opacity = '0';
-            img.style.opacity = '0';
-            
-            setTimeout(() => {
-                document.getElementById('tech-title').innerText = data.title;
-                document.getElementById('tech-desc').innerText = data.desc;
-                document.getElementById('tech-tag').innerText = data.tag;
-                img.src = data.img;
-                
-                content.style.opacity = '1';
-                img.style.opacity = '0.5';
-            }, 300);
-        });
+        trigger.addEventListener('mouseenter', () => updateTechPanel(trigger));
+        trigger.addEventListener('click', () => updateTechPanel(trigger));
+        trigger.addEventListener('focus', () => updateTechPanel(trigger));
     });
 </script>
 

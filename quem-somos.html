@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Quem Somos | Shield Rio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@300,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#b1c5ff",
+              "background": "#131313",
+              "surface": "#0a0a0a",
+              "primary-container": "#002a6c",
+            },
+            fontFamily: {
+              "headline": ["Manrope", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48;
+      }
+
+      .glass-nav {
+        background: #11151d;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .blueprint-bg {
+        background-image:
+          linear-gradient(rgba(177, 197, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(177, 197, 255, 0.03) 1px, transparent 1px);
+        background-size: 34px 34px;
+      }
+
+      .page-transition-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 120;
+        pointer-events: none;
+        opacity: 0;
+        transform: scale(1.03);
+        background:
+          linear-gradient(180deg, rgba(6, 8, 13, 0.84), rgba(10, 12, 18, 0.94)),
+          radial-gradient(circle at 18% 24%, rgba(177, 197, 255, 0.1), transparent 28%),
+          radial-gradient(circle at 78% 20%, rgba(0, 42, 108, 0.18), transparent 32%);
+        transition: opacity 0.34s cubic-bezier(0.22, 1, 0.36, 1), transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), backdrop-filter 0.34s ease;
+        backdrop-filter: blur(0px);
+      }
+
+      .page-transition-overlay::before {
+        content: '';
+        position: absolute;
+        inset: -12% auto auto -10%;
+        width: min(42rem, 62vw);
+        height: min(42rem, 62vw);
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(177, 197, 255, 0.18), rgba(177, 197, 255, 0.03) 44%, transparent 72%);
+        filter: blur(14px);
+        opacity: 0;
+        transform: translate3d(0, 0, 0) scale(0.94);
+        transition: opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .page-transition-overlay::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.04) 34%, rgba(177, 197, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 66%, transparent 100%);
+        opacity: 0;
+        transform: translate3d(-6%, 0, 0) scaleX(1.08);
+        transition: opacity 0.36s ease, transform 0.46s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      body.page-loading .page-transition-overlay,
+      body.page-leaving .page-transition-overlay {
+        opacity: 1;
+        transform: scale(1);
+        backdrop-filter: blur(8px);
+      }
+
+      body.page-loading .page-transition-overlay::before,
+      body.page-leaving .page-transition-overlay::before {
+        opacity: 0.95;
+        transform: translate3d(8%, -4%, 0) scale(1);
+      }
+
+      body.page-loading .page-transition-overlay::after,
+      body.page-leaving .page-transition-overlay::after {
+        opacity: 0.82;
+        transform: translate3d(0, 0, 0) scaleX(1);
+      }
+
+      header,
+      main,
+      footer {
+        transition: opacity 0.34s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.34s ease;
+        transform-origin: center top;
+      }
+
+      body.page-loading header,
+      body.page-loading main,
+      body.page-loading footer {
+        opacity: 0;
+        transform: translateY(22px) scale(0.985);
+        filter: blur(10px);
+      }
+
+      body.page-ready header,
+      body.page-ready main,
+      body.page-ready footer {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+
+      body.page-leaving header,
+      body.page-leaving main,
+      body.page-leaving footer {
+        opacity: 0;
+        transform: translateY(-10px) scale(1.01);
+        filter: blur(8px);
+      }
+
+      .institutional-panel {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background:
+          radial-gradient(circle at top left, rgba(177, 197, 255, 0.08), transparent 34%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+        transition: transform 0.28s ease, border-color 0.28s ease, background-color 0.28s ease, box-shadow 0.28s ease;
+      }
+
+      .institutional-panel:hover {
+        transform: translateY(-4px);
+        border-color: rgba(177, 197, 255, 0.24);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+      }
+
+      .brand-mark-shell {
+        position: relative;
+        min-height: 260px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background:
+          radial-gradient(circle at 50% 50%, rgba(177, 197, 255, 0.16), transparent 38%),
+          linear-gradient(180deg, rgba(8, 12, 22, 0.96), rgba(8, 10, 16, 0.92));
+      }
+
+      .brand-mark-shell::before {
+        content: '';
+        position: absolute;
+        inset: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .brand-mark-shell::after {
+        content: '';
+        position: absolute;
+        inset: auto -10% -28% 40%;
+        height: 220px;
+        background: radial-gradient(circle, rgba(177, 197, 255, 0.14), transparent 60%);
+      }
+
+      .brand-mark-shell img {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: min(72%, 320px);
+        height: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 18px 35px rgba(0, 0, 0, 0.3));
+        transition: transform 0.35s ease, opacity 0.35s ease;
+      }
+
+      .institutional-panel:hover .brand-mark-shell img {
+        transform: scale(1.03);
+        opacity: 1;
+      }
+
+      .principle-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 460px;
+        isolation: isolate;
+      }
+
+      .principle-card::after {
+        content: '';
+        position: absolute;
+        inset: auto 0 0 0;
+        height: 1px;
+        background: linear-gradient(to right, rgba(177, 197, 255, 0.24), rgba(177, 197, 255, 0));
+        opacity: 0.65;
+      }
+
+      .principle-media {
+        position: absolute;
+        inset: 0;
+      }
+
+      .principle-symbol {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(177, 197, 255, 0.98);
+        transform: scale(1);
+        transition: transform 0.38s ease, opacity 0.3s ease;
+        opacity: 1;
+      }
+
+      .principle-symbol::before {
+        content: '';
+        position: absolute;
+        width: min(76%, 300px);
+        aspect-ratio: 1;
+        border: 1px solid rgba(177, 197, 255, 0.18);
+        background: radial-gradient(circle, rgba(177, 197, 255, 0.14), rgba(177, 197, 255, 0.04) 48%, transparent 72%);
+        transform: rotate(45deg);
+      }
+
+      .principle-symbol::after {
+        content: '';
+        position: absolute;
+        inset: auto 12% 12% 12%;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(177, 197, 255, 0.24), transparent);
+      }
+
+      .principle-symbol .material-symbols-outlined {
+        position: relative;
+        z-index: 1;
+        font-size: clamp(6rem, 11vw, 8.5rem);
+        font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 48;
+        text-shadow: 0 0 32px rgba(177, 197, 255, 0.22);
+      }
+
+      .principle-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(9, 12, 18, 0.16) 0%, rgba(8, 10, 16, 0.46) 46%, rgba(6, 8, 12, 0.88) 100%),
+          radial-gradient(circle at top left, rgba(177, 197, 255, 0.14), transparent 34%);
+        transition: background 0.3s ease;
+      }
+
+      .principle-chrome {
+        position: absolute;
+        inset: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        pointer-events: none;
+      }
+
+      .principle-shell {
+        position: relative;
+        z-index: 1;
+        min-height: 460px;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        padding: 2rem;
+      }
+
+      .principle-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .principle-index {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.5rem;
+        height: 3.5rem;
+        border: 1px solid rgba(177, 197, 255, 0.16);
+        background: rgba(177, 197, 255, 0.08);
+        color: #b1c5ff;
+        font-family: Manrope, sans-serif;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        backdrop-filter: blur(6px);
+      }
+
+      .principle-chip {
+        color: rgba(177, 197, 255, 0.95);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+
+      .principle-stage {
+        position: relative;
+        min-height: 100%;
+      }
+
+      .principle-front,
+      .principle-back {
+        position: absolute;
+        inset: auto 0 0 0;
+        transition: opacity 0.26s ease, transform 0.3s ease;
+      }
+
+      .principle-front {
+        display: flex;
+        align-items: end;
+        min-height: 240px;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .principle-front-title {
+        color: rgba(255, 255, 255, 0.86);
+        font-family: Manrope, sans-serif;
+        font-size: clamp(1.9rem, 2.2vw, 2.6rem);
+        font-weight: 700;
+        line-height: 1.02;
+        letter-spacing: -0.04em;
+        max-width: 72%;
+        text-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+      }
+
+      .principle-back {
+        opacity: 0;
+        transform: translateY(18px);
+        pointer-events: none;
+      }
+
+      .principle-card:hover .principle-front {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      .principle-card:hover .principle-back {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .principle-card:hover .principle-symbol {
+        transform: scale(1.08);
+        opacity: 0.92;
+      }
+
+      .principle-card:hover .principle-overlay {
+        background:
+          linear-gradient(180deg, rgba(8, 11, 18, 0.2) 0%, rgba(8, 10, 16, 0.44) 42%, rgba(6, 8, 12, 0.95) 100%),
+          radial-gradient(circle at top left, rgba(177, 197, 255, 0.2), transparent 34%);
+      }
+
+      .principle-back-meta {
+        display: block;
+        margin-bottom: 0.85rem;
+        color: rgba(177, 197, 255, 0.95);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+
+      .principle-back-copy {
+        color: rgb(226 232 240);
+        font-size: 0.94rem;
+        font-weight: 300;
+        line-height: 1.75;
+        max-width: 28ch;
+      }
+
+      .principle-values {
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .principle-values li {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 0.75rem;
+        align-items: start;
+      }
+
+      .principle-bullet {
+        width: 0.45rem;
+        height: 0.45rem;
+        margin-top: 0.42rem;
+        border-radius: 999px;
+        background: #b1c5ff;
+        box-shadow: 0 0 14px rgba(177, 197, 255, 0.35);
+      }
+
+      @media (max-width: 767px) {
+        .principle-front,
+        .principle-back {
+          position: static;
+          opacity: 1;
+          transform: none;
+          pointer-events: auto;
+        }
+
+        .principle-front {
+          min-height: auto;
+          margin-top: 6rem;
+          margin-bottom: 1.25rem;
+        }
+
+        .principle-front-title {
+          max-width: none;
+        }
+
+        .principle-back {
+          display: block;
+        }
+
+        .principle-card:hover .principle-front,
+        .principle-card:hover .principle-back {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      .panel-topline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(to right, rgba(177, 197, 255, 0.45), rgba(177, 197, 255, 0));
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .page-transition-overlay,
+        .page-transition-overlay::before,
+        .page-transition-overlay::after,
+        header,
+        main,
+        footer {
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+</head>
+<body class="page-loading bg-background text-slate-300 font-body antialiased selection:bg-primary selection:text-black">
+
+<div class="page-transition-overlay" aria-hidden="true"></div>
+
+<header class="fixed top-0 w-full flex flex-col z-50">
+    <div class="bg-[#001946] px-4 md:px-8 py-2 flex flex-wrap justify-center md:justify-end items-center gap-x-4 gap-y-2 text-[9px] md:text-[10px] text-center md:text-left font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
+        <a href="tel:+55-21-99766-6960" class="flex items-center gap-2 hover:text-white transition-colors">
+            <span class="material-symbols-outlined text-[14px]">build</span>
+            <span>Assistência Técnica 21 99766-6960</span>
+        </a>
+        <a href="tel:+55-21-99115-7592" class="flex items-center gap-2 hover:text-white transition-colors">
+            <span class="material-symbols-outlined text-[14px]">support_agent</span>
+            <span>Comercial 21 99115-7592</span>
+        </a>
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[14px]">schedule</span>
+            <span>Segunda à Sexta: 08h00 às 18h00</span>
+        </div>
+    </div>
+    <nav class="glass-nav px-4 md:px-16 py-4 md:py-5 flex justify-between items-center gap-4">
+        <a href="index.html">
+            <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="h-10 md:h-12 w-auto object-contain">
+        </a>
+        <div class="hidden md:flex items-center gap-8 lg:gap-10">
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
+            <a class="text-white font-bold border-b-2 border-primary pb-1 text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
+            <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="contato.html">Contato</a>
+        </div>
+        <a href="contato.html#formulario-contato" class="hidden md:inline-flex bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all items-center">
+            Solicitar Orçamento
+        </a>
+        <details class="md:hidden relative">
+            <summary class="list-none [&::-webkit-details-marker]:hidden inline-flex items-center justify-center w-11 h-11 border border-white/10 text-white cursor-pointer">
+                <span class="material-symbols-outlined">menu</span>
+            </summary>
+            <div class="absolute right-0 top-full mt-3 w-[min(18rem,calc(100vw-2rem))] border border-white/10 bg-[#11151d] shadow-2xl p-4 flex flex-col gap-3">
+                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
+                <a class="text-white font-bold text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
+                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
+                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
+                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="contato.html">Contato</a>
+                <a href="contato.html#formulario-contato" class="mt-2 bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-5 py-3 text-center font-bold text-xs uppercase tracking-widest">Solicitar Orçamento</a>
+            </div>
+        </details>
+    </nav>
+</header>
+
+<main>
+    <section class="relative min-h-[68vh] flex items-end overflow-hidden pt-36 pb-16 md:pb-20 bg-[#0d1119] border-b border-white/5">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-[linear-gradient(180deg,#0b1018_0%,#101620_48%,#131313_100%)]"></div>
+            <div class="absolute inset-0 blueprint-bg opacity-30"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(177,197,255,0.15),transparent_24%),radial-gradient(circle_at_78%_20%,rgba(0,42,108,0.2),transparent_26%),radial-gradient(circle_at_50%_120%,rgba(177,197,255,0.08),transparent_34%)]"></div>
+        </div>
+
+        <div class="relative z-10 px-8 md:px-24 w-full">
+            <div class="max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+                <div class="lg:col-span-7">
+                    <span class="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-sm border border-white/10 mb-8">
+                        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        <span class="text-[10px] font-bold tracking-[0.3em] text-primary uppercase">Institucional Shield Rio</span>
+                    </span>
+                    <h1 class="font-headline text-4xl sm:text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8 uppercase">Quem Somos</h1>
+                    <p class="text-lg md:text-xl text-slate-300 max-w-3xl font-light leading-relaxed">A Shield Rio é uma blindadora que nasceu da soma das vocações de profissionais com larga experiência no segmento automotivo e nas áreas industrial e de engenharia mecânica. Nossa principal motivação é oferecer ao consumidor do Rio de Janeiro um serviço de blindagem qualificado e diferenciado para que ele não precise realizar o serviço em outro estado.</p>
+                </div>
+                <div class="lg:col-span-5">
+                    <div class="institutional-panel relative panel-topline p-4 md:p-5 overflow-hidden max-w-xl lg:ml-auto">
+                        <div class="brand-mark-shell">
+                            <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Logo Shield Rio" class="opacity-95"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 md:px-24 bg-[#0f1218] border-t border-white/5 overflow-hidden">
+        <div class="max-w-6xl mx-auto space-y-8">
+            <div class="max-w-4xl">
+                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Essência da Marca</span>
+                <h2 class="font-headline text-4xl md:text-6xl font-black text-white tracking-tight leading-none mb-6">Missão, Visão e Valores</h2>
+                <p class="text-slate-300 font-light leading-relaxed text-lg max-w-3xl">Nossa atuação é guiada por qualidade, transparência, melhoria contínua e compromisso com uma blindagem automotiva à altura do que o cliente espera de um serviço premium.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <article class="institutional-panel principle-card relative panel-topline">
+                    <div class="principle-media">
+                        <div class="principle-symbol" aria-hidden="true">
+                            <span class="material-symbols-outlined">shield</span>
+                        </div>
+                        <div class="principle-overlay"></div>
+                        <div class="principle-chrome"></div>
+                    </div>
+                    <div class="principle-shell">
+                        <div class="principle-top">
+                            <span class="principle-index">01</span>
+                            <span class="principle-chip">Essência</span>
+                        </div>
+                        <div class="principle-stage">
+                            <div class="principle-front">
+                                <h3 class="principle-front-title">Missão</h3>
+                            </div>
+                            <div class="principle-back">
+                                <span class="principle-back-meta">Missão</span>
+                                <p class="principle-back-copy">Oferecer aos clientes a mais qualificada, moderna e segura blindagem automotiva do mercado, por um preço competitivo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="institutional-panel principle-card relative panel-topline">
+                    <div class="principle-media">
+                        <div class="principle-symbol" aria-hidden="true">
+                            <span class="material-symbols-outlined">track_changes</span>
+                        </div>
+                        <div class="principle-overlay"></div>
+                        <div class="principle-chrome"></div>
+                    </div>
+                    <div class="principle-shell">
+                        <div class="principle-top">
+                            <span class="principle-index">02</span>
+                            <span class="principle-chip">Direção</span>
+                        </div>
+                        <div class="principle-stage">
+                            <div class="principle-front">
+                                <h3 class="principle-front-title">Visão</h3>
+                            </div>
+                            <div class="principle-back">
+                                <span class="principle-back-meta">Visão</span>
+                                <p class="principle-back-copy">Tornar-se a mais qualificada blindadora automotiva do Brasil, seguindo a metodologia de melhoria contínua <span class="text-primary font-semibold">Lean 6 Sigma</span> aplicada à gestão corporativa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="institutional-panel principle-card relative panel-topline">
+                    <div class="principle-media">
+                        <div class="principle-symbol" aria-hidden="true">
+                            <span class="material-symbols-outlined">diamond</span>
+                        </div>
+                        <div class="principle-overlay"></div>
+                        <div class="principle-chrome"></div>
+                    </div>
+                    <div class="principle-shell">
+                        <div class="principle-top">
+                            <span class="principle-index">03</span>
+                            <span class="principle-chip">Base</span>
+                        </div>
+                        <div class="principle-stage">
+                            <div class="principle-front">
+                                <h3 class="principle-front-title">Valores</h3>
+                            </div>
+                            <div class="principle-back">
+                                <span class="principle-back-meta">Valores</span>
+                                <ul class="principle-values">
+                                    <li>
+                                        <span class="principle-bullet"></span>
+                                        <p class="principle-back-copy">Transparência nas relações comerciais com clientes e fornecedores.</p>
+                                    </li>
+                                    <li>
+                                        <span class="principle-bullet"></span>
+                                        <p class="principle-back-copy">Atendimento rápido e personalizado, focado na fidelização de clientes.</p>
+                                    </li>
+                                    <li>
+                                        <span class="principle-bullet"></span>
+                                        <p class="principle-back-copy">Qualidade, prazo e preços competitivos, garantidos pela utilização da metodologia Lean 6 Sigma.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    const transitionLinks = document.querySelectorAll('a[href$=".html"]');
+
+    const enterPage = () => {
+        document.body.classList.remove('page-loading', 'page-leaving');
+        document.body.classList.add('page-ready');
+    };
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(enterPage);
+    });
+
+    window.addEventListener('pageshow', enterPage);
+
+    transitionLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            const href = link.getAttribute('href');
+            const isModifiedClick = event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+
+            if (!href || isModifiedClick || href.startsWith('#') || link.target === '_blank') {
+                return;
+            }
+
+            const destination = new URL(href, window.location.href);
+
+            if (destination.origin !== window.location.origin || destination.pathname === window.location.pathname) {
+                return;
+            }
+
+            event.preventDefault();
+            document.body.classList.remove('page-ready');
+            document.body.classList.add('page-leaving');
+
+            window.setTimeout(() => {
+                window.location.href = destination.href;
+            }, 240);
+        });
+    });
+</script>
+
+</body>
+</html>
