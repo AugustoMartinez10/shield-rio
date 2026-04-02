@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Contato e Endereco | Shield Rio</title>
+    <title>Contato e Endereço | Shield Rio</title>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@300,0..1&display=swap" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -166,6 +166,60 @@
         gap: 2rem;
       }
 
+      .contact-status {
+        display: none;
+        margin-top: 1.5rem;
+        padding: 1rem 1.1rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(11, 14, 23, 0.92);
+        color: #e2e8f0;
+      }
+
+      .contact-status.is-visible {
+        display: block;
+      }
+
+      .contact-status.is-success {
+        border-color: rgba(177, 197, 255, 0.3);
+        background: rgba(177, 197, 255, 0.08);
+      }
+
+      .contact-status.is-error {
+        border-color: rgba(248, 113, 113, 0.35);
+        background: rgba(127, 29, 29, 0.18);
+      }
+
+      .contact-field-error {
+        display: none;
+        margin-top: 0.65rem;
+        color: #fca5a5;
+        font-size: 0.8rem;
+        line-height: 1.4;
+      }
+
+      .contact-field-error.is-visible {
+        display: block;
+      }
+
+      .contact-field.is-invalid,
+      .contact-checkbox.is-invalid,
+      .contact-select.is-invalid {
+        border-color: rgba(248, 113, 113, 0.85) !important;
+        box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.25);
+      }
+
+      .sr-only-field {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
       .location-stack {
         display: grid;
         gap: 1.5rem;
@@ -318,6 +372,25 @@
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 1rem;
         transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+      }
+
+      .contact-select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        color-scheme: dark;
+        padding-right: 4.25rem;
+        background-image:
+          linear-gradient(180deg, rgba(8, 11, 18, 0.95), rgba(10, 10, 10, 0.92)),
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%23b1c5ff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat, no-repeat;
+        background-position: center, right 1.4rem center;
+        background-size: auto, 1rem;
+      }
+
+      .contact-select option {
+        color: #e2e8f0;
+        background: #0b0e17;
       }
 
       .contact-field:focus {
@@ -494,7 +567,7 @@
         <div class="relative z-10 px-8 md:px-24 w-full">
             <div class="max-w-5xl">
                 <span class="eyebrow-chip mb-6">Contato Shield Rio</span>
-                <h1 class="font-headline text-4xl sm:text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8 uppercase">Contato e Endereco.</h1>
+                <h1 class="font-headline text-4xl sm:text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8 uppercase">Contato e Endereço.</h1>
                 <p class="text-lg md:text-xl text-slate-300 max-w-3xl font-light leading-relaxed">Telefone, localização e um canal direto para solicitar atendimento com a equipe da Shield Rio.</p>
             </div>
         </div>
@@ -602,18 +675,44 @@
                     <p class="form-note text-slate-300 text-sm leading-relaxed">Um retorno pensado para entender o contexto do veículo, o serviço desejado e o melhor encaminhamento comercial.</p>
                 </div>
 
-                <form class="grid grid-cols-1 gap-5 mt-auto">
+                <div id="contact-status" class="contact-status text-sm leading-relaxed" aria-live="polite"></div>
+                <form id="contact-form" class="grid grid-cols-1 gap-5 mt-auto" novalidate>
+                    <div class="sr-only-field" aria-hidden="true">
+                        <label for="website">Website</label>
+                        <input id="website" name="website" type="text" autocomplete="off" tabindex="-1"/>
+                    </div>
                     <label class="block">
                         <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Nome completo</span>
-                        <input class="contact-field w-full text-white placeholder:text-slate-600 px-5 py-4 outline-none" type="text" placeholder="Seu nome"/>
+                        <input class="contact-field w-full text-white placeholder:text-slate-600 px-5 py-4 outline-none" id="name" name="name" type="text" placeholder="Seu nome" autocomplete="name"/>
+                        <span class="contact-field-error" data-error-for="name"></span>
                     </label>
                     <label class="block">
                         <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">E-mail</span>
-                        <input class="contact-field w-full text-white placeholder:text-slate-600 px-5 py-4 outline-none" type="email" placeholder="voce@exemplo.com"/>
+                        <input class="contact-field w-full text-white placeholder:text-slate-600 px-5 py-4 outline-none" id="email" name="email" type="email" placeholder="voce@exemplo.com" autocomplete="email"/>
+                        <span class="contact-field-error" data-error-for="email"></span>
+                    </label>
+                    <label class="block">
+                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Telefone</span>
+                        <input class="contact-field w-full text-white placeholder:text-slate-600 px-5 py-4 outline-none" id="phone" name="phone" type="text" placeholder="(21) 99999-9999" autocomplete="tel"/>
+                        <span class="contact-field-error" data-error-for="phone"></span>
+                    </label>
+                    <label class="block">
+                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Tipo de consulta</span>
+                        <select class="contact-field contact-select w-full text-white px-5 py-4 outline-none" id="serviceInterest" name="serviceInterest">
+                            <option value="">Selecione se desejar</option>
+                            <option value="Blindagem">Blindagem</option>
+                            <option value="Reparo e manutencao">Reparo e manutenção</option>
+                            <option value="Acessorios">Acessórios</option>
+                            <option value="Vistoria e laudo">Vistoria e laudo</option>
+                            <option value="Atendimento comercial">Atendimento comercial</option>
+                            <option value="Consulta geral">Consulta geral</option>
+                        </select>
+                        <span class="contact-field-error" data-error-for="serviceInterest"></span>
                     </label>
                     <label class="block">
                         <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Mensagem</span>
-                        <textarea class="contact-field w-full min-h-[180px] text-white placeholder:text-slate-600 px-5 py-4 outline-none resize-y" placeholder="Conte brevemente o que você precisa"></textarea>
+                        <textarea class="contact-field w-full min-h-[180px] text-white placeholder:text-slate-600 px-5 py-4 outline-none resize-y" id="message" name="message" placeholder="Conte brevemente o que você precisa" maxlength="3000"></textarea>
+                        <span class="contact-field-error" data-error-for="message"></span>
                     </label>
                     <div class="pt-5 border-t border-white/10">
                         <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Deseja receber e-mails informativos e promocionais da Shield Rio?</span>
@@ -622,8 +721,15 @@
                             <label class="inline-flex items-center gap-2"><input type="radio" name="receber-informativos" class="border-white/20 bg-background text-primary focus:ring-primary/30"/> <span>Não</span></label>
                         </div>
                     </div>
+                    <label class="block">
+                        <span class="inline-flex items-start gap-3 text-slate-300 leading-relaxed">
+                            <input class="contact-checkbox mt-1 border-white/20 bg-background text-primary focus:ring-primary/30" id="privacyConsent" name="privacyConsent" type="checkbox"/>
+                            <span>Li e aceito a <a href="politica-de-privacidade.html" class="text-primary underline underline-offset-4 hover:text-white transition-colors">Política de Privacidade</a>.</span>
+                        </span>
+                        <span class="contact-field-error" data-error-for="privacyConsent"></span>
+                    </label>
                     <div class="pt-2 flex justify-start">
-                        <button class="bg-gradient-to-br from-primary via-[#c8d8ff] to-[#4a72d9] text-[#001946] px-10 py-4 rounded-full font-bold text-xs uppercase tracking-[0.28em] hover:brightness-110 transition-all inline-flex items-center justify-center shadow-[0_18px_50px_rgba(177,197,255,0.18)]" type="submit">Enviar</button>
+                        <button id="contact-submit" class="bg-gradient-to-br from-primary via-[#c8d8ff] to-[#4a72d9] text-[#001946] px-10 py-4 rounded-full font-bold text-xs uppercase tracking-[0.28em] hover:brightness-110 transition-all inline-flex items-center justify-center shadow-[0_18px_50px_rgba(177,197,255,0.18)] disabled:opacity-70 disabled:cursor-wait" type="submit">Enviar</button>
                     </div>
                 </form>
             </div>
@@ -643,13 +749,20 @@
                 <circle cx="17.5" cy="6.5" r="1"></circle>
             </svg>
         </a>
-        <p class="text-slate-500 text-[11px] uppercase tracking-[0.22em]">Shield Rio © | Todos os direitos reservados</p>
+        <div class="flex flex-col items-start md:items-end gap-2">
+            <a href="politica-de-privacidade.html" class="text-slate-400 hover:text-white transition-colors text-[11px] uppercase tracking-[0.22em]">Política de Privacidade</a>
+            <p class="text-slate-500 text-[11px] uppercase tracking-[0.22em]">Shield Rio © | Todos os direitos reservados</p>
+        </div>
     </div>
 </footer>
 
 <script>
     const heroVideo = document.querySelector('video');
     const transitionLinks = document.querySelectorAll('a[href$=".html"]');
+    const contactForm = document.querySelector('#contact-form');
+    const contactStatus = document.querySelector('#contact-status');
+    const contactSubmit = document.querySelector('#contact-submit');
+    const formFieldNames = ['name', 'email', 'phone', 'serviceInterest', 'message', 'privacyConsent'];
 
     if (heroVideo) {
         heroVideo.playbackRate = 0.85;
@@ -690,6 +803,176 @@
             }, 240);
         });
     });
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            clearFormErrors();
+            hideStatus();
+
+            const formData = new FormData(contactForm);
+            const payload = {
+                name: String(formData.get('name') || '').trim(),
+                email: String(formData.get('email') || '').trim(),
+                phone: String(formData.get('phone') || '').trim(),
+                serviceInterest: String(formData.get('serviceInterest') || '').trim(),
+                message: String(formData.get('message') || '').trim(),
+                privacyConsent: contactForm.querySelector('#privacyConsent')?.checked === true,
+                website: String(formData.get('website') || '').trim(),
+            };
+            const fieldErrors = validateContactPayload(payload);
+
+            if (Object.keys(fieldErrors).length > 0) {
+                showFieldErrors(fieldErrors);
+                return;
+            }
+
+            setSubmittingState(true);
+
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
+                });
+                const result = await response.json();
+
+                if (!response.ok) {
+                    if (result.fieldErrors) {
+                        showFieldErrors(result.fieldErrors);
+                    }
+
+                    showStatus(result.message || 'Não foi possível enviar agora. Tente novamente em instantes.', 'error');
+                    return;
+                }
+
+                contactForm.reset();
+                showStatus(result.message || 'Mensagem enviada com sucesso. Nossa equipe entrará em contato em breve.', 'success');
+                contactStatus?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } catch (_error) {
+                showStatus('Não foi possível enviar agora. Tente novamente em instantes.', 'error');
+            } finally {
+                setSubmittingState(false);
+            }
+        });
+    }
+
+    function validateContactPayload(payload) {
+        const errors = {};
+
+        if (!payload.name) {
+            errors.name = 'Informe seu nome completo.';
+        }
+
+        if (!payload.email) {
+            errors.email = 'Informe seu e-mail.';
+        } else if (!isValidEmail(payload.email)) {
+            errors.email = 'Informe um e-mail válido.';
+        }
+
+        if (payload.phone && !isValidPhone(payload.phone)) {
+            errors.phone = 'Informe um telefone válido ou deixe este campo em branco.';
+        }
+
+        if (!payload.message) {
+            errors.message = 'Escreva sua mensagem.';
+        } else if (payload.message.length > 3000) {
+            errors.message = 'Sua mensagem esta muito longa. Tente resumir um pouco.';
+        }
+
+        if (!payload.privacyConsent) {
+            errors.privacyConsent = 'Você precisa aceitar a Política de Privacidade para continuar.';
+        }
+
+        return errors;
+    }
+
+    function isValidEmail(email) {
+        if (email.length < 6 || email.length > 254 || email.includes('..')) {
+            return false;
+        }
+
+        const parts = email.toLowerCase().split('@');
+
+        if (parts.length !== 2) {
+            return false;
+        }
+
+        const [localPart, domain] = parts;
+
+        if (!localPart || !domain || localPart.length > 64) {
+            return false;
+        }
+
+        if (!domain.includes('.') || domain.startsWith('.') || domain.endsWith('.')) {
+            return false;
+        }
+
+        return /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)+$/i.test(email);
+    }
+
+    function isValidPhone(phone) {
+        const digits = phone.replace(/\D/g, '');
+        return digits.length >= 8 && digits.length <= 15;
+    }
+
+    function clearFormErrors() {
+        formFieldNames.forEach((fieldName) => {
+            const errorElement = document.querySelector(`[data-error-for="${fieldName}"]`);
+            const field = contactForm?.querySelector(`[name="${fieldName}"]`);
+
+            if (errorElement) {
+                errorElement.textContent = '';
+                errorElement.classList.remove('is-visible');
+            }
+
+            field?.classList.remove('is-invalid');
+        });
+    }
+
+    function showFieldErrors(errors) {
+        Object.entries(errors).forEach(([fieldName, message]) => {
+            const errorElement = document.querySelector(`[data-error-for="${fieldName}"]`);
+            const field = contactForm?.querySelector(`[name="${fieldName}"]`);
+
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.classList.add('is-visible');
+            }
+
+            field?.classList.add('is-invalid');
+        });
+    }
+
+    function setSubmittingState(isSubmitting) {
+        if (!contactSubmit) {
+            return;
+        }
+
+        contactSubmit.disabled = isSubmitting;
+        contactSubmit.textContent = isSubmitting ? 'Enviando...' : 'Enviar';
+    }
+
+    function hideStatus() {
+        if (!contactStatus) {
+            return;
+        }
+
+        contactStatus.textContent = '';
+        contactStatus.classList.remove('is-visible', 'is-success', 'is-error');
+    }
+
+    function showStatus(message, variant) {
+        if (!contactStatus) {
+            return;
+        }
+
+        contactStatus.textContent = message;
+        contactStatus.classList.remove('is-success', 'is-error');
+        contactStatus.classList.add('is-visible', variant === 'success' ? 'is-success' : 'is-error');
+    }
 </script>
 </body>
 </html>
