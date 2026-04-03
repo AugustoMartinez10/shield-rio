@@ -25,15 +25,48 @@
         },
       };
     </script>
+    <style>
+      @media (max-width: 767px) {
+        .mobile-legal-shell {
+          padding: 2rem 1.25rem 3rem;
+        }
+
+        .mobile-legal-card {
+          padding: 1.4rem;
+          border-radius: 1.5rem;
+        }
+
+        .mobile-legal-back {
+          min-height: 3rem;
+          align-items: center;
+          letter-spacing: 0.16em;
+        }
+
+        .mobile-legal-title {
+          font-size: clamp(2.2rem, 11vw, 3rem);
+          line-height: 0.98;
+        }
+
+        .mobile-legal-copy {
+          font-size: 0.98rem;
+          line-height: 1.72;
+        }
+
+        .mobile-legal-copy section {
+          padding-top: 1rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+      }
+    </style>
 </head>
 <body class="bg-background text-slate-300 font-body antialiased selection:bg-primary selection:text-black">
-    <main class="min-h-screen px-8 py-16 md:px-24 bg-background">
+    <main class="mobile-legal-shell min-h-screen px-8 py-16 md:px-24 bg-background">
         <div class="max-w-4xl mx-auto">
-            <a href="contato.html" class="inline-flex items-center text-primary text-xs uppercase tracking-[0.28em] font-bold hover:text-white transition-colors">Voltar para Contato</a>
-            <div class="mt-10 border border-white/10 bg-surface/80 p-8 md:p-12">
+            <a href="contato.html" class="mobile-legal-back inline-flex items-center text-primary text-xs uppercase tracking-[0.28em] font-bold hover:text-white transition-colors">Voltar para Contato</a>
+            <div class="mobile-legal-card mt-10 border border-white/10 bg-surface/80 p-8 md:p-12">
                 <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-4">Shield Rio</span>
-                <h1 class="font-headline text-4xl md:text-5xl font-black tracking-tight text-white mb-6">Política de Privacidade</h1>
-                <div class="space-y-8 text-slate-300 leading-relaxed">
+                <h1 class="mobile-legal-title font-headline text-4xl md:text-5xl font-black tracking-tight text-white mb-6">Política de Privacidade</h1>
+                <div class="mobile-legal-copy space-y-8 text-slate-300 leading-relaxed">
                     <section>
                         <h2 class="text-white font-bold text-lg mb-3">1. Quais dados coletamos</h2>
                         <p>Quando você envia o formulário de contato, podemos receber seu nome, e-mail, telefone, tipo de consulta e a mensagem preenchida por você.</p>

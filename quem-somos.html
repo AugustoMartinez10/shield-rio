@@ -450,6 +450,146 @@
           transition-duration: 0.01ms !important;
         }
       }
+
+      @media (max-width: 767px) {
+        .page-transition-overlay {
+          display: none;
+        }
+
+        .mobile-topbar {
+          justify-content: space-between;
+          gap: 0.5rem;
+          padding: 0.55rem 1rem;
+          font-size: 0.66rem;
+          letter-spacing: 0.14em;
+        }
+
+        .mobile-topbar > :last-child {
+          width: 100%;
+          justify-content: center;
+          padding-top: 0.25rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .mobile-nav {
+          padding: 0.9rem 1rem;
+        }
+
+        .mobile-nav-logo {
+          height: 2rem;
+        }
+
+        .mobile-menu {
+          position: static;
+        }
+
+        .mobile-menu-summary {
+          width: 3rem;
+          height: 3rem;
+          border-radius: 999px;
+          background: rgba(177, 197, 255, 0.06);
+          border-color: rgba(177, 197, 255, 0.18);
+        }
+
+        .mobile-menu-panel {
+          left: 1rem;
+          right: 1rem;
+          top: calc(100% + 0.85rem);
+          width: auto;
+          padding: 1rem;
+          border-radius: 1.5rem;
+          background: linear-gradient(180deg, rgba(17, 21, 29, 0.98), rgba(10, 14, 22, 0.98));
+          backdrop-filter: blur(18px);
+        }
+
+        .mobile-menu-link,
+        .mobile-menu-cta,
+        .mobile-cta {
+          min-height: 3.25rem;
+          padding: 0.9rem 1rem;
+          border-radius: 1rem;
+          letter-spacing: 0.16em;
+          width: 100%;
+          justify-content: center;
+        }
+
+        .mobile-menu-link {
+          display: flex;
+          align-items: center;
+          background: rgba(255, 255, 255, 0.025);
+        }
+
+        .mobile-shell {
+          padding-left: 1.25rem;
+          padding-right: 1.25rem;
+        }
+
+        .mobile-hero {
+          min-height: auto;
+          padding-top: 9.75rem;
+          padding-bottom: 3.5rem;
+        }
+
+        .mobile-label,
+        .principle-chip,
+        .principle-back-meta {
+          font-size: 0.68rem !important;
+          letter-spacing: 0.18em !important;
+        }
+
+        .mobile-title {
+          font-size: clamp(2.25rem, 11vw, 3.2rem) !important;
+          line-height: 0.98 !important;
+        }
+
+        .mobile-copy {
+          font-size: 1rem !important;
+          line-height: 1.72 !important;
+          color: rgb(203 213 225 / 0.9) !important;
+        }
+
+        .mobile-brand-panel {
+          max-width: none;
+        }
+
+        .brand-mark-shell {
+          min-height: 190px;
+        }
+
+        .mobile-principles {
+          gap: 1rem;
+        }
+
+        .principle-card,
+        .principle-shell {
+          min-height: auto;
+        }
+
+        .principle-shell {
+          padding: 1.35rem;
+          gap: 1.2rem;
+        }
+
+        .principle-front {
+          margin-top: 4rem;
+          margin-bottom: 0.85rem;
+        }
+
+        .principle-symbol .material-symbols-outlined {
+          font-size: 4.8rem;
+        }
+
+        .principle-front-title {
+          max-width: none;
+          font-size: 2rem;
+        }
+
+        .principle-back-copy {
+          max-width: none;
+          font-size: 0.98rem;
+          line-height: 1.7;
+        }
+      }
     </style>
 </head>
 <body class="page-loading bg-background text-slate-300 font-body antialiased selection:bg-primary selection:text-black">
@@ -457,7 +597,7 @@
 <div class="page-transition-overlay" aria-hidden="true"></div>
 
 <header class="fixed top-0 w-full flex flex-col z-50">
-    <div class="bg-[#001946] px-4 md:px-8 py-2 flex flex-wrap justify-center md:justify-end items-center gap-x-4 gap-y-2 text-[9px] md:text-[10px] text-center md:text-left font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
+    <div class="mobile-topbar bg-[#001946] px-4 md:px-8 py-2 flex flex-wrap justify-center md:justify-end items-center gap-x-4 gap-y-2 text-[9px] md:text-[10px] text-center md:text-left font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
         <a href="tel:+55-21-99766-6960" class="flex items-center gap-2 hover:text-white transition-colors">
             <span class="material-symbols-outlined text-[14px]">build</span>
             <span>Assistência Técnica 21 99766-6960</span>
@@ -471,9 +611,9 @@
             <span>Segunda à Sexta: 08h00 às 18h00</span>
         </div>
     </div>
-    <nav class="glass-nav px-4 md:px-16 py-4 md:py-5 flex justify-between items-center gap-4">
+    <nav class="mobile-nav glass-nav px-4 md:px-16 py-4 md:py-5 flex justify-between items-center gap-4">
         <a href="index.html">
-            <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="h-10 md:h-12 w-auto object-contain">
+            <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="mobile-nav-logo h-10 md:h-12 w-auto object-contain">
         </a>
         <div class="hidden md:flex items-center gap-8 lg:gap-10">
             <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
@@ -485,42 +625,42 @@
         <a href="contato.html#formulario-contato" class="hidden md:inline-flex bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all items-center">
             Solicitar Orçamento
         </a>
-        <details class="md:hidden relative">
-            <summary class="list-none [&::-webkit-details-marker]:hidden inline-flex items-center justify-center w-11 h-11 border border-white/10 text-white cursor-pointer">
+        <details class="mobile-menu md:hidden relative">
+            <summary class="mobile-menu-summary list-none [&::-webkit-details-marker]:hidden inline-flex items-center justify-center w-11 h-11 border border-white/10 text-white cursor-pointer">
                 <span class="material-symbols-outlined">menu</span>
             </summary>
-            <div class="absolute right-0 top-full mt-3 w-[min(18rem,calc(100vw-2rem))] border border-white/10 bg-[#11151d] shadow-2xl p-4 flex flex-col gap-3">
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
-                <a class="text-white font-bold text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="contato.html">Contato</a>
-                <a href="contato.html#formulario-contato" class="mt-2 bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-5 py-3 text-center font-bold text-xs uppercase tracking-widest">Solicitar Orçamento</a>
+            <div class="mobile-menu-panel absolute right-0 top-full mt-3 w-[min(18rem,calc(100vw-2rem))] border border-white/10 bg-[#11151d] shadow-2xl p-4 flex flex-col gap-3">
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
+                <a class="mobile-menu-link text-white font-bold text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="contato.html">Contato</a>
+                <a href="contato.html#formulario-contato" class="mobile-menu-cta mt-2 bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-5 py-3 text-center font-bold text-xs uppercase tracking-widest">Solicitar Orçamento</a>
             </div>
         </details>
     </nav>
 </header>
 
 <main>
-    <section class="relative min-h-[68vh] flex items-end overflow-hidden pt-36 pb-16 md:pb-20 bg-[#0d1119] border-b border-white/5">
+    <section class="mobile-hero relative min-h-[68vh] flex items-end overflow-hidden pt-36 pb-16 md:pb-20 bg-[#0d1119] border-b border-white/5">
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-[linear-gradient(180deg,#0b1018_0%,#101620_48%,#131313_100%)]"></div>
             <div class="absolute inset-0 blueprint-bg opacity-30"></div>
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_24%,rgba(177,197,255,0.15),transparent_24%),radial-gradient(circle_at_78%_20%,rgba(0,42,108,0.2),transparent_26%),radial-gradient(circle_at_50%_120%,rgba(177,197,255,0.08),transparent_34%)]"></div>
         </div>
 
-        <div class="relative z-10 px-8 md:px-24 w-full">
+        <div class="mobile-shell relative z-10 px-8 md:px-24 w-full">
             <div class="max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
                 <div class="lg:col-span-7">
                     <span class="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-sm border border-white/10 mb-8">
                         <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                        <span class="text-[10px] font-bold tracking-[0.3em] text-primary uppercase">Institucional Shield Rio</span>
+                        <span class="mobile-label text-[10px] font-bold tracking-[0.3em] text-primary uppercase">Institucional Shield Rio</span>
                     </span>
-                    <h1 class="font-headline text-4xl sm:text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8 uppercase">Quem Somos</h1>
-                    <p class="text-lg md:text-xl text-slate-300 max-w-3xl font-light leading-relaxed">A Shield Rio é uma blindadora que nasceu da soma das vocações de profissionais com larga experiência no segmento automotivo e nas áreas industrial e de engenharia mecânica. Nossa principal motivação é oferecer ao consumidor do Rio de Janeiro um serviço de blindagem qualificado e diferenciado para que ele não precise realizar o serviço em outro estado.</p>
+                    <h1 class="mobile-title font-headline text-4xl sm:text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8 uppercase">Quem Somos</h1>
+                    <p class="mobile-copy text-lg md:text-xl text-slate-300 max-w-3xl font-light leading-relaxed">A Shield Rio é uma blindadora que nasceu da soma das vocações de profissionais com larga experiência no segmento automotivo e nas áreas industrial e de engenharia mecânica. Nossa principal motivação é oferecer ao consumidor do Rio de Janeiro um serviço de blindagem qualificado e diferenciado para que ele não precise realizar o serviço em outro estado.</p>
                 </div>
                 <div class="lg:col-span-5">
-                    <div class="institutional-panel relative panel-topline p-4 md:p-5 overflow-hidden max-w-xl lg:ml-auto">
+                    <div class="mobile-brand-panel institutional-panel relative panel-topline p-4 md:p-5 overflow-hidden max-w-xl lg:ml-auto">
                         <div class="brand-mark-shell">
                             <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Logo Shield Rio" class="opacity-95"/>
                         </div>
@@ -533,12 +673,12 @@
     <section class="py-24 px-8 md:px-24 bg-[#0f1218] border-t border-white/5 overflow-hidden">
         <div class="max-w-6xl mx-auto space-y-8">
             <div class="max-w-4xl">
-                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Essência da Marca</span>
-                <h2 class="font-headline text-4xl md:text-6xl font-black text-white tracking-tight leading-none mb-6">Missão, Visão e Valores</h2>
-                <p class="text-slate-300 font-light leading-relaxed text-lg max-w-3xl">Nossa atuação é guiada por qualidade, transparência, melhoria contínua e compromisso com uma blindagem automotiva à altura do que o cliente espera de um serviço premium.</p>
+                <span class="mobile-label text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Essência da Marca</span>
+                <h2 class="mobile-title font-headline text-4xl md:text-6xl font-black text-white tracking-tight leading-none mb-6">Missão, Visão e Valores</h2>
+                <p class="mobile-copy text-slate-300 font-light leading-relaxed text-lg max-w-3xl">Nossa atuação é guiada por qualidade, transparência, melhoria contínua e compromisso com uma blindagem automotiva à altura do que o cliente espera de um serviço premium.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="mobile-principles grid grid-cols-1 md:grid-cols-3 gap-6">
                 <article class="institutional-panel principle-card relative panel-topline">
                     <div class="principle-media">
                         <div class="principle-symbol" aria-hidden="true">

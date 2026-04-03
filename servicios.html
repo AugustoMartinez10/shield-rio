@@ -588,13 +588,190 @@
           transition-duration: 0.01ms !important;
         }
       }
+
+      @media (max-width: 767px) {
+        .page-transition-overlay {
+          display: none;
+        }
+
+        .mobile-topbar {
+          justify-content: space-between;
+          gap: 0.5rem;
+          padding: 0.55rem 1rem;
+          font-size: 0.66rem;
+          letter-spacing: 0.14em;
+        }
+
+        .mobile-topbar > :last-child {
+          width: 100%;
+          justify-content: center;
+          padding-top: 0.25rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .mobile-nav {
+          padding: 0.9rem 1rem;
+        }
+
+        .mobile-nav-logo {
+          height: 2rem;
+        }
+
+        .mobile-menu {
+          position: static;
+        }
+
+        .mobile-menu-summary {
+          width: 3rem;
+          height: 3rem;
+          border-radius: 999px;
+          background: rgba(177, 197, 255, 0.06);
+          border-color: rgba(177, 197, 255, 0.18);
+        }
+
+        .mobile-menu-panel {
+          left: 1rem;
+          right: 1rem;
+          top: calc(100% + 0.85rem);
+          width: auto;
+          padding: 1rem;
+          border-radius: 1.5rem;
+          background: linear-gradient(180deg, rgba(17, 21, 29, 0.98), rgba(10, 14, 22, 0.98));
+          backdrop-filter: blur(18px);
+        }
+
+        .mobile-menu-link,
+        .mobile-menu-cta,
+        .mobile-cta,
+        .mobile-phone-link {
+          min-height: 3.25rem;
+          padding: 0.9rem 1rem;
+          border-radius: 1rem;
+          letter-spacing: 0.16em;
+          width: 100%;
+          justify-content: center;
+          white-space: normal;
+        }
+
+        .mobile-menu-link {
+          display: flex;
+          align-items: center;
+          background: rgba(255, 255, 255, 0.025);
+        }
+
+        .mobile-shell {
+          padding-left: 1.25rem;
+          padding-right: 1.25rem;
+        }
+
+        .mobile-hero {
+          min-height: auto;
+          padding-top: 9.75rem;
+          padding-bottom: 3.5rem;
+        }
+
+        .mobile-label {
+          font-size: 0.68rem !important;
+          letter-spacing: 0.18em !important;
+        }
+
+        .mobile-title {
+          font-size: clamp(2.35rem, 11vw, 3.3rem) !important;
+          line-height: 0.96 !important;
+        }
+
+        .mobile-copy {
+          font-size: 1rem !important;
+          line-height: 1.7 !important;
+          color: rgb(203 213 225 / 0.9) !important;
+        }
+
+        .mobile-service-section,
+        .mobile-reel-section,
+        .mobile-footer {
+          padding-top: 4.5rem !important;
+          padding-bottom: 4.5rem !important;
+        }
+
+        .mobile-footer h3 {
+          font-size: 1.7rem;
+          line-height: 1.05;
+        }
+
+        .mobile-footer p:last-child {
+          letter-spacing: 0.12em;
+        }
+
+        .service-mosaic {
+          gap: 1rem;
+        }
+
+        .service-card {
+          min-height: auto;
+          padding: 1.4rem;
+          border-radius: 1.5rem;
+          gap: 1.2rem;
+        }
+
+        .service-mark {
+          font-size: 2.6rem !important;
+          margin-bottom: 0.7rem !important;
+        }
+
+        .service-ref {
+          font-size: 0.68rem !important;
+          letter-spacing: 0.18em !important;
+          margin-bottom: 0.55rem !important;
+        }
+
+        .service-card h3 {
+          font-size: 2rem !important;
+          line-height: 0.98 !important;
+          margin-bottom: 0.85rem !important;
+        }
+
+        .service-card p {
+          font-size: 0.98rem !important;
+          line-height: 1.7 !important;
+          color: rgb(203 213 225 / 0.88) !important;
+        }
+
+        .service-icon-dock {
+          width: 4.75rem;
+          height: 4.75rem;
+          margin-bottom: 0;
+        }
+
+        .service-illustration img {
+          width: 52px;
+          height: 52px;
+        }
+
+        .service-media-preview {
+          aspect-ratio: 5 / 6;
+          border-radius: 1.5rem;
+        }
+
+        .brand-reel-panel {
+          background: linear-gradient(180deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.58));
+        }
+
+        .brand-reel-panel p {
+          font-size: 2rem !important;
+          line-height: 1.02 !important;
+        }
+
+        .brand-reel-meter {
+          gap: 0.75rem;
+        }
+      }
     </style>
 </head>
 <body class="page-loading bg-background text-slate-300 font-body antialiased selection:bg-primary selection:text-black">
 <div class="page-transition-overlay" aria-hidden="true"></div>
 
 <header class="fixed top-0 w-full flex flex-col z-50">
-    <div class="bg-[#001946] px-4 md:px-8 py-2 flex flex-wrap justify-center md:justify-end items-center gap-x-4 gap-y-2 text-[9px] md:text-[10px] text-center md:text-left font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
+    <div class="mobile-topbar bg-[#001946] px-4 md:px-8 py-2 flex flex-wrap justify-center md:justify-end items-center gap-x-4 gap-y-2 text-[9px] md:text-[10px] text-center md:text-left font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
         <a href="tel:+55-21-99766-6960" class="flex items-center gap-2 hover:text-white transition-colors">
             <span class="material-symbols-outlined text-[14px]">build</span>
             <span>Assistência Técnica 21 99766-6960</span>
@@ -608,9 +785,9 @@
             <span>Segunda à Sexta: 08h00 às 18h00</span>
         </div>
     </div>
-    <nav class="glass-nav px-4 md:px-16 py-4 md:py-5 flex justify-between items-center gap-4">
+    <nav class="mobile-nav glass-nav px-4 md:px-16 py-4 md:py-5 flex justify-between items-center gap-4">
         <a href="index.html">
-            <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="h-10 md:h-12 w-auto object-contain">
+            <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="mobile-nav-logo h-10 md:h-12 w-auto object-contain">
         </a>
         <div class="hidden md:flex items-center gap-10">
             <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
@@ -622,50 +799,50 @@
         <a href="contato.html#formulario-contato" class="hidden md:inline-flex bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all items-center">
             Solicitar Orçamento
         </a>
-        <details class="md:hidden relative">
-            <summary class="list-none [&::-webkit-details-marker]:hidden inline-flex items-center justify-center w-11 h-11 border border-white/10 text-white cursor-pointer">
+        <details class="mobile-menu md:hidden relative">
+            <summary class="mobile-menu-summary list-none [&::-webkit-details-marker]:hidden inline-flex items-center justify-center w-11 h-11 border border-white/10 text-white cursor-pointer">
                 <span class="material-symbols-outlined">menu</span>
             </summary>
-            <div class="absolute right-0 top-full mt-3 w-[min(18rem,calc(100vw-2rem))] border border-white/10 bg-[#11151d] shadow-2xl p-4 flex flex-col gap-3">
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
-                <a class="text-white font-bold text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="contato.html">Contato</a>
-                <a href="contato.html#formulario-contato" class="mt-2 bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-5 py-3 text-center font-bold text-xs uppercase tracking-widest">Solicitar Orçamento</a>
+            <div class="mobile-menu-panel absolute right-0 top-full mt-3 w-[min(18rem,calc(100vw-2rem))] border border-white/10 bg-[#11151d] shadow-2xl p-4 flex flex-col gap-3">
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
+                <a class="mobile-menu-link text-white font-bold text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="contato.html">Contato</a>
+                <a href="contato.html#formulario-contato" class="mobile-menu-cta mt-2 bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-5 py-3 text-center font-bold text-xs uppercase tracking-widest">Solicitar Orçamento</a>
             </div>
         </details>
     </nav>
 </header>
 
 <main>
-    <section class="relative min-h-[100svh] flex items-center overflow-hidden bg-black pt-40 pb-16 md:pt-32 md:pb-0">
+    <section class="mobile-hero relative min-h-[100svh] flex items-center overflow-hidden bg-black pt-40 pb-16 md:pt-32 md:pb-0">
         <div class="absolute inset-0 z-0">
             <img class="w-full h-full object-cover opacity-30 scale-105" src="https://lh3.googleusercontent.com/p/AF1QipNDD3182glf0zkGIwAKWje1KyBVW_tcvggcY9MX=w1600-h900-k-no" alt="Fachada da Shield Rio Blindados"/>
             <div class="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-transparent"></div>
             <div class="absolute inset-0 blueprint-bg opacity-30"></div>
         </div>
 
-        <div class="relative z-10 px-8 md:px-24 w-full">
+        <div class="mobile-shell relative z-10 px-8 md:px-24 w-full">
             <div class="max-w-4xl">
-                <span class="text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-6 block">Serviços</span>
-                <h1 class="font-headline text-4xl sm:text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8">Serviços <br/><span class="text-primary italic">Shield Rio</span></h1>
-                <p class="text-lg md:text-xl text-slate-400 max-w-2xl font-light leading-relaxed mb-10">Oferecemos manutenção, inspeção, legalização, laudo e acessórios para o seu veículo blindado.</p>
+                <span class="mobile-label text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-6 block">Serviços</span>
+                <h1 class="mobile-title font-headline text-4xl sm:text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8">Serviços <br/><span class="text-primary italic">Shield Rio</span></h1>
+                <p class="mobile-copy text-lg md:text-xl text-slate-400 max-w-2xl font-light leading-relaxed mb-10">Oferecemos manutenção, inspeção, legalização, laudo e acessórios para o seu veículo blindado.</p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="contato.html#formulario-contato" class="bg-primary text-[#001946] px-12 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-white transition-colors inline-flex items-center">Solicitar Orçamento</a>
-                    <a href="a-blindagem.html" class="border border-white/20 text-white px-8 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-white/10 transition-colors inline-flex items-center">Ver a Blindagem</a>
+                    <a href="contato.html#formulario-contato" class="mobile-cta bg-primary text-[#001946] px-12 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-white transition-colors inline-flex items-center">Solicitar Orçamento</a>
+                    <a href="a-blindagem.html" class="mobile-cta border border-white/20 text-white px-8 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-white/10 transition-colors inline-flex items-center">Ver a Blindagem</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 md:py-32 px-8 md:px-24 bg-background">
+    <section class="mobile-service-section py-24 md:py-32 px-8 md:px-24 bg-background">
         <div class="max-w-6xl mx-auto mb-16 md:mb-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
             <div class="max-w-3xl">
-                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Cinco serviços principais</span>
-                <h2 class="font-headline text-5xl md:text-7xl font-black text-white tracking-tighter leading-none">Atendimento <br/><span class="text-primary italic">especializado</span></h2>
+                <span class="mobile-label text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Cinco serviços principais</span>
+                <h2 class="mobile-title font-headline text-5xl md:text-7xl font-black text-white tracking-tighter leading-none">Atendimento <br/><span class="text-primary italic">especializado</span></h2>
             </div>
-            <p class="max-w-md text-slate-400 font-light leading-relaxed">Os conteúdos abaixo seguem os cinco serviços apresentados na página original da Shield Rio.</p>
+            <p class="mobile-copy max-w-md text-slate-400 font-light leading-relaxed">Os conteúdos abaixo seguem os cinco serviços apresentados na página original da Shield Rio.</p>
         </div>
 
         <div class="max-w-6xl mx-auto service-mosaic">
@@ -741,7 +918,7 @@
         </div>
     </section>
 
-    <section class="unichip-showcase py-24 md:py-28 px-8 md:px-24 bg-surface">
+    <section class="mobile-reel-section unichip-showcase py-24 md:py-28 px-8 md:px-24 bg-surface">
         <div class="max-w-6xl mx-auto">
             <div class="service-media-preview brand-reel">
                 <video autoplay muted loop playsinline preload="metadata">
@@ -749,7 +926,7 @@
                 </video>
                 <div class="brand-reel-copy">
                     <div class="brand-reel-panel">
-                        <span class="text-primary font-bold tracking-[0.35em] uppercase text-[10px] mb-4 block">Shield Rio</span>
+                        <span class="mobile-label text-primary font-bold tracking-[0.35em] uppercase text-[10px] mb-4 block">Shield Rio</span>
                         <p class="text-white font-headline text-3xl md:text-5xl font-black tracking-tight uppercase max-w-md">Precisão técnica em cada detalhe.</p>
                     </div>
                     <div class="brand-reel-meter">
@@ -766,24 +943,24 @@
     </section>
 </main>
 
-<footer id="footer-contato" class="bg-surface py-20 px-8 md:px-24 border-t border-white/5">
+<footer id="footer-contato" class="mobile-footer bg-surface py-20 px-8 md:px-24 border-t border-white/5">
     <div class="max-w-6xl mx-auto space-y-14">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div class="lg:col-span-4">
-                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Contato e Endereço</span>
-                <h2 class="font-headline text-4xl md:text-5xl font-black text-white tracking-tight mb-6">Obtenha agora a melhor proteção veicular para você e sua família.</h2>
-                <p class="text-slate-400 font-light leading-relaxed">Para organizar melhor a entrada comercial, direcionamos o atendimento ao formulário principal da página de contato.</p>
+                <span class="mobile-label text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Contato e Endereço</span>
+                <h2 class="mobile-title font-headline text-4xl md:text-5xl font-black text-white tracking-tight mb-6">Obtenha agora a melhor proteção veicular para você e sua família.</h2>
+                <p class="mobile-copy text-slate-400 font-light leading-relaxed">Para organizar melhor a entrada comercial, direcionamos o atendimento ao formulário principal da página de contato.</p>
             </div>
             <div class="lg:col-span-4 space-y-8">
                 <div class="border border-white/10 bg-background/70 p-7 md:p-8 space-y-6">
                     <div>
-                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Atendimento Comercial</span>
+                        <span class="mobile-label text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Atendimento Comercial</span>
                         <h3 class="font-headline text-3xl font-black text-white tracking-tight mb-4">Solicite o orçamento pelo formulário principal.</h3>
-                        <p class="text-slate-400 font-light leading-relaxed">Concentramos a entrada de leads em uma única página para facilitar triagem, contexto do serviço e retorno comercial.</p>
+                        <p class="mobile-copy text-slate-400 font-light leading-relaxed">Concentramos a entrada de leads em uma única página para facilitar triagem, contexto do serviço e retorno comercial.</p>
                     </div>
                     <div class="pt-5 border-t border-white/10 flex flex-col gap-4">
-                        <a href="contato.html#formulario-contato" class="bg-primary text-black px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white transition-colors flex items-center justify-center min-h-[64px]">Solicitar Orçamento</a>
-                        <a href="tel:+55-21-99115-7592" class="border border-white/15 text-white px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white/5 transition-colors flex items-center justify-center min-h-[64px] whitespace-nowrap">21 99115-7592</a>
+                        <a href="contato.html#formulario-contato" class="mobile-cta bg-primary text-black px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white transition-colors flex items-center justify-center min-h-[64px]">Solicitar Orçamento</a>
+                        <a href="tel:+55-21-99115-7592" class="mobile-phone-link border border-white/15 text-white px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white/5 transition-colors flex items-center justify-center min-h-[64px]">21 99115-7592</a>
                     </div>
                 </div>
             </div>
@@ -798,14 +975,14 @@
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 border-t border-white/10">
                     <div>
-                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Telefones</span>
+                        <span class="mobile-label text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Telefones</span>
                         <div class="flex flex-col gap-3 text-slate-300">
-                            <a class="inline-flex items-center justify-center border border-primary/20 bg-primary/10 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-primary/20 transition-colors" href="tel:+55-21-2222-4649">21 2222-4649</a>
-                            <a class="inline-flex items-center justify-center border border-white/15 bg-white/5 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-colors" href="tel:+55-21-99416-8981">21 99416-8981</a>
+                            <a class="mobile-phone-link inline-flex items-center justify-center border border-primary/20 bg-primary/10 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-primary/20 transition-colors" href="tel:+55-21-2222-4649">21 2222-4649</a>
+                            <a class="mobile-phone-link inline-flex items-center justify-center border border-white/15 bg-white/5 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-colors" href="tel:+55-21-99416-8981">21 99416-8981</a>
                         </div>
                     </div>
                     <div>
-                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Endereço</span>
+                        <span class="mobile-label text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Endereço</span>
                         <p class="text-slate-300 leading-relaxed">Estrada da Barra da Tijuca, 75 - Barra da Tijuca, Rio de Janeiro - RJ, 22611-201, Brasil</p>
                     </div>
                 </div>

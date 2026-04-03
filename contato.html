@@ -506,6 +506,213 @@
           transition-duration: 0.01ms !important;
         }
       }
+
+      @media (max-width: 767px) {
+        .page-transition-overlay {
+          display: none;
+        }
+
+        .mobile-topbar {
+          justify-content: space-between;
+          gap: 0.5rem;
+          padding: 0.55rem 1rem;
+          font-size: 0.66rem;
+          letter-spacing: 0.14em;
+        }
+
+        .mobile-topbar > :last-child {
+          width: 100%;
+          justify-content: center;
+          padding-top: 0.25rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .mobile-nav {
+          padding: 0.9rem 1rem;
+        }
+
+        .mobile-nav-logo {
+          height: 2rem;
+        }
+
+        .mobile-menu {
+          position: static;
+        }
+
+        .mobile-menu-summary {
+          width: 3rem;
+          height: 3rem;
+          border-radius: 999px;
+          background: rgba(177, 197, 255, 0.06);
+          border-color: rgba(177, 197, 255, 0.18);
+        }
+
+        .mobile-menu-panel {
+          left: 1rem;
+          right: 1rem;
+          top: calc(100% + 0.85rem);
+          width: auto;
+          padding: 1rem;
+          border-radius: 1.5rem;
+          background: linear-gradient(180deg, rgba(17, 21, 29, 0.98), rgba(10, 14, 22, 0.98));
+          backdrop-filter: blur(18px);
+        }
+
+        .mobile-menu-link,
+        .mobile-menu-cta,
+        .mobile-action,
+        .mobile-phone-link,
+        .mobile-submit {
+          min-height: 3.25rem;
+          padding: 0.9rem 1rem;
+          border-radius: 1rem;
+          letter-spacing: 0.16em;
+          width: 100%;
+          justify-content: center;
+          white-space: normal;
+        }
+
+        .mobile-menu-link {
+          display: flex;
+          align-items: center;
+          background: rgba(255, 255, 255, 0.025);
+        }
+
+        .mobile-hero {
+          min-height: auto;
+          padding-top: 9.5rem;
+          padding-bottom: 3.25rem;
+        }
+
+        .mobile-shell,
+        .mobile-footer-shell {
+          padding-left: 1.25rem;
+          padding-right: 1.25rem;
+        }
+
+        .eyebrow-chip,
+        .detail-label,
+        .location-heading,
+        .mobile-label {
+          letter-spacing: 0.18em !important;
+          font-size: 0.68rem !important;
+        }
+
+        .mobile-title {
+          font-size: clamp(2.25rem, 11vw, 3.25rem) !important;
+          line-height: 0.98 !important;
+          margin-bottom: 1.1rem !important;
+        }
+
+        .mobile-copy {
+          font-size: 1rem !important;
+          line-height: 1.7 !important;
+          color: rgb(203 213 225 / 0.9) !important;
+        }
+
+        .mobile-info-section {
+          padding-top: 1.75rem;
+          padding-bottom: 4rem;
+        }
+
+        .mobile-detail-link {
+          width: 100%;
+          min-height: 3.25rem;
+          white-space: normal;
+        }
+
+        .mobile-video-card {
+          border-radius: 1.5rem;
+        }
+
+        .mobile-video-card .absolute.inset-x-0.bottom-0 {
+          padding: 1.4rem;
+        }
+
+        .mobile-video-card p:last-child {
+          font-size: 1.7rem;
+          line-height: 1.08;
+        }
+
+        .mobile-location-title {
+          font-size: clamp(1.95rem, 9vw, 2.5rem) !important;
+          line-height: 1.02 !important;
+        }
+
+        .mobile-map-copy {
+          font-size: 0.8rem;
+          line-height: 1.5;
+        }
+
+        .contact-grid {
+          gap: 1.5rem;
+        }
+
+        .contact-grid > :first-child {
+          order: 2;
+        }
+
+        .contact-grid > :last-child {
+          order: 1;
+        }
+
+        .mobile-contact-section {
+          padding-top: 0;
+          padding-bottom: 4.5rem;
+        }
+
+        .panel-frame,
+        .location-card,
+        .map-disclosure {
+          border-radius: 1.5rem;
+        }
+
+        .mobile-form-panel,
+        .mobile-location-card {
+          padding: 1.4rem;
+        }
+
+        .form-intro {
+          gap: 0.85rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .form-note {
+          padding: 0.9rem 1rem;
+          border-radius: 1rem;
+        }
+
+        .map-trigger {
+          padding: 1rem 1.05rem;
+        }
+
+        .map-embed,
+        .map-embed iframe {
+          min-height: 260px;
+        }
+
+        .location-stack {
+          gap: 1rem;
+        }
+
+        .contact-field,
+        .contact-select {
+          border-radius: 0.95rem;
+        }
+
+        .contact-field:focus {
+          transform: none;
+        }
+
+        .mobile-footer {
+          padding-top: 3rem;
+          padding-bottom: 2rem;
+        }
+
+        .mobile-footer p:last-child {
+          letter-spacing: 0.12em;
+        }
+      }
     </style>
 </head>
 <body class="page-loading bg-background text-slate-300 font-body antialiased selection:bg-primary selection:text-black">
@@ -513,7 +720,7 @@
 <div class="page-transition-overlay" aria-hidden="true"></div>
 
 <header class="fixed top-0 w-full flex flex-col z-50">
-    <div class="bg-[#001946] px-4 md:px-8 py-2 flex flex-wrap justify-center md:justify-end items-center gap-x-4 gap-y-2 text-[9px] md:text-[10px] text-center md:text-left font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
+    <div class="mobile-topbar bg-[#001946] px-4 md:px-8 py-2 flex flex-wrap justify-center md:justify-end items-center gap-x-4 gap-y-2 text-[9px] md:text-[10px] text-center md:text-left font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
         <a href="tel:+55-21-99766-6960" class="flex items-center gap-2 hover:text-white transition-colors">
             <span class="material-symbols-outlined text-[14px]">build</span>
             <span>Assistência Técnica 21 99766-6960</span>
@@ -527,9 +734,9 @@
             <span>Segunda à Sexta: 08h00 às 18h00</span>
         </div>
     </div>
-    <nav class="glass-nav px-4 md:px-16 py-4 md:py-5 flex justify-between items-center gap-4">
+    <nav class="mobile-nav glass-nav px-4 md:px-16 py-4 md:py-5 flex justify-between items-center gap-4">
         <a href="index.html">
-            <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="h-10 md:h-12 w-auto object-contain">
+            <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="mobile-nav-logo h-10 md:h-12 w-auto object-contain">
         </a>
         <div class="hidden md:flex items-center gap-10">
             <a class="text-slate-400 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
@@ -541,41 +748,41 @@
         <a href="#formulario-contato" class="hidden md:inline-flex bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all items-center">
             Solicitar Orçamento
         </a>
-        <details class="md:hidden relative">
-            <summary class="list-none [&::-webkit-details-marker]:hidden inline-flex items-center justify-center w-11 h-11 border border-white/10 text-white cursor-pointer">
+        <details class="mobile-menu md:hidden relative">
+            <summary class="mobile-menu-summary list-none [&::-webkit-details-marker]:hidden inline-flex items-center justify-center w-11 h-11 border border-white/10 text-white cursor-pointer">
                 <span class="material-symbols-outlined">menu</span>
             </summary>
-            <div class="absolute right-0 top-full mt-3 w-[min(18rem,calc(100vw-2rem))] border border-white/10 bg-[#11151d] shadow-2xl p-4 flex flex-col gap-3">
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
-                <a class="text-white font-bold text-xs uppercase tracking-widest" href="contato.html">Contato</a>
-                <a href="#formulario-contato" class="mt-2 bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-5 py-3 text-center font-bold text-xs uppercase tracking-widest">Solicitar Orçamento</a>
+            <div class="mobile-menu-panel absolute right-0 top-full mt-3 w-[min(18rem,calc(100vw-2rem))] border border-white/10 bg-[#11151d] shadow-2xl p-4 flex flex-col gap-3">
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
+                <a class="mobile-menu-link text-white font-bold text-xs uppercase tracking-widest" href="contato.html">Contato</a>
+                <a href="#formulario-contato" class="mobile-menu-cta mt-2 bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-5 py-3 text-center font-bold text-xs uppercase tracking-widest">Solicitar Orçamento</a>
             </div>
         </details>
     </nav>
 </header>
 
 <main>
-    <section class="relative min-h-[56vh] flex items-end overflow-hidden pt-36 pb-16 md:pb-20 bg-[#0d1119] border-b border-white/5">
+    <section class="mobile-hero relative min-h-[56vh] flex items-end overflow-hidden pt-36 pb-16 md:pb-20 bg-[#0d1119] border-b border-white/5">
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 blueprint-bg opacity-40"></div>
             <div class="absolute inset-0 hero-glow"></div>
         </div>
 
-        <div class="relative z-10 px-8 md:px-24 w-full">
+        <div class="mobile-shell relative z-10 px-8 md:px-24 w-full">
             <div class="max-w-5xl">
                 <span class="eyebrow-chip mb-6">Contato Shield Rio</span>
-                <h1 class="font-headline text-4xl sm:text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8 uppercase">Contato e Endereço.</h1>
-                <p class="text-lg md:text-xl text-slate-300 max-w-3xl font-light leading-relaxed">Telefone, localização e um canal direto para solicitar atendimento com a equipe da Shield Rio.</p>
+                <h1 class="mobile-title font-headline text-4xl sm:text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8 uppercase">Contato e Endereço.</h1>
+                <p class="mobile-copy text-lg md:text-xl text-slate-300 max-w-3xl font-light leading-relaxed">Telefone, localização e um canal direto para solicitar atendimento com a equipe da Shield Rio.</p>
             </div>
         </div>
     </section>
 
-    <section class="section-shell py-20 px-8 md:px-24 bg-background border-t border-white/5">
+    <section class="mobile-info-section section-shell py-20 px-8 md:px-24 bg-background border-t border-white/5">
         <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            <div class="lg:col-span-7 panel-frame video-frame rounded-[1.75rem]">
+            <div class="mobile-video-card lg:col-span-7 panel-frame video-frame rounded-[1.75rem]">
                 <video autoplay muted loop playsinline preload="metadata" aria-label="Processo de instalação Shield Rio">
                     <source src="./%23shield%20%23rio%20%23seguran%C3%A7a%20%23blindagem%20%23riodejaneiro%20%23security%20%23blindados.mp4" type="video/mp4" />
                 </video>
@@ -593,8 +800,8 @@
                         <div class="detail-row">
                             <span class="detail-label">Telefone</span>
                             <div class="flex flex-col gap-3">
-                                <a href="tel:+55-21-2222-4649" class="inline-flex items-center justify-center border border-primary/20 bg-primary/10 px-5 py-4 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-primary/20 transition-colors">21 2222-4649</a>
-                                <a href="tel:+55-21-99416-8981" class="inline-flex items-center justify-center border border-white/15 bg-white/5 px-5 py-4 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-colors">21 99416-8981</a>
+                                <a href="tel:+55-21-2222-4649" class="mobile-detail-link inline-flex items-center justify-center border border-primary/20 bg-primary/10 px-5 py-4 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-primary/20 transition-colors">21 2222-4649</a>
+                                <a href="tel:+55-21-99416-8981" class="mobile-detail-link inline-flex items-center justify-center border border-white/15 bg-white/5 px-5 py-4 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-colors">21 99416-8981</a>
                             </div>
                         </div>
                         <div class="detail-row">
@@ -621,15 +828,15 @@
         </div>
     </section>
 
-    <section id="formulario-contato" class="section-shell py-8 pb-24 px-8 md:px-24 bg-background">
+    <section id="formulario-contato" class="mobile-contact-section section-shell py-8 pb-24 px-8 md:px-24 bg-background">
         <div class="max-w-6xl mx-auto contact-grid">
             <div class="location-stack">
-                <section class="location-card rounded-[1.75rem] p-7 md:p-10">
+                <section class="mobile-location-card location-card rounded-[1.75rem] p-7 md:p-10">
                     <span class="eyebrow-chip mb-6">Unidade</span>
                     <div class="location-card-main">
                         <div>
                             <span class="location-heading">Endereço</span>
-                            <h2 class="font-headline text-4xl md:text-5xl font-black tracking-tight text-white leading-tight mb-4">Estrada da Barra da Tijuca, 75</h2>
+                            <h2 class="mobile-location-title font-headline text-4xl md:text-5xl font-black tracking-tight text-white leading-tight mb-4">Estrada da Barra da Tijuca, 75</h2>
                             <p class="text-slate-400 text-lg leading-relaxed max-w-lg">Barra da Tijuca, Rio de Janeiro - RJ, 22611-201, Brasil.</p>
                         </div>
                         <div class="location-rail">
@@ -645,11 +852,11 @@
                     </div>
                 </section>
 
-                <details class="map-disclosure" open>
+                <details class="map-disclosure">
                     <summary class="map-trigger">
                         <div class="map-trigger-copy">
                             <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em]">Mapa</span>
-                            <span class="text-slate-300 text-sm leading-relaxed">Expanda para visualizar a localização da unidade.</span>
+                            <span class="mobile-map-copy text-slate-300 text-sm leading-relaxed">Expanda para visualizar a localização da unidade.</span>
                         </div>
                         <span class="map-trigger-icon material-symbols-outlined">expand_more</span>
                     </summary>
@@ -665,14 +872,14 @@
                 </details>
             </div>
 
-            <div class="panel-frame form-panel rounded-[1.75rem] p-7 md:p-10 form-shell flex flex-col">
+            <div class="mobile-form-panel panel-frame form-panel rounded-[1.75rem] p-7 md:p-10 form-shell flex flex-col">
                 <div class="form-intro">
                     <span class="eyebrow-chip">Formulário</span>
                     <div>
-                        <h2 class="font-headline text-4xl md:text-5xl font-black tracking-tight text-white mb-4">Solicite atendimento.</h2>
-                        <p class="text-slate-400 leading-relaxed max-w-xl">Deixe seus dados e a equipe retorna com orientação comercial para o tipo de serviço que você precisa avaliar.</p>
+                        <h2 class="mobile-title font-headline text-4xl md:text-5xl font-black tracking-tight text-white mb-4">Solicite atendimento.</h2>
+                        <p class="mobile-copy text-slate-400 leading-relaxed max-w-xl">Deixe seus dados e a equipe retorna com orientação comercial para o tipo de serviço que você precisa avaliar.</p>
                     </div>
-                    <p class="form-note text-slate-300 text-sm leading-relaxed">Um retorno pensado para entender o contexto do veículo, o serviço desejado e o melhor encaminhamento comercial.</p>
+                    <p class="form-note mobile-copy text-slate-300 text-sm leading-relaxed">Um retorno pensado para entender o contexto do veículo, o serviço desejado e o melhor encaminhamento comercial.</p>
                 </div>
 
                 <div id="contact-status" class="contact-status text-sm leading-relaxed" aria-live="polite"></div>
@@ -722,7 +929,7 @@
                         <span class="contact-field-error" data-error-for="privacyConsent"></span>
                     </label>
                     <div class="pt-2 flex justify-start">
-                        <button id="contact-submit" class="bg-gradient-to-br from-primary via-[#c8d8ff] to-[#4a72d9] text-[#001946] px-10 py-4 rounded-full font-bold text-xs uppercase tracking-[0.28em] hover:brightness-110 transition-all inline-flex items-center justify-center shadow-[0_18px_50px_rgba(177,197,255,0.18)] disabled:opacity-70 disabled:cursor-wait" type="submit">Enviar</button>
+                        <button id="contact-submit" class="mobile-submit bg-gradient-to-br from-primary via-[#c8d8ff] to-[#4a72d9] text-[#001946] px-10 py-4 rounded-full font-bold text-xs uppercase tracking-[0.28em] hover:brightness-110 transition-all inline-flex items-center justify-center shadow-[0_18px_50px_rgba(177,197,255,0.18)] disabled:opacity-70 disabled:cursor-wait" type="submit">Enviar</button>
                     </div>
                 </form>
             </div>
@@ -730,7 +937,7 @@
     </section>
 </main>
 
-<footer id="footer-contato" class="bg-surface py-10 px-8 md:px-24 border-t border-white/5">
+<footer id="footer-contato" class="mobile-footer bg-surface py-10 px-8 md:px-24 border-t border-white/5">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
         <a href="index.html" class="inline-flex">
             <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo-rodape.png" alt="Shield Rio" class="h-8 w-auto object-contain">

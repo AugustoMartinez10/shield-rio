@@ -240,6 +240,254 @@
               transition-duration: 0.01ms !important;
           }
       }
+
+      @media (max-width: 767px) {
+          .page-transition-overlay {
+              display: none;
+          }
+
+          .mobile-topbar {
+              justify-content: space-between;
+              gap: 0.5rem;
+              padding: 0.55rem 1rem;
+              font-size: 0.66rem;
+              letter-spacing: 0.14em;
+          }
+
+          .mobile-topbar > :last-child {
+              width: 100%;
+              justify-content: center;
+              padding-top: 0.25rem;
+              border-top: 1px solid rgba(255, 255, 255, 0.08);
+              color: rgba(177, 197, 255, 0.78);
+          }
+
+          .mobile-nav {
+              padding: 0.9rem 1rem;
+          }
+
+          .mobile-nav-logo {
+              height: 2rem;
+          }
+
+          .mobile-menu {
+              position: static;
+          }
+
+          .mobile-menu-summary {
+              width: 3rem;
+              height: 3rem;
+              border-radius: 999px;
+              background: rgba(177, 197, 255, 0.06);
+              border-color: rgba(177, 197, 255, 0.18);
+          }
+
+          .mobile-menu-panel {
+              left: 1rem;
+              right: 1rem;
+              top: calc(100% + 0.85rem);
+              width: auto;
+              padding: 1rem;
+              border-radius: 1.5rem;
+              background: linear-gradient(180deg, rgba(17, 21, 29, 0.98), rgba(10, 14, 22, 0.98));
+              backdrop-filter: blur(18px);
+          }
+
+          .mobile-menu-link,
+          .mobile-menu-cta {
+              min-height: 3.25rem;
+              padding: 0.9rem 1rem;
+              border-radius: 1rem;
+              letter-spacing: 0.16em;
+          }
+
+          .mobile-menu-link {
+              display: flex;
+              align-items: center;
+              background: rgba(255, 255, 255, 0.025);
+          }
+
+          .mobile-menu-cta {
+              margin-top: 0.35rem;
+          }
+
+          .mobile-hero {
+              min-height: auto;
+              padding-top: 9.75rem;
+              padding-bottom: 3.5rem;
+              align-items: flex-end;
+          }
+
+          .mobile-hero-shell,
+          .mobile-shell,
+          .mobile-footer-shell {
+              padding-left: 1.25rem;
+              padding-right: 1.25rem;
+          }
+
+          .mobile-hero-chip {
+              margin-bottom: 1.4rem;
+              padding: 0.7rem 0.9rem;
+              gap: 0.55rem;
+          }
+
+          .mobile-hero-chip span:last-child,
+          .mobile-kicker,
+          .mobile-label {
+              letter-spacing: 0.18em !important;
+              font-size: 0.68rem !important;
+          }
+
+          .mobile-hero-title,
+          .mobile-section-title {
+              font-size: clamp(2.35rem, 11vw, 3.3rem) !important;
+              line-height: 0.96 !important;
+              margin-bottom: 1.25rem !important;
+          }
+
+          .mobile-hero-copy,
+          .mobile-copy {
+              font-size: 1rem !important;
+              line-height: 1.7 !important;
+              color: rgb(203 213 225 / 0.9) !important;
+          }
+
+          .mobile-hero-cta,
+          .mobile-primary-cta,
+          .mobile-secondary-cta,
+          .mobile-phone-link {
+              width: 100%;
+              justify-content: center;
+              min-height: 3.5rem;
+              padding-left: 1.25rem !important;
+              padding-right: 1.25rem !important;
+              letter-spacing: 0.18em !important;
+              white-space: normal;
+          }
+
+          .mobile-footer h3 {
+              font-size: 1.7rem;
+              line-height: 1.05;
+          }
+
+          .mobile-stack-actions {
+              display: flex;
+              flex-direction: column;
+              gap: 0.85rem;
+          }
+
+          .mobile-services {
+              padding-top: 4.5rem;
+              padding-bottom: 4.5rem;
+          }
+
+          .mobile-service-panels {
+              height: auto;
+          }
+
+          .mobile-service-panel {
+              min-height: 22rem;
+          }
+
+          .mobile-service-panel-copy {
+              padding: 7.5rem 1.5rem 1.75rem;
+          }
+
+          .mobile-service-panel-copy h3 {
+              font-size: 2rem;
+              margin-bottom: 1rem;
+          }
+
+          .mobile-service-panel-copy p {
+              font-size: 0.98rem;
+              line-height: 1.7;
+              margin-bottom: 1.5rem;
+          }
+
+          .mobile-method-step {
+              gap: 0.35rem;
+          }
+
+          .mobile-method-step span:last-child {
+              font-size: 0.64rem;
+              letter-spacing: 0.14em;
+          }
+
+          .mobile-feature-section,
+          .mobile-cta-section,
+          .mobile-tech-section {
+              padding-top: 4.5rem;
+              padding-bottom: 4.5rem;
+          }
+
+          .mobile-cta-card,
+          .mobile-footer-card {
+              padding: 1.4rem;
+          }
+
+          .mobile-tech-grid {
+              gap: 2rem;
+              min-height: 0;
+          }
+
+          .mobile-tech-trigger {
+              padding: 1rem 0 1rem 1rem;
+          }
+
+          .mobile-tech-trigger.active {
+              background: rgba(177, 197, 255, 0.06);
+              border-radius: 0 1rem 1rem 0;
+          }
+
+          .mobile-tech-trigger h4 {
+              font-size: 1.45rem;
+              color: rgba(226, 232, 240, 0.9) !important;
+          }
+
+          .tech-visual-shell {
+              max-width: 100%;
+              aspect-ratio: 5 / 6;
+          }
+
+          .tech-visual-shell::before,
+          .tech-visual-shell::after {
+              display: none;
+          }
+
+          .tech-visual-panel::after {
+              inset: 0.8rem;
+          }
+
+          .tech-image-wrap {
+              inset: 0.8rem;
+          }
+
+          .tech-visual-label {
+              top: 1.25rem;
+              right: 1.25rem;
+              font-size: 0.6rem;
+              letter-spacing: 0.18em;
+          }
+
+          .tech-visual-index {
+              left: 1.2rem;
+              bottom: 1.1rem;
+              font-size: 3.25rem;
+          }
+
+          .mobile-footer {
+              padding-top: 4.25rem;
+              padding-bottom: 2rem;
+          }
+
+          .mobile-footer-bottom {
+              gap: 1.25rem;
+          }
+
+          .mobile-footer-bottom p {
+              letter-spacing: 0.12em;
+          }
+      }
     </style>
 </head>
 <body class="page-loading bg-background text-slate-300 font-body antialiased selection:bg-primary selection:text-black">
@@ -248,7 +496,7 @@
 
 <!-- Header -->
 <header class="fixed top-0 w-full flex flex-col z-50">
-    <div class="bg-[#001946] px-4 md:px-8 py-2 flex flex-wrap justify-center md:justify-end items-center gap-x-4 gap-y-2 text-[9px] md:text-[10px] text-center md:text-left font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
+    <div class="mobile-topbar bg-[#001946] px-4 md:px-8 py-2 flex flex-wrap justify-center md:justify-end items-center gap-x-4 gap-y-2 text-[9px] md:text-[10px] text-center md:text-left font-bold uppercase tracking-[0.2em] text-[#b1c5ff]">
         <a href="tel:+55-21-99766-6960" class="flex items-center gap-2 hover:text-white transition-colors">
             <span class="material-symbols-outlined text-[14px]">build</span>
             <span>Assistência Técnica 21 99766-6960</span>
@@ -262,9 +510,9 @@
             <span>Segunda à Sexta: 08h00 às 18h00</span>
         </div>
     </div>
-    <nav class="glass-nav px-4 md:px-16 py-4 md:py-5 flex justify-between items-center gap-4">
+    <nav class="mobile-nav glass-nav px-4 md:px-16 py-4 md:py-5 flex justify-between items-center gap-4">
         <a href="index.html">
-            <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="h-10 md:h-12 w-auto object-contain">
+            <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo.png" alt="Shield Rio" class="mobile-nav-logo h-10 md:h-12 w-auto object-contain">
         </a>
         <div class="hidden md:flex items-center gap-10">
             <a class="text-white font-bold border-b-2 border-primary pb-1 text-xs uppercase tracking-widest" href="index.html">Início</a>
@@ -276,17 +524,17 @@
         <a href="contato.html#formulario-contato" class="hidden md:inline-flex bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-8 py-3 rounded-sm font-bold text-xs uppercase tracking-widest hover:brightness-110 transition-all items-center">
             Solicitar Orçamento
         </a>
-        <details class="md:hidden relative">
-            <summary class="list-none [&::-webkit-details-marker]:hidden inline-flex items-center justify-center w-11 h-11 border border-white/10 text-white cursor-pointer">
+        <details class="mobile-menu md:hidden relative">
+            <summary class="mobile-menu-summary list-none [&::-webkit-details-marker]:hidden inline-flex items-center justify-center w-11 h-11 border border-white/10 text-white cursor-pointer">
                 <span class="material-symbols-outlined">menu</span>
             </summary>
-            <div class="absolute right-0 top-full mt-3 w-[min(18rem,calc(100vw-2rem))] border border-white/10 bg-[#11151d] shadow-2xl p-4 flex flex-col gap-3">
-                <a class="text-white font-bold text-xs uppercase tracking-widest" href="index.html">Início</a>
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
-                <a class="text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="contato.html">Contato</a>
-                <a href="contato.html#formulario-contato" class="mt-2 bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-5 py-3 text-center font-bold text-xs uppercase tracking-widest">Solicitar Orçamento</a>
+            <div class="mobile-menu-panel absolute right-0 top-full mt-3 w-[min(18rem,calc(100vw-2rem))] border border-white/10 bg-[#11151d] shadow-2xl p-4 flex flex-col gap-3">
+                <a class="mobile-menu-link text-white font-bold text-xs uppercase tracking-widest" href="index.html">Início</a>
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
+                <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="contato.html">Contato</a>
+                <a href="contato.html#formulario-contato" class="mobile-menu-cta mt-2 bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-5 py-3 text-center font-bold text-xs uppercase tracking-widest">Solicitar Orçamento</a>
             </div>
         </details>
     </nav>
@@ -294,42 +542,42 @@
 
 <main>
     <!-- Hero Section -->
-    <section class="relative min-h-[100svh] md:h-screen flex items-center bg-black overflow-hidden pt-40 pb-16 md:py-0">
+    <section class="mobile-hero relative min-h-[100svh] md:h-screen flex items-center bg-black overflow-hidden pt-40 pb-16 md:py-0">
         <div class="absolute inset-0 z-0">
             <img class="w-full h-full object-cover opacity-30 scale-105" src="https://lh3.googleusercontent.com/p/AF1QipNr6y1z2ENKJ7SGPAsSanqpiJA0G1sEoPW7SO5I=s1600"/>
             <div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
         </div>
-        <div class="relative z-10 px-8 md:px-24 max-w-5xl">
-            <div class="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-sm border border-white/10 mb-10">
+        <div class="mobile-hero-shell relative z-10 px-8 md:px-24 max-w-5xl">
+            <div class="mobile-hero-chip inline-flex items-center gap-3 bg-white/5 backdrop-blur-md px-4 py-2 rounded-sm border border-white/10 mb-10">
                 <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                <span class="text-[10px] font-bold tracking-[0.3em] text-primary uppercase">Certificação Lean 6 Sigma</span>
+                <span class="mobile-kicker text-[10px] font-bold tracking-[0.3em] text-primary uppercase">Certificação Lean 6 Sigma</span>
             </div>
-            <h1 class="font-headline text-4xl sm:text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8">
+            <h1 class="mobile-hero-title font-headline text-4xl sm:text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8">
                 A Única Blindadora com <br/><span class="text-primary tracking-normal">Lean 6 Sigma</span>
             </h1>
-            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mb-12 font-light leading-relaxed">
+            <p class="mobile-hero-copy text-lg md:text-xl text-slate-400 max-w-2xl mb-12 font-light leading-relaxed">
                 Segurança absoluta através da melhoria contínua e eficiência de processos. Engenharia de proteção sem variações.
             </p>
-            <a href="servicios.html" class="bg-white text-black px-8 md:px-12 py-4 md:py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-primary transition-colors inline-flex items-center gap-4 group">
+            <a href="servicios.html" class="mobile-hero-cta bg-white text-black px-8 md:px-12 py-4 md:py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-primary transition-colors inline-flex items-center gap-4 group">
                 Conhecer Serviços <span class="material-symbols-outlined text-sm group-hover:translate-x-2 transition-transform">east</span>
             </a>
         </div>
     </section>
 
     <!-- Services: Horizontal Expanding Accordion -->
-    <section class="bg-black">
-        <div class="px-8 md:px-24 py-20">
-            <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px]">Ecossistema de Soluções</span>
-            <h2 class="font-headline text-5xl font-bold mt-4 tracking-tight text-white">Serviços</h2>
+    <section class="mobile-services bg-black">
+        <div class="mobile-shell px-8 md:px-24 py-20">
+            <span class="mobile-label text-primary font-bold tracking-[0.4em] uppercase text-[10px]">Ecossistema de Soluções</span>
+            <h2 class="mobile-section-title font-headline text-5xl font-bold mt-4 tracking-tight text-white">Serviços</h2>
         </div>
-        <div class="flex flex-col lg:flex-row h-auto lg:h-[700px] w-full border-t border-white/5">
+        <div class="mobile-service-panels flex flex-col lg:flex-row h-auto lg:h-[700px] w-full border-t border-white/5">
             <!-- Panel 1 -->
-            <a href="servicios.html#manutencao" class="service-panel group relative flex-1 min-h-[280px] lg:min-h-0 lg:hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e] block">
+            <a href="servicios.html#manutencao" class="mobile-service-panel service-panel group relative flex-1 min-h-[280px] lg:min-h-0 lg:hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e] block">
                 <div class="absolute inset-0 z-0">
                     <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/manutencao-reparo-e-troca-1.png" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                 </div>
-                <div class="relative lg:absolute lg:inset-0 z-10 flex flex-col justify-end p-8 md:p-10 lg:p-12 pt-24 lg:pt-12 translate-y-0 lg:translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
+                <div class="mobile-service-panel-copy relative lg:absolute lg:inset-0 z-10 flex flex-col justify-end p-8 md:p-10 lg:p-12 pt-24 lg:pt-12 translate-y-0 lg:translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
                     <h3 class="font-headline text-3xl md:text-4xl font-black text-white mb-6">Manutenção</h3>
                     <div class="max-w-md opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
                         <p class="text-slate-300 mb-8 font-light text-lg">Cuidado preventivo detalhado para componentes balísticos, mecânicos e elétricos, mantendo a garantia vitalícia da sua blindagem.</p>
@@ -343,12 +591,12 @@
                 </div>
             </a>
             <!-- Panel 2 -->
-            <a href="servicios.html#inspecao" class="service-panel group relative flex-1 min-h-[280px] lg:min-h-0 lg:hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e] block">
+            <a href="servicios.html#inspecao" class="mobile-service-panel service-panel group relative flex-1 min-h-[280px] lg:min-h-0 lg:hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e] block">
                 <div class="absolute inset-0 z-0">
                     <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/shield-rio-1.jpg" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                 </div>
-                <div class="relative lg:absolute lg:inset-0 z-10 flex flex-col justify-end p-8 md:p-10 lg:p-12 pt-24 lg:pt-12 translate-y-0 lg:translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
+                <div class="mobile-service-panel-copy relative lg:absolute lg:inset-0 z-10 flex flex-col justify-end p-8 md:p-10 lg:p-12 pt-24 lg:pt-12 translate-y-0 lg:translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
                     <h3 class="font-headline text-3xl md:text-4xl font-black text-white mb-6">Inspeção</h3>
                     <div class="max-w-md opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
                         <p class="text-slate-300 mb-8 font-light text-lg">Diagnóstico técnico rigoroso de mais de 25 itens para detecção de delaminação e fadiga, garantindo proteção ininterrupta.</p>
@@ -362,12 +610,12 @@
                 </div>
             </a>
             <!-- Panel 3 -->
-            <a href="servicios.html#legalizacao" class="service-panel group relative flex-1 min-h-[280px] lg:min-h-0 lg:hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e] block">
+            <a href="servicios.html#legalizacao" class="mobile-service-panel service-panel group relative flex-1 min-h-[280px] lg:min-h-0 lg:hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] border-r border-white/5 overflow-hidden cursor-pointer bg-[#0e0e0e] block">
                 <div class="absolute inset-0 z-0">
                     <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/shield-rio-2.jpg" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                 </div>
-                <div class="relative lg:absolute lg:inset-0 z-10 flex flex-col justify-end p-8 md:p-10 lg:p-12 pt-24 lg:pt-12 translate-y-0 lg:translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
+                <div class="mobile-service-panel-copy relative lg:absolute lg:inset-0 z-10 flex flex-col justify-end p-8 md:p-10 lg:p-12 pt-24 lg:pt-12 translate-y-0 lg:translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
                     <h3 class="font-headline text-3xl md:text-4xl font-black text-white mb-6">Legalização</h3>
                     <div class="max-w-md opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
                         <p class="text-slate-300 mb-8 font-light text-lg">Assessoria documental completa para certificação junto ao Exército e Detran. Tranquilidade legal do início ao fim.</p>
@@ -381,12 +629,12 @@
                 </div>
             </a>
             <!-- Panel 4 -->
-            <a href="servicios.html#acessorios" class="service-panel group relative flex-1 min-h-[280px] lg:min-h-0 lg:hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden cursor-pointer bg-[#0e0e0e] block">
+            <a href="servicios.html#acessorios" class="mobile-service-panel service-panel group relative flex-1 min-h-[280px] lg:min-h-0 lg:hover:flex-[4] transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden cursor-pointer bg-[#0e0e0e] block">
                 <div class="absolute inset-0 z-0">
                     <img src="https://shieldrio.com.br/wp-content/uploads/2017/11/shield-rio-6.jpg" class="w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000">
                     <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                 </div>
-                <div class="relative lg:absolute lg:inset-0 z-10 flex flex-col justify-end p-8 md:p-10 lg:p-12 pt-24 lg:pt-12 translate-y-0 lg:translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
+                <div class="mobile-service-panel-copy relative lg:absolute lg:inset-0 z-10 flex flex-col justify-end p-8 md:p-10 lg:p-12 pt-24 lg:pt-12 translate-y-0 lg:translate-y-24 group-hover:translate-y-0 transition-transform duration-700">
                     <h3 class="font-headline text-3xl md:text-4xl font-black text-white mb-6">Acessórios</h3>
                     <div class="max-w-md opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
                         <p class="text-slate-300 mb-8 font-light text-lg">Sistemas táticos avançados como Unichip, intercomunicadores de vanguarda e pneus blindados para máxima performance.</p>
@@ -403,32 +651,32 @@
     </section>
 
     <!-- Methodology -->
-    <section class="py-40 bg-surface text-center px-8">
+    <section class="mobile-feature-section py-40 bg-surface text-center px-8">
         <div class="max-w-4xl mx-auto border-y border-white/5 py-24 relative overflow-hidden">
             <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(177,197,255,0.1)_0%,transparent_70%)]"></div>
-            <span class="text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-8 block">Engenharia Estatística</span>
-            <h2 class="font-headline text-4xl md:text-6xl font-black text-white mb-12 tracking-tighter">Metodologia <span class="text-primary italic">Lean 6 Sigma</span></h2>
-            <p class="text-lg md:text-2xl text-slate-400 font-light leading-relaxed mb-16 px-0 md:px-10">
+            <span class="mobile-label text-primary font-bold tracking-[0.5em] uppercase text-[10px] mb-8 block">Engenharia Estatística</span>
+            <h2 class="mobile-section-title font-headline text-4xl md:text-6xl font-black text-white mb-12 tracking-tighter">Metodologia <span class="text-primary italic">Lean 6 Sigma</span></h2>
+            <p class="mobile-copy text-lg md:text-2xl text-slate-400 font-light leading-relaxed mb-16 px-0 md:px-10">
                 Onde outros veem limites, nós entregamos precisão. Eliminamos 100% da variação para garantir que sua proteção seja uma constante matemática.
             </p>
             <div class="flex flex-wrap justify-center gap-6 md:gap-20">
-                <div class="flex flex-col items-center">
+                <div class="mobile-method-step flex flex-col items-center">
                     <span class="text-4xl font-black text-white">D</span>
                     <span class="text-[9px] text-primary uppercase font-bold tracking-widest">Definir</span>
                 </div>
-                <div class="flex flex-col items-center">
+                <div class="mobile-method-step flex flex-col items-center">
                     <span class="text-4xl font-black text-white">M</span>
                     <span class="text-[9px] text-primary uppercase font-bold tracking-widest">Medir</span>
                 </div>
-                <div class="flex flex-col items-center border-x border-white/10 px-6 md:px-10">
+                <div class="mobile-method-step flex flex-col items-center border-x border-white/10 px-6 md:px-10">
                     <span class="text-4xl font-black text-white">A</span>
                     <span class="text-[9px] text-primary uppercase font-bold tracking-widest">Analisar</span>
                 </div>
-                <div class="flex flex-col items-center">
+                <div class="mobile-method-step flex flex-col items-center">
                     <span class="text-4xl font-black text-white">I</span>
                     <span class="text-[9px] text-primary uppercase font-bold tracking-widest">Melhorar</span>
                 </div>
-                <div class="flex flex-col items-center">
+                <div class="mobile-method-step flex flex-col items-center">
                     <span class="text-4xl font-black text-white">C</span>
                     <span class="text-[9px] text-primary uppercase font-bold tracking-widest">Controlar</span>
                 </div>
@@ -436,29 +684,29 @@
         </div>
     </section>
 
-    <section class="py-40 px-8 md:px-24 bg-black border-t border-white/5">
+    <section class="mobile-cta-section py-40 px-8 md:px-24 bg-black border-t border-white/5">
         <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
             <div class="lg:col-span-7">
-                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Orçamento e Consultoria</span>
-                <h2 class="font-headline text-5xl md:text-7xl font-black text-white tracking-tight leading-none mb-8">Pronto para iniciar <br/><span class="text-primary italic">sua consultoria?</span></h2>
-                <p class="text-xl text-slate-400 font-light leading-relaxed max-w-2xl mb-10">Nossa equipe está pronta para atender você com discrição, orientação técnica e suporte comercial para a melhor solução de blindagem.</p>
+                <span class="mobile-label text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Orçamento e Consultoria</span>
+                <h2 class="mobile-section-title font-headline text-5xl md:text-7xl font-black text-white tracking-tight leading-none mb-8">Pronto para iniciar <br/><span class="text-primary italic">sua consultoria?</span></h2>
+                <p class="mobile-copy text-xl text-slate-400 font-light leading-relaxed max-w-2xl mb-10">Nossa equipe está pronta para atender você com discrição, orientação técnica e suporte comercial para a melhor solução de blindagem.</p>
             </div>
-            <div class="lg:col-span-5 border border-white/10 bg-surface/80 backdrop-blur-sm p-8 md:p-10">
+            <div class="mobile-cta-card lg:col-span-5 border border-white/10 bg-surface/80 backdrop-blur-sm p-8 md:p-10">
                 <div class="space-y-8">
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="contato.html#formulario-contato" class="bg-primary text-black px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white transition-colors">Solicitar Orçamento</a>
-                        <a href="servicios.html" class="border border-white/15 text-white px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white/5 transition-colors">Conhecer Serviços</a>
+                    <div class="mobile-stack-actions flex flex-col sm:flex-row gap-4">
+                        <a href="contato.html#formulario-contato" class="mobile-primary-cta bg-primary text-black px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white transition-colors">Solicitar Orçamento</a>
+                        <a href="servicios.html" class="mobile-secondary-cta border border-white/15 text-white px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white/5 transition-colors">Conhecer Serviços</a>
                     </div>
                     <div>
-                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Atendimento</span>
+                        <span class="mobile-label text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Atendimento</span>
                         <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 text-slate-300">
-                            <a class="inline-flex items-center justify-center border border-primary/20 bg-primary/10 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-primary/20 transition-colors" href="tel:+55-21-2222-4649">21 2222-4649</a>
-                            <a class="inline-flex items-center justify-center border border-white/15 bg-white/5 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-colors" href="tel:+55-21-99416-8981">21 99416-8981</a>
+                            <a class="mobile-phone-link inline-flex items-center justify-center border border-primary/20 bg-primary/10 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-primary/20 transition-colors" href="tel:+55-21-2222-4649">21 2222-4649</a>
+                            <a class="mobile-phone-link inline-flex items-center justify-center border border-white/15 bg-white/5 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-colors" href="tel:+55-21-99416-8981">21 99416-8981</a>
                             <p class="text-slate-500 uppercase tracking-[0.2em] text-[11px]">Segunda à Sexta: 08h00 às 18h00</p>
                         </div>
                     </div>
                     <div class="pt-6 border-t border-white/10">
-                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Endereço</span>
+                        <span class="mobile-label text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Endereço</span>
                         <p class="text-slate-300 leading-relaxed">Estrada da Barra da Tijuca, 75 - Barra da Tijuca, Rio de Janeiro - RJ, 22611-201, Brasil</p>
                     </div>
                     <div class="pt-6 border-t border-white/10"></div>
@@ -468,27 +716,27 @@
     </section>
 
     <!-- Technical Specs: Interactive Viewer -->
-    <section class="py-40 px-8 md:px-24 bg-surface relative overflow-hidden">
+    <section class="mobile-tech-section py-40 px-8 md:px-24 bg-surface relative overflow-hidden">
         <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
         
         <div class="relative z-10 mb-24">
-            <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px]">A Blindagem Shield Rio</span>
-            <h2 class="font-headline text-5xl font-bold mt-4 tracking-tight text-white">Tecnologia & Qualidade</h2>
+            <span class="mobile-label text-primary font-bold tracking-[0.4em] uppercase text-[10px]">A Blindagem Shield Rio</span>
+            <h2 class="mobile-section-title font-headline text-5xl font-bold mt-4 tracking-tight text-white">Tecnologia & Qualidade</h2>
         </div>
 
-        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center min-h-[500px]">
+        <div class="mobile-tech-grid relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center min-h-[500px]">
             <!-- Left: Selection Titles -->
             <div class="lg:col-span-4 space-y-6">
-                <button type="button" class="tech-trigger active group cursor-pointer py-6 border-l-2 border-white/5 pl-6 md:pl-8 hover:border-primary/50 transition-all duration-500 text-left w-full bg-transparent" data-target="level3a">
+                <button type="button" class="mobile-tech-trigger tech-trigger active group cursor-pointer py-6 border-l-2 border-white/5 pl-6 md:pl-8 hover:border-primary/50 transition-all duration-500 text-left w-full bg-transparent" data-target="level3a">
                     <h4 class="text-2xl md:text-3xl font-bold text-slate-600 transition-colors">Blindagem Nível III-A</h4>
                 </button>
-                <button type="button" class="tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-6 md:pl-8 hover:border-primary/50 transition-all duration-500 text-left w-full bg-transparent" data-target="carbon">
+                <button type="button" class="mobile-tech-trigger tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-6 md:pl-8 hover:border-primary/50 transition-all duration-500 text-left w-full bg-transparent" data-target="carbon">
                     <h4 class="text-2xl md:text-3xl font-bold text-slate-600 transition-colors">Fibra de Carbono</h4>
                 </button>
-                <button type="button" class="tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-6 md:pl-8 hover:border-primary/50 transition-all duration-500 text-left w-full bg-transparent" data-target="acoustic">
+                <button type="button" class="mobile-tech-trigger tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-6 md:pl-8 hover:border-primary/50 transition-all duration-500 text-left w-full bg-transparent" data-target="acoustic">
                     <h4 class="text-2xl md:text-3xl font-bold text-slate-600 transition-colors">Proteção Acústica</h4>
                 </button>
-                <button type="button" class="tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-6 md:pl-8 hover:border-primary/50 transition-all duration-500 text-left w-full bg-transparent" data-target="rings">
+                <button type="button" class="mobile-tech-trigger tech-trigger group cursor-pointer py-6 border-l-2 border-white/5 pl-6 md:pl-8 hover:border-primary/50 transition-all duration-500 text-left w-full bg-transparent" data-target="rings">
                     <h4 class="text-2xl md:text-3xl font-bold text-slate-600 transition-colors">Cintas de Segurança</h4>
                 </button>
             </div>
@@ -510,8 +758,8 @@
             <!-- Right: Dynamic Content -->
             <div class="lg:col-span-4 lg:pl-10">
                 <div id="tech-content" class="animate-fade-in">
-                    <h3 id="tech-title" class="text-4xl font-bold text-white tracking-tight mb-6">Máxima Resistência</h3>
-                    <p id="tech-desc" class="text-slate-400 leading-relaxed font-light text-xl mb-10">
+                    <h3 id="tech-title" class="mobile-section-title text-4xl font-bold text-white tracking-tight mb-6">Máxima Resistência</h3>
+                    <p id="tech-desc" class="mobile-copy text-slate-400 leading-relaxed font-light text-xl mb-10">
                         Blindagem transparente e opaca com certificação total contra disparos de projéteis de alta velocidade. Segurança impenetrável.
                     </p>
                     <div id="tech-tag" class="inline-block px-5 py-2 rounded-sm border border-primary/20 bg-primary/5 text-primary text-[10px] uppercase font-bold tracking-[0.2em]">
@@ -523,24 +771,24 @@
     </section>
 </main>
 
-<footer id="footer-contato" class="bg-surface py-20 px-8 md:px-24 border-t border-white/5">
+<footer id="footer-contato" class="mobile-footer bg-surface py-20 px-8 md:px-24 border-t border-white/5">
     <div class="max-w-6xl mx-auto space-y-14">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div class="lg:col-span-4">
-                <span class="text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Contato e Endereço</span>
-                <h2 class="font-headline text-4xl md:text-5xl font-black text-white tracking-tight mb-6">Obtenha agora a melhor proteção veicular para você e sua família.</h2>
-                <p class="text-slate-400 font-light leading-relaxed">Fale com a equipe da Shield Rio e centralize seu atendimento no formulário principal da página de contato.</p>
+                <span class="mobile-label text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Contato e Endereço</span>
+                <h2 class="mobile-section-title font-headline text-4xl md:text-5xl font-black text-white tracking-tight mb-6">Obtenha agora a melhor proteção veicular para você e sua família.</h2>
+                <p class="mobile-copy text-slate-400 font-light leading-relaxed">Fale com a equipe da Shield Rio e centralize seu atendimento no formulário principal da página de contato.</p>
             </div>
             <div class="lg:col-span-4 space-y-8">
-                <div class="border border-white/10 bg-background/70 p-7 md:p-8 space-y-6">
+                <div class="mobile-footer-card border border-white/10 bg-background/70 p-7 md:p-8 space-y-6">
                     <div>
-                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Atendimento Comercial</span>
+                        <span class="mobile-label text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Atendimento Comercial</span>
                         <h3 class="font-headline text-3xl font-black text-white tracking-tight mb-4">Solicite um orçamento com o formulário completo.</h3>
-                        <p class="text-slate-400 font-light leading-relaxed">Direcionamos a captação para uma única entrada, com contexto mais claro sobre veículo, serviço desejado e retorno comercial.</p>
+                        <p class="mobile-copy text-slate-400 font-light leading-relaxed">Direcionamos a captação para uma única entrada, com contexto mais claro sobre veículo, serviço desejado e retorno comercial.</p>
                     </div>
-                    <div class="pt-5 border-t border-white/10 flex flex-col gap-4">
-                        <a href="contato.html#formulario-contato" class="bg-primary text-black px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white transition-colors flex items-center justify-center min-h-[64px]">Solicitar Orçamento</a>
-                        <a href="tel:+55-21-99115-7592" class="border border-white/15 text-white px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white/5 transition-colors flex items-center justify-center min-h-[64px] whitespace-nowrap">21 99115-7592</a>
+                    <div class="mobile-stack-actions pt-5 border-t border-white/10 flex flex-col gap-4">
+                        <a href="contato.html#formulario-contato" class="mobile-primary-cta bg-primary text-black px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white transition-colors flex items-center justify-center min-h-[64px]">Solicitar Orçamento</a>
+                        <a href="tel:+55-21-99115-7592" class="mobile-phone-link border border-white/15 text-white px-8 py-4 text-center font-bold text-xs uppercase tracking-[0.25em] hover:bg-white/5 transition-colors flex items-center justify-center min-h-[64px]">21 99115-7592</a>
                     </div>
                 </div>
             </div>
@@ -555,21 +803,21 @@
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 border-t border-white/10">
                     <div>
-                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Telefones</span>
+                        <span class="mobile-label text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Telefones</span>
                         <div class="flex flex-col gap-3 text-slate-300">
-                            <a class="inline-flex items-center justify-center border border-primary/20 bg-primary/10 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-primary/20 transition-colors" href="tel:+55-21-2222-4649">21 2222-4649</a>
-                            <a class="inline-flex items-center justify-center border border-white/15 bg-white/5 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-colors" href="tel:+55-21-99416-8981">21 99416-8981</a>
+                            <a class="mobile-phone-link inline-flex items-center justify-center border border-primary/20 bg-primary/10 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-primary/20 transition-colors" href="tel:+55-21-2222-4649">21 2222-4649</a>
+                            <a class="mobile-phone-link inline-flex items-center justify-center border border-white/15 bg-white/5 px-5 py-3 text-white font-bold text-xs uppercase tracking-[0.2em] hover:bg-white/10 transition-colors" href="tel:+55-21-99416-8981">21 99416-8981</a>
                         </div>
                     </div>
                     <div>
-                        <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Endereço</span>
+                        <span class="mobile-label text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Endereço</span>
                         <p class="text-slate-300 leading-relaxed">Estrada da Barra da Tijuca, 75 - Barra da Tijuca, Rio de Janeiro - RJ, 22611-201, Brasil</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="pt-10 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+        <div class="mobile-footer-bottom pt-10 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
             <a href="index.html" class="inline-flex">
                 <img src="https://shieldrio.com.br/wp-content/uploads/2017/08/logotipo-rodape.png" alt="Shield Rio" class="h-8 w-auto object-contain">
             </a>
@@ -675,8 +923,13 @@
         }, 300);
     };
 
+    const supportsHover = window.matchMedia('(hover: hover)').matches;
+
     document.querySelectorAll('.tech-trigger').forEach(trigger => {
-        trigger.addEventListener('mouseenter', () => updateTechPanel(trigger));
+        if (supportsHover) {
+            trigger.addEventListener('mouseenter', () => updateTechPanel(trigger));
+        }
+
         trigger.addEventListener('click', () => updateTechPanel(trigger));
         trigger.addEventListener('focus', () => updateTechPanel(trigger));
     });
