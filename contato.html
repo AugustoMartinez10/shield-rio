@@ -223,6 +223,8 @@
       .location-stack {
         display: grid;
         gap: 1.5rem;
+        align-content: start;
+        grid-auto-rows: max-content;
       }
 
       .location-card {
@@ -271,7 +273,7 @@
       }
 
       .map-embed {
-        min-height: 360px;
+        height: 360px;
       }
 
       .map-disclosure {
@@ -279,47 +281,6 @@
         border-radius: 1.25rem;
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
         overflow: hidden;
-      }
-
-      .map-disclosure summary {
-        list-style: none;
-      }
-
-      .map-disclosure summary::-webkit-details-marker {
-        display: none;
-      }
-
-      .map-trigger {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-        width: 100%;
-        padding: 1.1rem 1.2rem;
-        cursor: pointer;
-      }
-
-      .map-trigger-copy {
-        display: grid;
-        gap: 0.35rem;
-      }
-
-      .map-trigger-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #b1c5ff;
-        transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
-      }
-
-      .map-disclosure[open] .map-trigger-icon {
-        transform: rotate(180deg);
-        background: rgba(177, 197, 255, 0.08);
-        border-color: rgba(177, 197, 255, 0.18);
       }
 
       .map-disclosure-body {
@@ -357,7 +318,6 @@
       .map-embed iframe {
         width: 100%;
         height: 100%;
-        min-height: 360px;
         border: 0;
         display: block;
         filter: saturate(1.02) contrast(1.02) brightness(0.96);
@@ -508,6 +468,12 @@
       }
 
       @media (max-width: 767px) {
+        section[id],
+        article[id],
+        footer[id] {
+          scroll-margin-top: calc(var(--mobile-header-height, 9.75rem) + 1rem);
+        }
+
         .page-transition-overlay {
           display: none;
         }
@@ -536,7 +502,7 @@
         }
 
         .mobile-menu {
-          position: static;
+          position: relative;
         }
 
         .mobile-menu-summary {
@@ -548,14 +514,16 @@
         }
 
         .mobile-menu-panel {
-          left: 1rem;
-          right: 1rem;
+          left: auto;
+          right: 0;
           top: calc(100% + 0.85rem);
-          width: auto;
+          width: min(18rem, calc(100vw - 2rem));
+          max-width: calc(100vw - 2rem);
           padding: 1rem;
           border-radius: 1.5rem;
           background: linear-gradient(180deg, rgba(17, 21, 29, 0.98), rgba(10, 14, 22, 0.98));
           backdrop-filter: blur(18px);
+          box-sizing: border-box;
         }
 
         .mobile-menu-link,
@@ -578,9 +546,28 @@
           background: rgba(255, 255, 255, 0.025);
         }
 
+        .mobile-menu-link-active {
+          position: relative;
+          border: 1px solid rgba(177, 197, 255, 0.24);
+          background: linear-gradient(135deg, rgba(177, 197, 255, 0.14), rgba(0, 42, 108, 0.2));
+          color: white !important;
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+        }
+
+        .mobile-menu-link-active::before {
+          content: '';
+          width: 0.45rem;
+          height: 0.45rem;
+          margin-right: 0.8rem;
+          border-radius: 999px;
+          background: #b1c5ff;
+          box-shadow: 0 0 0 0.3rem rgba(177, 197, 255, 0.12);
+          flex: 0 0 auto;
+        }
+
         .mobile-hero {
           min-height: auto;
-          padding-top: 9.5rem;
+          padding-top: calc(var(--mobile-header-height, 9.75rem) + 1.25rem);
           padding-bottom: 3.25rem;
         }
 
@@ -625,13 +612,8 @@
           border-radius: 1.5rem;
         }
 
-        .mobile-video-card .absolute.inset-x-0.bottom-0 {
-          padding: 1.4rem;
-        }
-
-        .mobile-video-card p:last-child {
-          font-size: 1.7rem;
-          line-height: 1.08;
+        .video-caption {
+          display: none;
         }
 
         .mobile-location-title {
@@ -682,13 +664,9 @@
           border-radius: 1rem;
         }
 
-        .map-trigger {
-          padding: 1rem 1.05rem;
-        }
-
         .map-embed,
         .map-embed iframe {
-          min-height: 260px;
+          height: 260px;
         }
 
         .location-stack {
@@ -757,7 +735,7 @@
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
-                <a class="mobile-menu-link text-white font-bold text-xs uppercase tracking-widest" href="contato.html">Contato</a>
+                <a class="mobile-menu-link mobile-menu-link-active text-white font-bold text-xs uppercase tracking-widest" href="contato.html" aria-current="page">Contato</a>
                 <a href="#formulario-contato" class="mobile-menu-cta mt-2 bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-5 py-3 text-center font-bold text-xs uppercase tracking-widest">Solicitar Orçamento</a>
             </div>
         </details>
@@ -765,7 +743,7 @@
 </header>
 
 <main>
-    <section class="mobile-hero relative min-h-[56vh] flex items-end overflow-hidden pt-36 pb-16 md:pb-20 bg-[#0d1119] border-b border-white/5">
+    <section class="mobile-hero relative min-h-[56vh] flex items-end overflow-hidden pb-16 md:pb-20 bg-[#0d1119] border-b border-white/5">
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 blueprint-bg opacity-40"></div>
             <div class="absolute inset-0 hero-glow"></div>
@@ -774,7 +752,7 @@
         <div class="mobile-shell relative z-10 px-8 md:px-24 w-full">
             <div class="max-w-5xl">
                 <span class="eyebrow-chip mb-6">Contato Shield Rio</span>
-                <h1 class="mobile-title font-headline text-4xl sm:text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8 uppercase">Contato e Endereço.</h1>
+                <h1 class="mobile-title font-headline text-4xl sm:text-5xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8 uppercase">Contato e Endereço</h1>
                 <p class="mobile-copy text-lg md:text-xl text-slate-300 max-w-3xl font-light leading-relaxed">Telefone, localização e um canal direto para solicitar atendimento com a equipe da Shield Rio.</p>
             </div>
         </div>
@@ -787,9 +765,9 @@
                     <source src="./%23shield%20%23rio%20%23seguran%C3%A7a%20%23blindagem%20%23riodejaneiro%20%23security%20%23blindados.mp4" type="video/mp4" />
                 </video>
                 <div class="video-overlay"></div>
-                <div class="absolute inset-x-0 bottom-0 p-6 md:p-8 z-10">
-                    <p class="text-primary text-[10px] font-black uppercase tracking-[0.32em] mb-3">Video institucional</p>
-                    <p class="text-white font-headline text-3xl md:text-4xl font-black tracking-tight max-w-xl">Atendimento e execução com padrão visual e técnico alinhados à proposta da marca.</p>
+                <div class="video-caption absolute inset-x-0 bottom-0 p-6 md:p-8 z-10">
+                    <p class="video-caption-label text-primary text-[10px] font-black uppercase tracking-[0.32em] mb-3">Video institucional</p>
+                    <p class="video-caption-title text-white font-headline text-3xl md:text-4xl font-black tracking-tight max-w-xl">Atendimento e execução com padrão visual e técnico alinhados à proposta da marca</p>
                 </div>
             </div>
 
@@ -852,16 +830,9 @@
                     </div>
                 </section>
 
-                <details class="map-disclosure">
-                    <summary class="map-trigger">
-                        <div class="map-trigger-copy">
-                            <span class="text-primary text-[10px] font-black uppercase tracking-[0.28em]">Mapa</span>
-                            <span class="mobile-map-copy text-slate-300 text-sm leading-relaxed">Expanda para visualizar a localização da unidade.</span>
-                        </div>
-                        <span class="map-trigger-icon material-symbols-outlined">expand_more</span>
-                    </summary>
+                <section class="map-disclosure">
                     <div class="map-disclosure-body">
-                        <div class="map-embed overflow-hidden border-t border-white/10">
+                        <div class="map-embed overflow-hidden">
                             <iframe
                                 title="Mapa da Shield Rio Blindados"
                                 src="https://maps.google.com/maps?q=-23.0105106,-43.2984108&z=17&output=embed"
@@ -869,14 +840,14 @@
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
-                </details>
+                </section>
             </div>
 
             <div class="mobile-form-panel panel-frame form-panel rounded-[1.75rem] p-7 md:p-10 form-shell flex flex-col">
                 <div class="form-intro">
                     <span class="eyebrow-chip">Formulário</span>
                     <div>
-                        <h2 class="mobile-title font-headline text-4xl md:text-5xl font-black tracking-tight text-white mb-4">Solicite atendimento.</h2>
+                        <h2 class="mobile-title font-headline text-4xl md:text-5xl font-black tracking-tight text-white mb-4">Solicite atendimento</h2>
                         <p class="mobile-copy text-slate-400 leading-relaxed max-w-xl">Deixe seus dados e a equipe retorna com orientação comercial para o tipo de serviço que você precisa avaliar.</p>
                     </div>
                     <p class="form-note mobile-copy text-slate-300 text-sm leading-relaxed">Um retorno pensado para entender o contexto do veículo, o serviço desejado e o melhor encaminhamento comercial.</p>
@@ -958,11 +929,56 @@
 
 <script>
     const heroVideo = document.querySelector('video');
+    const fixedHeader = document.querySelector('header');
+    const mobileMenus = document.querySelectorAll('.mobile-menu');
     const transitionLinks = document.querySelectorAll('a[href$=".html"]');
     const contactForm = document.querySelector('#contact-form');
     const contactStatus = document.querySelector('#contact-status');
     const contactSubmit = document.querySelector('#contact-submit');
     const formFieldNames = ['name', 'email', 'phone', 'serviceInterest', 'message', 'privacyConsent'];
+
+    const syncMobileHeaderHeight = () => {
+        if (!fixedHeader) {
+            return;
+        }
+
+        document.documentElement.style.setProperty('--mobile-header-height', `${fixedHeader.getBoundingClientRect().height}px`);
+    };
+
+    const closeMobileMenu = (menu) => {
+        menu.removeAttribute('open');
+    };
+
+    mobileMenus.forEach((menu) => {
+        menu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => closeMobileMenu(menu));
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        mobileMenus.forEach((menu) => {
+            if (!menu.contains(event.target)) {
+                closeMobileMenu(menu);
+            }
+        });
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') {
+            return;
+        }
+
+        mobileMenus.forEach(closeMobileMenu);
+    });
+
+    syncMobileHeaderHeight();
+    window.addEventListener('resize', syncMobileHeaderHeight);
+    window.addEventListener('orientationchange', syncMobileHeaderHeight);
+    window.addEventListener('load', syncMobileHeaderHeight);
+
+    if ('ResizeObserver' in window && fixedHeader) {
+        new ResizeObserver(syncMobileHeaderHeight).observe(fixedHeader);
+    }
 
     if (heroVideo) {
         heroVideo.playbackRate = 0.85;

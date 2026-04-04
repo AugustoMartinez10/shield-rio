@@ -255,6 +255,24 @@
         background: linear-gradient(to left, rgba(177, 197, 255, 0.55), rgba(177, 197, 255, 0));
       }
 
+      .brand-reel-mobile-caption {
+        position: absolute;
+        left: 0.75rem;
+        right: 0.75rem;
+        bottom: 0;
+        display: none;
+        padding: 0.7rem 0.8rem;
+        border-radius: 1rem 1rem 0.9rem 0.9rem;
+        background: linear-gradient(180deg, rgba(6, 8, 12, 0.18), rgba(6, 8, 12, 0.84));
+        backdrop-filter: blur(8px);
+      }
+
+      .brand-reel-mobile-caption p {
+        max-width: 11.5rem;
+        font-size: 0.92rem;
+        line-height: 1.08;
+      }
+
       @media (max-width: 767px) {
         .service-media-preview {
           aspect-ratio: 16 / 10;
@@ -280,6 +298,10 @@
 
         .brand-reel-lines {
           margin-left: 0;
+        }
+
+        .brand-reel-mobile-caption {
+          display: block;
         }
       }
 
@@ -590,6 +612,12 @@
       }
 
       @media (max-width: 767px) {
+        section[id],
+        article[id],
+        footer[id] {
+          scroll-margin-top: calc(var(--mobile-header-height, 9.75rem) + 1rem);
+        }
+
         .page-transition-overlay {
           display: none;
         }
@@ -618,7 +646,7 @@
         }
 
         .mobile-menu {
-          position: static;
+          position: relative;
         }
 
         .mobile-menu-summary {
@@ -630,14 +658,16 @@
         }
 
         .mobile-menu-panel {
-          left: 1rem;
-          right: 1rem;
+          left: auto;
+          right: 0;
           top: calc(100% + 0.85rem);
-          width: auto;
+          width: min(18rem, calc(100vw - 2rem));
+          max-width: calc(100vw - 2rem);
           padding: 1rem;
           border-radius: 1.5rem;
           background: linear-gradient(180deg, rgba(17, 21, 29, 0.98), rgba(10, 14, 22, 0.98));
           backdrop-filter: blur(18px);
+          box-sizing: border-box;
         }
 
         .mobile-menu-link,
@@ -659,6 +689,25 @@
           background: rgba(255, 255, 255, 0.025);
         }
 
+        .mobile-menu-link-active {
+          position: relative;
+          border: 1px solid rgba(177, 197, 255, 0.24);
+          background: linear-gradient(135deg, rgba(177, 197, 255, 0.14), rgba(0, 42, 108, 0.2));
+          color: white !important;
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+        }
+
+        .mobile-menu-link-active::before {
+          content: '';
+          width: 0.45rem;
+          height: 0.45rem;
+          margin-right: 0.8rem;
+          border-radius: 999px;
+          background: #b1c5ff;
+          box-shadow: 0 0 0 0.3rem rgba(177, 197, 255, 0.12);
+          flex: 0 0 auto;
+        }
+
         .mobile-shell {
           padding-left: 1.25rem;
           padding-right: 1.25rem;
@@ -666,7 +715,7 @@
 
         .mobile-hero {
           min-height: auto;
-          padding-top: 9.75rem;
+          padding-top: calc(var(--mobile-header-height, 9.75rem) + 1.25rem);
           padding-bottom: 3.5rem;
         }
 
@@ -807,7 +856,7 @@
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
-                <a class="mobile-menu-link text-white font-bold text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
+                <a class="mobile-menu-link mobile-menu-link-active text-white font-bold text-xs uppercase tracking-widest" href="servicios.html" aria-current="page">Serviços</a>
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="contato.html">Contato</a>
                 <a href="contato.html#formulario-contato" class="mobile-menu-cta mt-2 bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-5 py-3 text-center font-bold text-xs uppercase tracking-widest">Solicitar Orçamento</a>
             </div>
@@ -816,7 +865,7 @@
 </header>
 
 <main>
-    <section class="mobile-hero relative min-h-[100svh] flex items-center overflow-hidden bg-black pt-40 pb-16 md:pt-32 md:pb-0">
+    <section class="mobile-hero relative min-h-[100svh] flex items-center overflow-hidden bg-black pb-16 md:pt-32 md:pb-0">
         <div class="absolute inset-0 z-0">
             <img class="w-full h-full object-cover opacity-30 scale-105" src="https://lh3.googleusercontent.com/p/AF1QipNDD3182glf0zkGIwAKWje1KyBVW_tcvggcY9MX=w1600-h900-k-no" alt="Fachada da Shield Rio Blindados"/>
             <div class="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-transparent"></div>
@@ -924,7 +973,7 @@
                 <video autoplay muted loop playsinline preload="metadata">
                     <source src="./unichip-instalacao.mp4" type="video/mp4">
                 </video>
-                <div class="brand-reel-copy">
+                <div class="hidden md:flex brand-reel-copy">
                     <div class="brand-reel-panel">
                         <span class="mobile-label text-primary font-bold tracking-[0.35em] uppercase text-[10px] mb-4 block">Shield Rio</span>
                         <p class="text-white font-headline text-3xl md:text-5xl font-black tracking-tight uppercase max-w-md">Precisão técnica em cada detalhe.</p>
@@ -938,6 +987,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="brand-reel-mobile-caption md:hidden">
+                    <span class="mobile-label text-primary font-bold tracking-[0.35em] uppercase text-[10px] mb-3 block">Shield Rio</span>
+                    <p class="text-white font-headline font-black tracking-tight uppercase leading-tight">Precisão técnica em cada detalhe</p>
+                </div>
             </div>
         </div>
     </section>
@@ -948,14 +1001,14 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div class="lg:col-span-4">
                 <span class="mobile-label text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Contato e Endereço</span>
-                <h2 class="mobile-title font-headline text-4xl md:text-5xl font-black text-white tracking-tight mb-6">Obtenha agora a melhor proteção veicular para você e sua família.</h2>
+                <h2 class="mobile-title font-headline text-4xl md:text-5xl font-black text-white tracking-tight mb-6">Obtenha agora a melhor proteção veicular para você e sua família</h2>
                 <p class="mobile-copy text-slate-400 font-light leading-relaxed">Para organizar melhor a entrada comercial, direcionamos o atendimento ao formulário principal da página de contato.</p>
             </div>
             <div class="lg:col-span-4 space-y-8">
                 <div class="border border-white/10 bg-background/70 p-7 md:p-8 space-y-6">
                     <div>
                         <span class="mobile-label text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Atendimento Comercial</span>
-                        <h3 class="font-headline text-3xl font-black text-white tracking-tight mb-4">Solicite o orçamento pelo formulário principal.</h3>
+                        <h3 class="font-headline text-3xl font-black text-white tracking-tight mb-4">Solicite o orçamento pelo formulário principal</h3>
                         <p class="mobile-copy text-slate-400 font-light leading-relaxed">Concentramos a entrada de leads em uma única página para facilitar triagem, contexto do serviço e retorno comercial.</p>
                     </div>
                     <div class="pt-5 border-t border-white/10 flex flex-col gap-4">
@@ -1006,7 +1059,52 @@
 </footer>
 
 <script>
+    const fixedHeader = document.querySelector('header');
+    const mobileMenus = document.querySelectorAll('.mobile-menu');
     const transitionLinks = document.querySelectorAll('a[href$=".html"]');
+
+    const syncMobileHeaderHeight = () => {
+        if (!fixedHeader) {
+            return;
+        }
+
+        document.documentElement.style.setProperty('--mobile-header-height', `${fixedHeader.getBoundingClientRect().height}px`);
+    };
+
+    const closeMobileMenu = (menu) => {
+        menu.removeAttribute('open');
+    };
+
+    mobileMenus.forEach((menu) => {
+        menu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => closeMobileMenu(menu));
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        mobileMenus.forEach((menu) => {
+            if (!menu.contains(event.target)) {
+                closeMobileMenu(menu);
+            }
+        });
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') {
+            return;
+        }
+
+        mobileMenus.forEach(closeMobileMenu);
+    });
+
+    syncMobileHeaderHeight();
+    window.addEventListener('resize', syncMobileHeaderHeight);
+    window.addEventListener('orientationchange', syncMobileHeaderHeight);
+    window.addEventListener('load', syncMobileHeaderHeight);
+
+    if ('ResizeObserver' in window && fixedHeader) {
+        new ResizeObserver(syncMobileHeaderHeight).observe(fixedHeader);
+    }
 
     const enterPage = () => {
         document.body.classList.remove('page-loading', 'page-leaving');

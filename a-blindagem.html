@@ -136,6 +136,116 @@
         color: rgba(255, 255, 255, 0.82);
       }
 
+      .matrix-mobile-card {
+        border: 1px solid rgba(245, 158, 11, 0.2);
+        background: linear-gradient(180deg, rgba(20, 14, 8, 0.96), rgba(10, 10, 10, 0.98));
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
+      }
+
+      .matrix-mobile-highlight {
+        border: 1px solid rgba(245, 158, 11, 0.28);
+        background: linear-gradient(180deg, rgba(245, 158, 11, 0.12), rgba(255, 255, 255, 0.03));
+        color: #ffd666;
+      }
+
+      .matrix-mobile-stat {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .matrix-mobile-ladder {
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .matrix-mobile-ladder-track {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.55rem;
+      }
+
+      .matrix-mobile-ladder-step {
+        min-height: 3.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.025);
+        color: rgba(226, 232, 240, 0.78);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        position: relative;
+      }
+
+      .matrix-mobile-ladder-step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -0.38rem;
+        width: 0.32rem;
+        height: 0.32rem;
+        border-top: 1px solid rgba(177, 197, 255, 0.28);
+        border-right: 1px solid rgba(177, 197, 255, 0.28);
+        transform: translateY(-50%) rotate(45deg);
+        z-index: 1;
+      }
+
+      .matrix-mobile-ladder-step.is-current {
+        border-color: rgba(245, 158, 11, 0.34);
+        background: linear-gradient(180deg, rgba(245, 158, 11, 0.16), rgba(255, 255, 255, 0.04));
+        color: #ffd666;
+        box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.12), 0 12px 28px rgba(0, 0, 0, 0.18);
+      }
+
+      .matrix-mobile-limit {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.9rem 1rem;
+        border: 1px dashed rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .matrix-mobile-limit-copy {
+        display: grid;
+        gap: 0.2rem;
+      }
+
+      .matrix-mobile-limit-level {
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 0.92rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .matrix-mobile-limit-tag {
+        color: rgba(148, 163, 184, 0.82);
+        font-size: 0.58rem;
+        font-weight: 800;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .matrix-mobile-compare {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: linear-gradient(180deg, rgba(16, 20, 29, 0.98), rgba(10, 13, 20, 0.98));
+      }
+
+      .matrix-mobile-compare summary {
+        list-style: none;
+      }
+
+      .matrix-mobile-compare summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .matrix-mobile-compare[open] .matrix-mobile-chevron {
+        transform: rotate(180deg);
+      }
+
       .feature-item {
         transition: transform 0.35s ease, border-color 0.35s ease, color 0.35s ease;
       }
@@ -626,6 +736,12 @@
       }
 
       @media (max-width: 767px) {
+        section[id],
+        article[id],
+        footer[id] {
+          scroll-margin-top: calc(var(--mobile-header-height, 9.75rem) + 1rem);
+        }
+
         .page-transition-overlay {
           display: none;
         }
@@ -654,7 +770,7 @@
         }
 
         .mobile-menu {
-          position: static;
+          position: relative;
         }
 
         .mobile-menu-summary {
@@ -666,14 +782,16 @@
         }
 
         .mobile-menu-panel {
-          left: 1rem;
-          right: 1rem;
+          left: auto;
+          right: 0;
           top: calc(100% + 0.85rem);
-          width: auto;
+          width: min(18rem, calc(100vw - 2rem));
+          max-width: calc(100vw - 2rem);
           padding: 1rem;
           border-radius: 1.5rem;
           background: linear-gradient(180deg, rgba(17, 21, 29, 0.98), rgba(10, 14, 22, 0.98));
           backdrop-filter: blur(18px);
+          box-sizing: border-box;
         }
 
         .mobile-menu-link,
@@ -695,6 +813,25 @@
           background: rgba(255, 255, 255, 0.025);
         }
 
+        .mobile-menu-link-active {
+          position: relative;
+          border: 1px solid rgba(177, 197, 255, 0.24);
+          background: linear-gradient(135deg, rgba(177, 197, 255, 0.14), rgba(0, 42, 108, 0.2));
+          color: white !important;
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+        }
+
+        .mobile-menu-link-active::before {
+          content: '';
+          width: 0.45rem;
+          height: 0.45rem;
+          margin-right: 0.8rem;
+          border-radius: 999px;
+          background: #b1c5ff;
+          box-shadow: 0 0 0 0.3rem rgba(177, 197, 255, 0.12);
+          flex: 0 0 auto;
+        }
+
         .mobile-shell {
           padding-left: 1.25rem;
           padding-right: 1.25rem;
@@ -702,7 +839,7 @@
 
         .mobile-hero {
           min-height: auto;
-          padding-top: 9.75rem;
+          padding-top: calc(var(--mobile-header-height, 9.75rem) + 1.25rem);
           padding-bottom: 3.5rem;
         }
 
@@ -862,7 +999,7 @@
             <div class="mobile-menu-panel absolute right-0 top-full mt-3 w-[min(18rem,calc(100vw-2rem))] border border-white/10 bg-[#11151d] shadow-2xl p-4 flex flex-col gap-3">
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
-                <a class="mobile-menu-link text-white font-bold text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
+                <a class="mobile-menu-link mobile-menu-link-active text-white font-bold text-xs uppercase tracking-widest" href="a-blindagem.html" aria-current="page">A Blindagem</a>
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="contato.html">Contato</a>
                 <a href="contato.html#formulario-contato" class="mobile-menu-cta mt-2 bg-gradient-to-br from-primary to-[#002a6c] text-[#001946] px-5 py-3 text-center font-bold text-xs uppercase tracking-widest">Solicitar Orçamento</a>
@@ -873,7 +1010,7 @@
 
 <main>
     <!-- Hero Section -->
-    <section class="mobile-hero relative min-h-[85vh] flex items-center bg-black overflow-hidden pt-36 pb-20">
+    <section class="mobile-hero relative min-h-[85vh] flex items-center bg-black overflow-hidden pb-20">
         <div class="absolute inset-0 z-0">
             <img class="w-full h-full object-cover object-center opacity-20 scale-105" src="https://lh3.googleusercontent.com/p/AF1QipOAf5H4x-_DnuWa_GZJzAJ0TLEFnsvUSLRpWld-=w1600-h720-k-no"/>
             <div class="absolute inset-0 bg-gradient-to-t from-background via-black/40 to-transparent"></div>
@@ -930,7 +1067,123 @@
                 <p class="mobile-copy text-slate-400 font-light leading-relaxed max-w-4xl mx-auto mt-6">Nossa blindagem está em conformidade com a norma NBR 15000/2005, Nível III-A, sendo resistente aos calibres 22 Curto, 22 Longo, 6.35 mm, 32 Auto, 7.65 mm, 380 Auto, 357 Magnum, 9 mm e 44 Magnum.</p>
             </div>
 
-            <div class="matrix-scroll overflow-x-auto pb-4">
+            <div class="md:hidden space-y-4">
+                <article class="matrix-mobile-card rounded-[1.6rem] p-5">
+                    <div class="flex items-start justify-between gap-4 mb-5">
+                        <div>
+                            <span class="mobile-label text-primary font-black uppercase tracking-[0.28em] text-[10px] block mb-3">Padrão Shield Rio</span>
+                            <h3 class="font-headline text-[2rem] font-black text-white tracking-tight leading-none uppercase">Nível III-A</h3>
+                        </div>
+                        <span class="matrix-mobile-highlight inline-flex items-center min-h-[2.5rem] px-4 rounded-xl text-[11px] font-black uppercase tracking-[0.24em]">MAGNUM</span>
+                    </div>
+
+                    <div class="matrix-mobile-ladder mb-5">
+                        <span class="text-white/55 text-[10px] font-black uppercase tracking-[0.22em]">Escala progressiva da norma</span>
+                        <div class="matrix-mobile-ladder-track">
+                            <span class="matrix-mobile-ladder-step rounded-xl">I</span>
+                            <span class="matrix-mobile-ladder-step rounded-xl">II-A</span>
+                            <span class="matrix-mobile-ladder-step rounded-xl">II</span>
+                            <span class="matrix-mobile-ladder-step is-current rounded-xl">III-A</span>
+                        </div>
+                        <div class="matrix-mobile-limit rounded-[1rem]">
+                            <div class="matrix-mobile-limit-copy">
+                                <span class="matrix-mobile-limit-tag">Patamar seguinte</span>
+                                <span class="matrix-mobile-limit-level">Nível III</span>
+                            </div>
+                            <span class="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em]">Fuzil</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-0 rounded-[1.15rem] overflow-hidden border border-white/8 bg-white/[0.02]">
+                        <div class="matrix-mobile-stat grid grid-cols-[minmax(0,0.95fr)_minmax(0,1.35fr)] gap-4 px-4 py-3 border-t-0">
+                            <span class="text-white/60 text-[11px] font-black uppercase tracking-[0.2em]">Armamento</span>
+                            <span class="text-white text-sm font-black uppercase tracking-[0.18em] text-right">Magnum</span>
+                        </div>
+                        <div class="matrix-mobile-stat grid grid-cols-[minmax(0,0.95fr)_minmax(0,1.35fr)] gap-4 px-4 py-3">
+                            <span class="text-white/60 text-[11px] font-black uppercase tracking-[0.2em]">Munição</span>
+                            <span class="text-slate-200 text-sm font-semibold leading-snug text-right">9mm FMJ / .44 Magnum</span>
+                        </div>
+                        <div class="matrix-mobile-stat grid grid-cols-[minmax(0,0.95fr)_minmax(0,1.35fr)] gap-4 px-4 py-3">
+                            <span class="text-white/60 text-[11px] font-black uppercase tracking-[0.2em]">Massa</span>
+                            <span class="text-slate-200 text-sm font-semibold text-right">8.0 / 15.6 g</span>
+                        </div>
+                        <div class="matrix-mobile-stat grid grid-cols-[minmax(0,0.95fr)_minmax(0,1.35fr)] gap-4 px-4 py-3">
+                            <span class="text-white/60 text-[11px] font-black uppercase tracking-[0.2em]">Velocidade</span>
+                            <span class="text-orange-300 text-sm font-black uppercase tracking-[0.08em] text-right">426 / 426 m/s</span>
+                        </div>
+                        <div class="matrix-mobile-stat grid grid-cols-[minmax(0,0.95fr)_minmax(0,1.35fr)] gap-4 px-4 py-3">
+                            <span class="text-white/60 text-[11px] font-black uppercase tracking-[0.2em]">Impactos</span>
+                            <span class="text-orange-300 text-xl font-black text-right">5</span>
+                        </div>
+                    </div>
+                </article>
+
+                <details class="matrix-mobile-compare rounded-[1.4rem] overflow-hidden">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer px-5 py-4">
+                        <div>
+                            <span class="mobile-label text-primary font-black uppercase tracking-[0.24em] text-[10px] block mb-2">Leitura Técnica</span>
+                            <span class="text-white font-black uppercase tracking-[0.12em] text-sm">Abrir referência da norma</span>
+                        </div>
+                        <span class="matrix-mobile-chevron material-symbols-outlined text-primary transition-transform duration-300">expand_more</span>
+                    </summary>
+
+                    <div class="px-4 pb-4 space-y-3 border-t border-white/8">
+                        <article class="rounded-[1.1rem] border border-white/8 bg-white/[0.02] px-4 py-4">
+                            <div class="flex items-center justify-between gap-3 mb-3">
+                                <h4 class="text-white font-black uppercase tracking-[0.12em] text-sm">Nível I</h4>
+                                <span class="text-[10px] text-white/55 font-black uppercase tracking-[0.18em]">Pistola</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-[11px] leading-relaxed">
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Munição</span><span class="text-slate-300 text-right">.22 LRHV / .38 Special</span>
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Massa</span><span class="text-slate-300 text-right">2.6 / 10.2 g</span>
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Velocidade</span><span class="text-slate-300 text-right">320 / 254 m/s</span>
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Impactos</span><span class="text-slate-300 text-right">5</span>
+                            </div>
+                        </article>
+
+                        <article class="rounded-[1.1rem] border border-white/8 bg-white/[0.02] px-4 py-4">
+                            <div class="flex items-center justify-between gap-3 mb-3">
+                                <h4 class="text-white font-black uppercase tracking-[0.12em] text-sm">Nível II-A</h4>
+                                <span class="text-[10px] text-white/55 font-black uppercase tracking-[0.18em]">Revolver</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-[11px] leading-relaxed">
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Munição</span><span class="text-slate-300 text-right">9mm FMJ / .357 Mag</span>
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Massa</span><span class="text-slate-300 text-right">8.0 / 10.2 g</span>
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Velocidade</span><span class="text-slate-300 text-right">332 / 381 m/s</span>
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Impactos</span><span class="text-slate-300 text-right">5</span>
+                            </div>
+                        </article>
+
+                        <article class="rounded-[1.1rem] border border-white/8 bg-white/[0.02] px-4 py-4">
+                            <div class="flex items-center justify-between gap-3 mb-3">
+                                <h4 class="text-white font-black uppercase tracking-[0.12em] text-sm">Nível II</h4>
+                                <span class="text-[10px] text-white/55 font-black uppercase tracking-[0.18em]">SMG</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-[11px] leading-relaxed">
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Munição</span><span class="text-slate-300 text-right">9mm FMJ / .357 Mag</span>
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Massa</span><span class="text-slate-300 text-right">8.0 / 10.2 g</span>
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Velocidade</span><span class="text-slate-300 text-right">358 / 425 m/s</span>
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Impactos</span><span class="text-slate-300 text-right">5</span>
+                            </div>
+                        </article>
+
+                        <article class="rounded-[1.1rem] border border-white/8 bg-white/[0.02] px-4 py-4">
+                            <div class="flex items-center justify-between gap-3 mb-3">
+                                <h4 class="text-white font-black uppercase tracking-[0.12em] text-sm">Nível III</h4>
+                                <span class="text-[10px] text-white/55 font-black uppercase tracking-[0.18em]">Fuzil</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-[11px] leading-relaxed">
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Munição</span><span class="text-slate-300 text-right">7,62 OTAN / 5.56</span>
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Massa</span><span class="text-slate-300 text-right">9.6 / 4.0 g</span>
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Velocidade</span><span class="text-slate-300 text-right">838 / 950 m/s</span>
+                                <span class="text-white/55 uppercase tracking-[0.16em]">Impactos</span><span class="text-slate-300 text-right">5</span>
+                            </div>
+                        </article>
+                    </div>
+                </details>
+            </div>
+
+            <div class="matrix-scroll hidden md:block overflow-x-auto pb-4">
                 <table class="w-full border-collapse matrix-table">
                     <thead>
                         <tr class="matrix-header-blue">
@@ -1249,7 +1502,7 @@
                         <source src="./video-excelencia.mp4" type="video/mp4">
                     </video>
                     <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/25 to-black/60 pointer-events-none"></div>
-                    <div class="absolute inset-y-0 left-0 flex items-end md:items-center">
+                    <div class="hidden md:flex absolute inset-y-0 left-0 items-center">
                         <div class="p-6 md:p-10 max-w-md">
                             <span class="mobile-label text-primary font-bold tracking-[0.3em] uppercase text-[9px] mb-3 block">Shield Dynamics</span>
                             <p class="text-white text-xl md:text-3xl font-black leading-tight uppercase tracking-wide">Metodologia Lean 6 Sigma aplicada a cada etapa da blindagem</p>
@@ -1259,6 +1512,11 @@
                     <div class="absolute top-5 right-5 w-5 h-5 border-t border-r border-primary/40"></div>
                     <div class="absolute bottom-5 left-5 w-5 h-5 border-b border-l border-primary/20"></div>
                     <div class="absolute bottom-5 right-5 w-5 h-5 border-b border-r border-primary/20"></div>
+                </div>
+
+                <div class="md:hidden bg-surface px-5 py-5 border-t border-white/10">
+                    <span class="mobile-label text-primary font-bold tracking-[0.3em] uppercase text-[9px] mb-3 block">Shield Dynamics</span>
+                    <p class="text-white text-xl font-black leading-tight uppercase tracking-[0.03em]">Metodologia Lean 6 Sigma aplicada a cada etapa da blindagem</p>
                 </div>
             </div>
         </div>
@@ -1388,7 +1646,7 @@
     <!-- Final CTA -->
     <section class="mobile-final-cta py-32 bg-primary">
         <div class="px-8 md:px-24 text-center">
-            <h2 class="mobile-title text-[#001946] font-headline text-5xl font-black mb-10 tracking-tight leading-none uppercase">Escolha a liderança estatística.</h2>
+            <h2 class="mobile-title text-[#001946] font-headline text-5xl font-black mb-10 tracking-tight leading-none uppercase">Escolha a liderança estatística</h2>
             <a href="contato.html#formulario-contato" class="mobile-cta bg-[#001946] text-white px-12 py-5 rounded-sm font-bold text-xs uppercase tracking-[0.3em] hover:bg-black transition-colors inline-flex items-center">Solicitar Orçamento</a>
         </div>
     </section>
@@ -1399,14 +1657,14 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div class="lg:col-span-4">
                 <span class="mobile-label text-primary font-bold tracking-[0.4em] uppercase text-[10px] mb-5 block">Contato e Endereço</span>
-                <h2 class="mobile-title font-headline text-4xl md:text-5xl font-black text-white tracking-tight mb-6">Obtenha agora a melhor proteção veicular para você e sua família.</h2>
+                <h2 class="mobile-title font-headline text-4xl md:text-5xl font-black text-white tracking-tight mb-6">Obtenha agora a melhor proteção veicular para você e sua família</h2>
                 <p class="mobile-copy text-slate-400 font-light leading-relaxed">Centralizamos o atendimento comercial no formulário principal da página de contato para manter a consulta mais objetiva.</p>
             </div>
             <div class="lg:col-span-4 space-y-8">
                 <div class="mobile-footer-card border border-white/10 bg-background/70 p-7 md:p-8 space-y-6">
                     <div>
                         <span class="mobile-label text-primary text-[10px] font-black uppercase tracking-[0.28em] block mb-3">Atendimento Comercial</span>
-                        <h3 class="font-headline text-3xl font-black text-white tracking-tight mb-4">Leve sua necessidade ao formulário principal.</h3>
+                        <h3 class="font-headline text-3xl font-black text-white tracking-tight mb-4">Leve sua necessidade ao formulário principal</h3>
                         <p class="mobile-copy text-slate-400 font-light leading-relaxed">Assim a equipe recebe a solicitação com o contexto completo e consegue orientar melhor o serviço e o orçamento.</p>
                     </div>
                     <div class="pt-5 border-t border-white/10 flex flex-col gap-4">
@@ -1457,7 +1715,52 @@
 </footer>
 
 <script>
+    const fixedHeader = document.querySelector('header');
+    const mobileMenus = document.querySelectorAll('.mobile-menu');
     const transitionLinks = document.querySelectorAll('a[href$=".html"]');
+
+    const syncMobileHeaderHeight = () => {
+        if (!fixedHeader) {
+            return;
+        }
+
+        document.documentElement.style.setProperty('--mobile-header-height', `${fixedHeader.getBoundingClientRect().height}px`);
+    };
+
+    const closeMobileMenu = (menu) => {
+        menu.removeAttribute('open');
+    };
+
+    mobileMenus.forEach((menu) => {
+        menu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => closeMobileMenu(menu));
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        mobileMenus.forEach((menu) => {
+            if (!menu.contains(event.target)) {
+                closeMobileMenu(menu);
+            }
+        });
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') {
+            return;
+        }
+
+        mobileMenus.forEach(closeMobileMenu);
+    });
+
+    syncMobileHeaderHeight();
+    window.addEventListener('resize', syncMobileHeaderHeight);
+    window.addEventListener('orientationchange', syncMobileHeaderHeight);
+    window.addEventListener('load', syncMobileHeaderHeight);
+
+    if ('ResizeObserver' in window && fixedHeader) {
+        new ResizeObserver(syncMobileHeaderHeight).observe(fixedHeader);
+    }
 
     const enterPage = () => {
         document.body.classList.remove('page-loading', 'page-leaving');

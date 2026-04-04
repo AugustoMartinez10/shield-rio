@@ -1,0 +1,332 @@
+Session Notes - 2026-04-03
+Proyecto: Shield Rio
+Objetivo de la sesion: correcciones responsive mobile, con revision iterativa pantalla por pantalla.
+
+Resumen general
+Durante esta sesion se trabajo principalmente sobre la experiencia mobile del sitio, corrigiendo problemas de navegacion, jerarquia visual, overlays sobre video, espaciados afectados por header fijo y presentacion de bloques complejos como tablas o grids interactivos. En casi todos los casos se mantuvo la experiencia desktop y se adapto solo la version responsive.
+
+Archivos trabajados
+- index.html
+- quem-somos.html
+- a-blindagem.html
+- servicios.html
+- contato.html
+
+1. Menu hamburguesa mobile desbordado horizontalmente
+Problema
+- En mobile, al abrir el menu hamburguesa, el panel podia quedar fuera del viewport por la derecha, especialmente en 320px.
+
+Solucion aplicada
+- Se ajusto el contenedor `.mobile-menu` para que actue como referencia relativa.
+- Se redefinio `.mobile-menu-panel` para anclarse a la derecha del boton.
+- Se limito el ancho real del panel con viewport:
+  - `width: min(18rem, calc(100vw - 2rem))`
+  - `max-width: calc(100vw - 2rem)`
+- Se anadio `box-sizing: border-box`.
+
+Archivos afectados
+- index.html
+- quem-somos.html
+- a-blindagem.html
+- servicios.html
+- contato.html
+
+2. Menu hamburguesa: cierre tocando fuera
+Problema
+- El menu mobile solo se cerraba tocando otra vez el boton hamburguesa.
+
+Solucion aplicada
+- Se agrego comportamiento para cerrar el menu:
+  - al tocar fuera
+  - al presionar `Escape`
+  - al tocar un link dentro del menu
+- Se trabajo sobre el `<details class="mobile-menu">` existente.
+
+Archivos afectados
+- index.html
+- quem-somos.html
+- a-blindagem.html
+- servicios.html
+- contato.html
+
+3. Header fijo tapando contenido superior en mobile
+Problema
+- En varias views, el contenido superior quedaba oculto o demasiado pegado al header fijo.
+- El topbar superior en mobile tiene altura variable por wrap, pero el hero usaba `padding-top` fijo.
+
+Solucion aplicada
+- Se midio la altura real del `header` con JS y se guardo en `--mobile-header-height`.
+- Se cambio el `padding-top` de `.mobile-hero` a un calculo dinamico:
+  - `padding-top: calc(var(--mobile-header-height, 9.75rem) + 1.25rem);`
+- Se agrego `scroll-margin-top` para secciones ancladas:
+  - `section[id]`
+  - `article[id]`
+  - `footer[id]`
+- La medicion se actualiza con:
+  - `load`
+  - `resize`
+  - `orientationchange`
+  - `ResizeObserver`
+
+Archivos afectados
+- index.html
+- quem-somos.html
+- a-blindagem.html
+- servicios.html
+- contato.html
+
+4. Clases Tailwind que seguian pisando el offset superior
+Problema
+- Aunque se agrego el calculo dinamico del header, varios heroes seguian teniendo `pt-36` o `pt-40` en el HTML, lo que generaba conflicto.
+
+Solucion aplicada
+- Se eliminaron utilidades `pt-36` y `pt-40` en los heroes mobile para que el offset dependiera solo del sistema dinamico.
+
+Archivos afectados
+- index.html
+- quem-somos.html
+- contato.html
+- a-blindagem.html
+- servicios.html
+
+5. Titulos con punto final
+Problema
+- Habia titulos y subtitulos destacados terminados en punto, lo que no encajaba con la jerarquia visual deseada.
+
+Solucion aplicada
+- Se quitaron puntos finales de headings y textos destacados con jerarquia visual.
+- No se modificaron parrafos corridos ni numeracion de secciones legales.
+
+Archivos afectados
+- index.html
+- contato.html
+- servicios.html
+- a-blindagem.html
+
+6. Menu mobile: destacar mejor la seccion/pagina actual
+Problema
+- En el menu hamburguesa, la pagina actual se distinguia poco.
+
+Solucion aplicada
+- Se creo una clase visual mas fuerte para el enlace activo:
+  - fondo degradado
+  - borde/acento
+  - punto indicador a la izquierda
+  - `aria-current="page"`
+- Se aplico solo a la pagina actual de cada archivo.
+
+Archivos afectados
+- index.html
+- quem-somos.html
+- a-blindagem.html
+- servicios.html
+- contato.html
+
+7. Home (`index.html`) - seccion "Tecnologia & Qualidade"
+Problema
+- En mobile no se entendia la interaccion de tocar un item para cambiar imagen/texto porque la imagen quedaba fuera del foco visual.
+
+Solucion aplicada
+- En mobile se reemplazo la experiencia por un acordeon visual.
+- Cada item muestra inline:
+  - imagen
+  - titulo
+  - descripcion
+  - tag tecnico
+- Solo una card queda abierta a la vez.
+- Mas adelante se ajusto para que una card abierta tambien pueda cerrarse al volver a tocarla.
+- En desktop se mantuvo el layout original de 3 columnas.
+- Se reutilizaron los datos existentes (`techData`).
+
+Archivo afectado
+- index.html
+
+8. `quem-somos.html` - cards de Missao / Visao / Valores
+Problema
+- En mobile quedaban superpuestos texto, simbolos, overlays y fondos decorativos.
+- El lenguaje visual de hover pensado para desktop no funcionaba bien en pantalla chica.
+
+Solucion aplicada
+- Se rehizo solo la composicion mobile.
+- El icono paso a un rol secundario en una capsula pequena.
+- Se eliminaron o redujeron overlays decorativos conflictivos.
+- La estructura visual se volvio mas editorial:
+  - indice/chip
+  - titulo
+  - contenido con separacion clara
+- `Valores` se espacio mejor.
+
+Archivo afectado
+- quem-somos.html
+
+9. `a-blindagem.html` - tabla/matriz balistica en mobile
+Problema
+- La tabla comparativa horizontal se sentia rara en mobile:
+  - scroll horizontal
+  - primera columna sticky
+  - columna destacada flotante
+  - poca claridad general
+
+Primera solucion aplicada
+- Solo en mobile, se reemplazo la tabla por:
+  - una card principal de `Nivel III-A`
+  - un bloque desplegable con comparacion de otros niveles
+- La tabla original quedo solo para desktop.
+
+Archivo afectado
+- a-blindagem.html
+
+10. `a-blindagem.html` - aclarar visualmente hasta que nivel llega la cobertura
+Problema
+- En responsive no quedaba suficientemente claro que el nivel ofrecido es `III-A`, que niveles inferiores quedan implicita o logicamente cubiertos y que `III` queda aparte.
+
+Solucion aplicada
+- Se rehizo la jerarquia visual del bloque mobile sin explicarlo de forma literal.
+- Se introdujo una progresion visual:
+  - `I -> II-A -> II -> III-A`
+- `III-A` quedo como culminacion visual de la escala.
+- `Nivel III` paso a un bloque separado como `patamar seguinte`.
+- Se renombro el encabezado mobile del bloque a `Padrao Shield Rio`.
+- El acordeon secundario paso a leerse como referencia tecnica:
+  - `Leitura Tecnica`
+  - `Abrir referencia da norma`
+
+Archivo afectado
+- a-blindagem.html
+
+Nota
+- El usuario decidio dejar este bloque "asi por ahora".
+- Puede requerir refinamiento visual futuro si se busca una lectura todavia mas inmediata.
+
+11. `a-blindagem.html` - video con copy superpuesto
+Problema
+- En mobile, el texto superpuesto sobre el video de metodologia quedaba apretado y competia con la imagen.
+
+Solucion aplicada
+- Desktop:
+  - se mantuvo el texto superpuesto
+- Mobile:
+  - el texto se movio fuera del video a un bloque debajo
+- Se conservo el contenido:
+  - `Shield Dynamics`
+  - `Metodologia Lean 6 Sigma aplicada a cada etapa da blindagem`
+
+Archivo afectado
+- a-blindagem.html
+
+12. `servicios.html` - video con copy superpuesto
+Problema
+- El bloque del video `unichip-instalacao.mp4` tambien se veia mal en mobile con texto superpuesto.
+
+Proceso de iteracion
+- Primero se probo una tarjeta separada debajo del video.
+- El usuario indico que se veia feo.
+- Luego se cambio a una banda/caption integrada dentro del mismo frame.
+- El caption seguia ocupando mucho espacio.
+- Se fue compactando progresivamente:
+  - menos padding
+  - menos tamano de texto
+  - menos ancho
+- Finalmente, en mobile se elimino la parte inferior `Servicos Especializados` para optimizar altura.
+
+Solucion final actual
+- Desktop:
+  - mantiene el copy superpuesto original
+- Mobile:
+  - usa una banda caption integrada, compacta
+  - mantiene solo:
+    - `Shield Rio`
+    - `Precisao tecnica em cada detalhe`
+  - elimina:
+    - `Servicos Especializados`
+    - lineas decorativas asociadas
+
+Archivo afectado
+- servicios.html
+
+13. `contato.html` - video con texto superpuesto
+Problema
+- El texto dentro del video institucional en mobile se veia muy mal y seguia tapando demasiado la imagen.
+
+Proceso
+- Primero se intento compactar el caption.
+- Luego se detecto que el CSS no estaba afectando el bloque correcto porque el HTML seguia usando el caption viejo.
+- Finalmente se decidio la solucion mas limpia.
+
+Solucion final actual
+- Desktop:
+  - mantiene el texto superpuesto en el video
+- Mobile:
+  - el texto del video se oculta por completo
+- Esto se hizo porque en ese caso el video funciona mejor solo en pantalla chica.
+
+Archivo afectado
+- contato.html
+
+14. `contato.html` - mapa siempre visible
+Problema
+- El mapa estaba dentro de un `<details>` y podia ocultarse.
+- Se queria dejar siempre visible tanto en mobile como en desktop.
+
+Solucion aplicada
+- Se elimino el patron desplegable:
+  - fuera `<details>`
+  - fuera `<summary>`
+  - fuera trigger/copy/icon de expansion
+- El `iframe` quedo dentro de un bloque estatico siempre visible.
+
+Archivo afectado
+- contato.html
+
+15. `contato.html` - espacio sobrante debajo del mapa
+Problema
+- Aun con el mapa visible, quedaba un espacio vacio debajo.
+- Primero parecio un problema de altura del `iframe`, pero no era eso.
+
+Diagnostico real
+- `.location-stack` es un grid.
+- Dentro de la columna del layout, se estaba estirando y distribuyendo altura extra entre sus filas.
+- Eso hacia crecer artificialmente el bloque del mapa.
+
+Solucion aplicada
+- En `.location-stack` se agrego:
+  - `align-content: start;`
+  - `grid-auto-rows: max-content;`
+- Ademas se ajustaron alturas del mapa:
+  - desktop: `360px`
+  - mobile: `260px`
+
+Resultado
+- El usuario confirmo que el espacio sobrante quedo corregido.
+
+Archivo afectado
+- contato.html
+
+Criterios acordados durante la sesion
+- Las correcciones se priorizaron en mobile.
+- Siempre que la experiencia desktop estuviera bien, se intento preservarla.
+- Se evito resolver problemas mobile con overlays forzados si la lectura seguia siendo mala.
+- Cuando un bloque interactivo desktop no funcionaba bien en mobile, se replanteo su patron completo:
+  - acordeon
+  - card editorial
+  - resumen principal + comparacion opcional
+  - ocultacion de overlays en mobile
+
+Medidas de referencia mobile usadas durante la conversacion
+- 320x568
+- 375x667
+- 390x844
+- 412x915
+- 430x932
+
+Recomendacion para la proxima sesion
+Leer primero:
+- este archivo de notas
+- luego revisar especialmente:
+  - `a-blindagem.html` bloque de niveles mobile
+  - `servicios.html` bloque del video mobile
+  - `contato.html` mapa y video mobile
+
+Pendientes potenciales
+- Refinar mas la claridad del bloque mobile de niveles en `A Blindagem`
+- Seguir revisando otros desajustes responsive puntuales si el usuario detecta mas casos

@@ -428,6 +428,40 @@
           opacity: 1;
           transform: none;
         }
+
+        .principle-card {
+          min-height: auto;
+          background: linear-gradient(180deg, rgba(16, 20, 29, 0.98), rgba(10, 13, 20, 0.98));
+        }
+
+        .principle-media {
+          position: relative;
+          inset: auto;
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-start;
+          padding: 1.35rem 1.35rem 0;
+          pointer-events: none;
+        }
+
+        .principle-symbol {
+          position: relative;
+          inset: auto;
+          width: 4.5rem;
+          height: 4.5rem;
+          border: 1px solid rgba(177, 197, 255, 0.16);
+          background: radial-gradient(circle at 30% 30%, rgba(177, 197, 255, 0.16), rgba(177, 197, 255, 0.04) 68%);
+          border-radius: 1rem;
+          justify-content: center;
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+        }
+
+        .principle-symbol::before,
+        .principle-symbol::after,
+        .principle-overlay,
+        .principle-chrome {
+          display: none;
+        }
       }
 
       .panel-topline::before {
@@ -452,6 +486,12 @@
       }
 
       @media (max-width: 767px) {
+        section[id],
+        article[id],
+        footer[id] {
+          scroll-margin-top: calc(var(--mobile-header-height, 9.75rem) + 1rem);
+        }
+
         .page-transition-overlay {
           display: none;
         }
@@ -480,7 +520,7 @@
         }
 
         .mobile-menu {
-          position: static;
+          position: relative;
         }
 
         .mobile-menu-summary {
@@ -492,14 +532,16 @@
         }
 
         .mobile-menu-panel {
-          left: 1rem;
-          right: 1rem;
+          left: auto;
+          right: 0;
           top: calc(100% + 0.85rem);
-          width: auto;
+          width: min(18rem, calc(100vw - 2rem));
+          max-width: calc(100vw - 2rem);
           padding: 1rem;
           border-radius: 1.5rem;
           background: linear-gradient(180deg, rgba(17, 21, 29, 0.98), rgba(10, 14, 22, 0.98));
           backdrop-filter: blur(18px);
+          box-sizing: border-box;
         }
 
         .mobile-menu-link,
@@ -519,6 +561,25 @@
           background: rgba(255, 255, 255, 0.025);
         }
 
+        .mobile-menu-link-active {
+          position: relative;
+          border: 1px solid rgba(177, 197, 255, 0.24);
+          background: linear-gradient(135deg, rgba(177, 197, 255, 0.14), rgba(0, 42, 108, 0.2));
+          color: white !important;
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+        }
+
+        .mobile-menu-link-active::before {
+          content: '';
+          width: 0.45rem;
+          height: 0.45rem;
+          margin-right: 0.8rem;
+          border-radius: 999px;
+          background: #b1c5ff;
+          box-shadow: 0 0 0 0.3rem rgba(177, 197, 255, 0.12);
+          flex: 0 0 auto;
+        }
+
         .mobile-shell {
           padding-left: 1.25rem;
           padding-right: 1.25rem;
@@ -526,7 +587,7 @@
 
         .mobile-hero {
           min-height: auto;
-          padding-top: 9.75rem;
+          padding-top: calc(var(--mobile-header-height, 9.75rem) + 1.25rem);
           padding-bottom: 3.5rem;
         }
 
@@ -566,28 +627,63 @@
         }
 
         .principle-shell {
-          padding: 1.35rem;
-          gap: 1.2rem;
+          padding: 1.1rem 1.35rem 1.35rem;
+          gap: 1rem;
+        }
+
+        .principle-top {
+          align-items: center;
+          padding-bottom: 0.9rem;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .principle-index {
+          width: 3rem;
+          height: 3rem;
+          font-size: 0.72rem;
+          letter-spacing: 0.22em;
         }
 
         .principle-front {
-          margin-top: 4rem;
-          margin-bottom: 0.85rem;
+          margin-top: 0;
+          margin-bottom: 0;
+          min-height: auto;
         }
 
         .principle-symbol .material-symbols-outlined {
-          font-size: 4.8rem;
+          font-size: 2.15rem;
+          text-shadow: none;
         }
 
         .principle-front-title {
           max-width: none;
           font-size: 2rem;
+          color: white;
+          text-shadow: none;
+        }
+
+        .principle-stage {
+          display: grid;
+          gap: 0.9rem;
+        }
+
+        .principle-back {
+          padding-top: 0.95rem;
+          border-top: 1px solid rgba(177, 197, 255, 0.1);
         }
 
         .principle-back-copy {
           max-width: none;
           font-size: 0.98rem;
           line-height: 1.7;
+        }
+
+        .principle-values {
+          gap: 1rem;
+        }
+
+        .principle-values li {
+          gap: 0.8rem;
         }
       }
     </style>
@@ -631,7 +727,7 @@
             </summary>
             <div class="mobile-menu-panel absolute right-0 top-full mt-3 w-[min(18rem,calc(100vw-2rem))] border border-white/10 bg-[#11151d] shadow-2xl p-4 flex flex-col gap-3">
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="index.html">Início</a>
-                <a class="mobile-menu-link text-white font-bold text-xs uppercase tracking-widest" href="quem-somos.html">Quem Somos</a>
+                <a class="mobile-menu-link mobile-menu-link-active text-white font-bold text-xs uppercase tracking-widest" href="quem-somos.html" aria-current="page">Quem Somos</a>
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="a-blindagem.html">A Blindagem</a>
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="servicios.html">Serviços</a>
                 <a class="mobile-menu-link text-slate-300 hover:text-white transition-colors text-xs uppercase tracking-widest" href="contato.html">Contato</a>
@@ -642,7 +738,7 @@
 </header>
 
 <main>
-    <section class="mobile-hero relative min-h-[68vh] flex items-end overflow-hidden pt-36 pb-16 md:pb-20 bg-[#0d1119] border-b border-white/5">
+    <section class="mobile-hero relative min-h-[68vh] flex items-end overflow-hidden pb-16 md:pb-20 bg-[#0d1119] border-b border-white/5">
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-[linear-gradient(180deg,#0b1018_0%,#101620_48%,#131313_100%)]"></div>
             <div class="absolute inset-0 blueprint-bg opacity-30"></div>
@@ -772,7 +868,52 @@
 </main>
 
 <script>
+    const fixedHeader = document.querySelector('header');
+    const mobileMenus = document.querySelectorAll('.mobile-menu');
     const transitionLinks = document.querySelectorAll('a[href$=".html"]');
+
+    const syncMobileHeaderHeight = () => {
+        if (!fixedHeader) {
+            return;
+        }
+
+        document.documentElement.style.setProperty('--mobile-header-height', `${fixedHeader.getBoundingClientRect().height}px`);
+    };
+
+    const closeMobileMenu = (menu) => {
+        menu.removeAttribute('open');
+    };
+
+    mobileMenus.forEach((menu) => {
+        menu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => closeMobileMenu(menu));
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        mobileMenus.forEach((menu) => {
+            if (!menu.contains(event.target)) {
+                closeMobileMenu(menu);
+            }
+        });
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') {
+            return;
+        }
+
+        mobileMenus.forEach(closeMobileMenu);
+    });
+
+    syncMobileHeaderHeight();
+    window.addEventListener('resize', syncMobileHeaderHeight);
+    window.addEventListener('orientationchange', syncMobileHeaderHeight);
+    window.addEventListener('load', syncMobileHeaderHeight);
+
+    if ('ResizeObserver' in window && fixedHeader) {
+        new ResizeObserver(syncMobileHeaderHeight).observe(fixedHeader);
+    }
 
     const enterPage = () => {
         document.body.classList.remove('page-loading', 'page-leaving');
